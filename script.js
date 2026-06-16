@@ -143,13 +143,235 @@ document.querySelectorAll("[data-step-toggle]").forEach((step) => {
 
 const modal = document.querySelector("[data-modal]");
 const modalTitle = document.querySelector("[data-modal-title]");
-const modalCopy = document.querySelector("[data-modal-copy]");
+const modalBody = document.querySelector("[data-modal-body]");
 const modalClose = document.querySelector("[data-modal-close]");
-const proofCards = Array.from(document.querySelectorAll("[data-title]"));
+const proofCards = Array.from(document.querySelectorAll("[data-slot-id]"));
+
+const slotTemplates = {
+  reel: `
+    <div class="mock-player">
+      <div class="player-screen">
+        <div class="player-overlay">
+          <button type="button" class="play-trigger" data-player-btn aria-label="재생">
+            <svg class="play-icon" viewBox="0 0 24 24" width="32" height="32"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" width="32" height="32" style="display:none;"><path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+          <span class="player-status-text">재생 버튼을 누르면 가상 쇼릴 재생이 시작됩니다.</span>
+        </div>
+        <div class="player-visualizer">
+          <div class="vis-bar"></div>
+          <div class="vis-bar"></div>
+          <div class="vis-bar"></div>
+          <div class="vis-bar"></div>
+          <div class="vis-bar"></div>
+          <div class="vis-bar"></div>
+          <div class="vis-bar"></div>
+        </div>
+      </div>
+      <div class="player-controls">
+        <span class="player-time" data-player-time>00:00 / 00:45</span>
+        <div class="player-progress-track">
+          <div class="player-progress-bar" data-player-progress style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+    <div class="reel-description">
+      <p><strong>주요 수록 내용</strong>: 인게임 시네마틱 컷편집, AI 생성 일러스트를 활용한 숏폼 모션 그래픽, 게임 패치노트 요약 썸네일/타이틀 모음 등 총 45초의 포트폴리오 요약본입니다.</p>
+    </div>
+  `,
+  campaign: `
+    <div class="modal-campaign-detail">
+      <h4>모의 캠페인 기획: 신작 인디 게임 런칭 프로모션</h4>
+      <p class="campaign-desc">인지도 확보 및 전환 유도를 위해 숏폼 크리에이터 4인과 협업한 가상 캠페인 성과 데이터 분석입니다.</p>
+      
+      <div class="campaign-stats-grid">
+        <div class="stat-item">
+          <span class="stat-label">총 조회수</span>
+          <div class="stat-num-container">
+            <span class="stat-value">142.5K</span>
+            <span class="stat-target">목표: 100K (142% 달성)</span>
+          </div>
+          <div class="stat-progress"><div class="stat-progress-fill" style="width: 0%" data-animate-width="100%"></div></div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">평균 CTR (클릭률)</span>
+          <div class="stat-num-container">
+            <span class="stat-value">8.4%</span>
+            <span class="stat-target">게임 평균: 5.0%</span>
+          </div>
+          <div class="stat-progress"><div class="stat-progress-fill" style="width: 0%" data-animate-width="84%"></div></div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">시청 유지율 (Shorts)</span>
+          <div class="stat-num-container">
+            <span class="stat-value">58.0%</span>
+            <span class="stat-target">인기 영상 기준: 50%+</span>
+          </div>
+          <div class="stat-progress"><div class="stat-progress-fill" style="width: 0%" data-animate-width="58%"></div></div>
+        </div>
+      </div>
+
+      <div class="campaign-learnings">
+        <h5>💡 핵심 분석 및 배운 점</h5>
+        <ul>
+          <li><strong>초반 3초 후킹 개선:</strong> 인트로에 게임 핵심 타격음과 자막 연출을 배치하여 시청 유지율을 평균 15% 상승시켰습니다.</li>
+          <li><strong>타깃 매칭:</strong> 서브컬처 취향이 뚜렷한 마이크로 인플루언서 조합이 일반 종합게임 크리에이터 대비 전환 효율이 2.4배 높았습니다.</li>
+        </ul>
+      </div>
+    </div>
+  `,
+  ai: `
+    <div class="modal-ai-detail">
+      <div class="ai-split">
+        <div class="ai-prompt-box">
+          <h5>✍️ 사용 프롬프트 (Prompt)</h5>
+          <code>A high-quality cyberpunk futuristic sci-fi gaming character concept art, neon glowing details, digital painting style, dark background, professional portfolio asset, 4k resolution</code>
+          <div class="ai-tools-used">
+            <span class="tool-tag">Midjourney v6</span>
+            <span class="tool-tag">ChatGPT-4o</span>
+            <span class="tool-tag">Magnific AI (Upscaler)</span>
+          </div>
+        </div>
+        <div class="ai-image-preview">
+          <img src="ai_artwork.png" alt="AI Generated Gaming Concept Art" class="artwork-img">
+          <span class="image-caption">실제 프롬프트로 생성한 4K 일러스트레이션</span>
+        </div>
+      </div>
+      <div class="ai-workflow-desc">
+        <h5>⚙️ 제작 워크플로우</h5>
+        <ol>
+          <li>ChatGPT로 게임 세계관에 어울리는 캐릭터 외형 및 배경 묘사 프롬프트 구조 설계</li>
+          <li>Midjourney v6에서 다중 시드 조합 및 배율 조정하여 핵심 원안 이미지 생성</li>
+          <li>스케일링 및 디테일 개선 툴을 활용해 노이즈 제거 및 선명도 업스케일링 진행</li>
+        </ol>
+      </div>
+    </div>
+  `,
+  tools: `
+    <div class="modal-tools-detail">
+      <p class="tools-intro">지원하는 모든 직무에서 즉시 활용할 수 있는 소프트웨어 및 AI 툴 숙련도입니다.</p>
+      
+      <div class="tools-category-grid">
+        <div class="tools-cat">
+          <h5>🎥 영상 제작 & 디자인</h5>
+          <div class="tool-skill">
+            <div class="tool-meta"><span>Premiere Pro (숏폼 컷편집/자막 템플릿)</span><strong>90%</strong></div>
+            <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="90%"></div></div>
+          </div>
+          <div class="tool-skill">
+            <div class="tool-meta"><span>Photoshop / Illustrator (썸네일/아트웍)</span><strong>80%</strong></div>
+            <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="80%"></div></div>
+          </div>
+        </div>
+        
+        <div class="tools-cat">
+          <h5>🤖 Generative AI</h5>
+          <div class="tool-skill">
+            <div class="tool-meta"><span>Midjourney / Stable Diffusion (컨셉 비주얼)</span><strong>85%</strong></div>
+            <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="85%"></div></div>
+          </div>
+          <div class="tool-skill">
+            <div class="tool-meta"><span>ChatGPT / Claude (프롬프트/기획서/대본)</span><strong>90%</strong></div>
+            <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="90%"></div></div>
+          </div>
+        </div>
+
+        <div class="tools-cat">
+          <h5>💼 업무 운영 & 협업</h5>
+          <div class="tool-skill">
+            <div class="tool-meta"><span>Discord (서버 구축/관리 봇 설정)</span><strong>85%</strong></div>
+            <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="85%"></div></div>
+          </div>
+          <div class="tool-skill">
+            <div class="tool-meta"><span>Notion / Slack (일정 조율/데이터 관리)</span><strong>90%</strong></div>
+            <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="90%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `
+};
+
+let playerInterval = null;
+
+function setupModalInteractions(slotId) {
+  if (slotId === "reel") {
+    const playBtn = document.querySelector("[data-player-btn]");
+    const playIcon = document.querySelector(".play-icon");
+    const pauseIcon = document.querySelector(".pause-icon");
+    const statusText = document.querySelector(".player-status-text");
+    const progressBar = document.querySelector("[data-player-progress]");
+    const timeDisplay = document.querySelector("[data-player-time]");
+    const visualizer = document.querySelector(".player-visualizer");
+    
+    let isPlaying = false;
+    let currentSeconds = 0;
+    const totalSeconds = 45;
+    
+    playBtn.addEventListener("click", () => {
+      isPlaying = !isPlaying;
+      if (isPlaying) {
+        playIcon.style.display = "none";
+        pauseIcon.style.display = "block";
+        statusText.textContent = "가상 쇼릴을 재생 중입니다...";
+        visualizer.classList.add("is-playing");
+        
+        playerInterval = setInterval(() => {
+          currentSeconds += 1;
+          if (currentSeconds > totalSeconds) {
+            currentSeconds = 0;
+            isPlaying = false;
+            clearInterval(playerInterval);
+            playIcon.style.display = "block";
+            pauseIcon.style.display = "none";
+            statusText.textContent = "쇼릴 재생이 완료되었습니다.";
+            visualizer.classList.remove("is-playing");
+          }
+          const pct = (currentSeconds / totalSeconds) * 100;
+          progressBar.style.width = `${pct}%`;
+          const min = String(Math.floor(currentSeconds / 60)).padStart(2, '0');
+          const sec = String(currentSeconds % 60).padStart(2, '0');
+          timeDisplay.textContent = `${min}:${sec} / 00:45`;
+        }, 1000);
+      } else {
+        clearInterval(playerInterval);
+        playIcon.style.display = "block";
+        pauseIcon.style.display = "none";
+        statusText.textContent = "쇼릴 재생이 일시 정지되었습니다.";
+        visualizer.classList.remove("is-playing");
+      }
+    });
+  }
+  
+  const animElements = document.querySelectorAll("[data-animate-width]");
+  if (animElements.length > 0) {
+    setTimeout(() => {
+      animElements.forEach(el => {
+        el.style.width = el.getAttribute("data-animate-width");
+      });
+    }, 150);
+  }
+}
+
+function clearModalInteractions() {
+  if (playerInterval) {
+    clearInterval(playerInterval);
+    playerInterval = null;
+  }
+}
 
 function openModal(card) {
+  const slotId = card.dataset.slotId;
   modalTitle.textContent = card.dataset.title;
-  modalCopy.textContent = card.dataset.proofCopy || "여기에 실제 스크린샷, 썸네일, 리포트, 짧은 클립을 넣으면 됩니다.";
+  
+  // Set modal body based on template
+  if (slotTemplates[slotId]) {
+    modalBody.innerHTML = slotTemplates[slotId];
+    setupModalInteractions(slotId);
+  } else {
+    modalBody.innerHTML = `<small data-modal-copy>${card.dataset.proofCopy || "상세 설명이 존재하지 않습니다."}</small>`;
+  }
+
   modal.classList.add("is-open");
   modal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
@@ -157,6 +379,7 @@ function openModal(card) {
 }
 
 function closeModal() {
+  clearModalInteractions();
   modal.classList.remove("is-open");
   modal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("modal-open");
@@ -170,3 +393,4 @@ modal.addEventListener("click", (event) => {
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeModal();
 });
+
