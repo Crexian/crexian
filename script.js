@@ -7,7 +7,7 @@ const savedTheme = localStorage.getItem("portfolio-theme");
 if (savedTheme) root.dataset.theme = savedTheme;
 
 function updateThemeLabel() {
-  themeIcon.textContent = root.dataset.theme === "dark" ? "Dark" : "Light";
+  themeIcon.textContent = root.dataset.theme === "dark" ? "다크" : "라이트";
 }
 
 updateThemeLabel();
@@ -28,22 +28,22 @@ window.addEventListener("scroll", setHeaderState, { passive: true });
 
 const trackData = {
   game: {
-    kicker: "Game Portfolio",
-    title: "Reads game communities and turns updates into content.",
-    copy: "Use this version for game studios, publishers, community teams, and gaming channels.",
-    skills: ["Game trend research", "Community insight", "Short-form content planning"],
+    kicker: "게임 포트폴리오",
+    title: "게임 커뮤니티를 읽고 업데이트를 콘텐츠로 바꾸는 사람",
+    copy: "게임사, 퍼블리셔, 커뮤니티 팀, 게임 채널 지원에 맞춘 버전입니다.",
+    skills: ["게임 트렌드 리서치", "커뮤니티 인사이트 정리", "숏폼 콘텐츠 기획"],
   },
   mcn: {
-    kicker: "MCN Manager",
-    title: "Connects creators, brands, schedules, and performance.",
-    copy: "Use this version for MCN agencies, creator partnerships, influencer campaigns, and channel operations.",
-    skills: ["Creator communication", "Campaign coordination", "Performance reporting"],
+    kicker: "MCN 매니저",
+    title: "크리에이터, 브랜드, 일정, 성과를 연결하는 운영자",
+    copy: "MCN 에이전시, 크리에이터 파트너십, 인플루언서 캠페인, 채널 운영 지원에 맞춘 버전입니다.",
+    skills: ["크리에이터 커뮤니케이션", "캠페인 운영 조율", "성과 리포트 정리"],
   },
   ai: {
-    kicker: "AI Content Creator",
-    title: "Turns AI tools into a practical content production system.",
-    copy: "Use this version for AI content roles, creative operations, social experiments, and visual production teams.",
-    skills: ["Prompt design", "AI image and video workflow", "Content automation tests"],
+    kicker: "AI 콘텐츠 크리에이터",
+    title: "AI 툴을 실전 콘텐츠 제작 시스템으로 바꾸는 사람",
+    copy: "AI 콘텐츠 직무, 크리에이티브 운영, 소셜 실험, 비주얼 제작 팀 지원에 맞춘 버전입니다.",
+    skills: ["프롬프트 설계", "AI 이미지/영상 워크플로우", "콘텐츠 자동화 실험"],
   },
 };
 
@@ -69,7 +69,7 @@ trackButtons.forEach((button) => {
 });
 
 const focusData = {
-  reel: { score: "92", mode: "Reel" },
+  reel: { score: "92", mode: "쇼릴" },
   campaign: { score: "88", mode: "MCN" },
   pipeline: { score: "95", mode: "AI" },
 };
@@ -100,24 +100,24 @@ const kpiThree = document.querySelector("[data-kpi-three]");
 
 const briefData = {
   awareness: {
-    title: "Launch awareness sprint",
-    copy: "A creator plan built around reaction clips, AI-assisted thumbnail variants, and comment insight loops.",
-    length: "14d",
+    title: "런칭 인지도 스프린트",
+    copy: "리액션 클립, AI 보조 썸네일 시안, 댓글 인사이트 루프를 중심으로 구성한 크리에이터 콘텐츠 플랜입니다.",
+    length: "14일",
   },
   conversion: {
-    title: "Creator conversion push",
-    copy: "A creator-led campaign focused on clear hooks, benefit-led scripts, and measurable audience actions.",
-    length: "10d",
+    title: "크리에이터 전환 캠페인",
+    copy: "명확한 후킹, 장점 중심 스크립트, 측정 가능한 시청자 행동을 목표로 하는 크리에이터 캠페인입니다.",
+    length: "10일",
   },
   retention: {
-    title: "Community retention loop",
-    copy: "A content rhythm for Discord prompts, patch-note summaries, weekly highlights, and feedback capture.",
-    length: "21d",
+    title: "커뮤니티 유지 루프",
+    copy: "디스코드 질문, 패치노트 요약, 주간 하이라이트, 피드백 수집을 묶은 콘텐츠 리듬입니다.",
+    length: "21일",
   },
   experiment: {
-    title: "AI format test",
-    copy: "A fast test of AI-generated visuals, short scripts, alternate thumbnails, and platform-native edits.",
-    length: "7d",
+    title: "AI 포맷 테스트",
+    copy: "AI 생성 비주얼, 짧은 스크립트, 대체 썸네일, 플랫폼 맞춤 편집을 빠르게 검증하는 실험입니다.",
+    length: "7일",
   },
 };
 
@@ -149,7 +149,7 @@ const proofCards = Array.from(document.querySelectorAll("[data-title]"));
 
 function openModal(card) {
   modalTitle.textContent = card.dataset.title;
-  modalCopy.textContent = card.dataset.proofCopy || "Add a real screenshot, thumbnail, report, or short clip here.";
+  modalCopy.textContent = card.dataset.proofCopy || "여기에 실제 스크린샷, 썸네일, 리포트, 짧은 클립을 넣으면 됩니다.";
   modal.classList.add("is-open");
   modal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
