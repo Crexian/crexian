@@ -3,6 +3,10 @@ const header = document.querySelector("[data-header]");
 const themeToggle = document.querySelector("[data-theme-toggle]");
 const themeIcon = document.querySelector("[data-theme-icon]");
 
+// Game HUD Global Variables
+let bonusScore = 0;
+let totalCredits = 0;
+
 const savedTheme = localStorage.getItem("portfolio-theme");
 if (savedTheme) root.dataset.theme = savedTheme;
 
@@ -177,16 +181,19 @@ function playSound(type) {
 }
 
 document.addEventListener("mouseenter", (e) => {
-  const target = e.target.closest(".mode-button, .button, .tab-button, .preview-card, .proof-card, .site-nav a, .thumb-nav-item, .ai-nav-item, [data-player-btn], [data-insert-coin]");
+  const target = e.target.closest(".mode-button, .button, .tab-button, .preview-card, .proof-card, .site-nav a, .thumb-nav-item, .ai-nav-item, [data-player-btn], [data-insert-coin], .stage-node");
   if (target) {
     playSound("hover");
   }
 }, true);
 
 document.addEventListener("click", (e) => {
-  const target = e.target.closest(".tab-button, .thumb-nav-item, .ai-nav-item, [data-player-btn]");
+  const target = e.target.closest(".tab-button, .thumb-nav-item, .ai-nav-item, [data-player-btn], .proof-card, .preview-card, .mode-button, .button, [data-insert-coin], .stage-node");
   if (target) {
     playSound("click");
+    // Gamification: Give points on click!
+    bonusScore += 100;
+    updateScore();
   }
 }, true);
 
@@ -235,6 +242,51 @@ const blob1 = document.querySelector("[data-blob-1]");
 const blob2 = document.querySelector("[data-blob-2]");
 const blob3 = document.querySelector("[data-blob-3]");
 
+// HUD Live Update Functions
+const hudScore = document.querySelector("[data-hud-score]");
+const hudStage = document.querySelector("[data-hud-stage]");
+
+function updateScore() {
+  if (hudScore) {
+    const currentScore = Math.floor(window.scrollY * 1.5) + bonusScore;
+    hudScore.textContent = String(currentScore).padStart(6, '0');
+  }
+}
+
+const tracksSection = document.getElementById("tracks");
+const proofSection = document.getElementById("proof");
+const workflowSection = document.getElementById("workflow");
+const footerSection = document.querySelector(".site-footer");
+
+function updateHudStage() {
+  if (!hudStage) return;
+  const scrollY = window.scrollY + window.innerHeight / 3;
+  
+  let currentStage = "01";
+  if (footerSection && scrollY >= footerSection.offsetTop) {
+    currentStage = "05";
+  } else if (workflowSection && scrollY >= workflowSection.offsetTop) {
+    currentStage = "04";
+  } else if (proofSection && scrollY >= proofSection.offsetTop) {
+    currentStage = "03";
+  } else if (tracksSection && scrollY >= tracksSection.offsetTop) {
+    currentStage = "02";
+  }
+  
+  hudStage.textContent = currentStage;
+  
+  // Highlight active stage node in workflow section if stage is 04
+  const stageNodes = document.querySelectorAll(".stage-node");
+  if (stageNodes.length > 0) {
+    stageNodes.forEach((node) => {
+      const nodeStage = node.getAttribute("data-stage");
+      const rect = node.getBoundingClientRect();
+      const isActive = (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 3);
+      node.classList.toggle("active-stage", isActive);
+    });
+  }
+}
+
 let isScrollTicking = false;
 function handleScroll() {
   if (!isScrollTicking) {
@@ -257,6 +309,10 @@ function handleScroll() {
       if (blob1) blob1.style.transform = `translate3d(0, ${scrollY * 0.15}px, 0)`;
       if (blob2) blob2.style.transform = `translate3d(0, ${-scrollY * 0.1}px, 0)`;
       if (blob3) blob3.style.transform = `translate3d(0, ${scrollY * 0.05}px, 0)`;
+
+      // Update HUD game dashboard values
+      updateScore();
+      updateHudStage();
 
       isScrollTicking = false;
     });
@@ -935,6 +991,17 @@ function spawnCoins(x, y, count = 8) {
     coins.push(new Coin(x, y));
   }
   playSound("coin");
+  
+  // Increment credits in HUD!
+  totalCredits += count;
+  const hudCredits = document.querySelector("[data-hud-credits]");
+  if (hudCredits) {
+    hudCredits.textContent = String(totalCredits).padStart(2, '0');
+  }
+  
+  // Add extra score bonus!
+  bonusScore += count * 50;
+  updateScore();
   
   if (!isAnimating) {
     isAnimating = true;
