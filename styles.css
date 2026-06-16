@@ -299,8 +299,7 @@ h3 {
 }
 
 .split,
-.about,
-.contact {
+.about {
   display: grid;
   grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
   gap: clamp(28px, 6vw, 80px);
@@ -522,32 +521,6 @@ h3 {
   display: inline-block;
 }
 
-.contact-form {
-  display: grid;
-  gap: 14px;
-  padding: clamp(18px, 3vw, 28px);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--panel);
-}
-
-.contact-form label {
-  display: grid;
-  gap: 7px;
-  color: var(--muted);
-  font-weight: 700;
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 12px 14px;
-  background: var(--bg);
-  color: var(--text);
-}
-
 .modal {
   position: fixed;
   inset: 0;
@@ -608,8 +581,7 @@ h3 {
   }
 
   .split,
-  .about,
-  .contact {
+  .about {
     grid-template-columns: 1fr;
   }
 

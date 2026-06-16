@@ -10,10 +10,9 @@
 - Image preview modal
 - Dark and light theme toggle
 - Responsive layout
-- Contact form using `mailto:`
 
 ## Edit
 
 - Replace Unsplash image URLs in `index.html` with your own project images.
-- Replace `Creative Portfolio`, contact email, project titles, and service text with your real details.
+- Replace `Creative Portfolio`, project titles, images, and service text with your real details.
 - To deploy on Vercel, import the repository and set this folder as the project root if needed.
