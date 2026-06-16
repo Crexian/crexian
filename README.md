@@ -19,3 +19,11 @@
 - Replace the placeholder proof slots with actual thumbnails, reports, and project captures.
 - Update the profile section with your name, role, tools, and application target.
 - Keep the Vercel settings empty/default for this static site.
+
+## Korean text
+
+This project is configured for UTF-8 Korean text:
+
+- `index.html` includes `<meta charset="utf-8">`.
+- `.editorconfig` keeps supported editors saving files as UTF-8.
+- `.gitattributes` keeps Git line endings stable across Windows and deployment.
