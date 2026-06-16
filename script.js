@@ -176,16 +176,15 @@ function playSound(type) {
   }
 }
 
-// Bind sound events globally using delegation
 document.addEventListener("mouseenter", (e) => {
-  const target = e.target.closest(".mode-button, .button, .tab-button, .preview-card, .proof-card, .site-nav a, .thumb-nav-item, .ai-nav-item, [data-player-btn], .character-card, [data-insert-coin]");
+  const target = e.target.closest(".mode-button, .button, .tab-button, .preview-card, .proof-card, .site-nav a, .thumb-nav-item, .ai-nav-item, [data-player-btn], [data-insert-coin]");
   if (target) {
     playSound("hover");
   }
 }, true);
 
 document.addEventListener("click", (e) => {
-  const target = e.target.closest(".tab-button, .thumb-nav-item, .ai-nav-item, [data-player-btn], .character-card");
+  const target = e.target.closest(".tab-button, .thumb-nav-item, .ai-nav-item, [data-player-btn]");
   if (target) {
     playSound("click");
   }
@@ -721,17 +720,7 @@ window.addEventListener("keydown", (event) => {
 
 // --- Retro Arcade Start Screen Logic ---
 const startScreen = document.querySelector("[data-start-screen]");
-const charCards = document.querySelectorAll(".character-card");
 const insertCoinBtn = document.querySelector("[data-insert-coin]");
-let selectedTrack = "game"; // Default selected track
-
-charCards.forEach((card) => {
-  card.addEventListener("click", () => {
-    charCards.forEach((c) => c.classList.remove("active"));
-    card.classList.add("active");
-    selectedTrack = card.dataset.char;
-  });
-});
 
 if (insertCoinBtn && startScreen) {
   insertCoinBtn.addEventListener("click", () => {
@@ -740,9 +729,6 @@ if (insertCoinBtn && startScreen) {
     // Animate start screen slide out
     startScreen.classList.add("is-started");
     document.body.classList.remove("start-active");
-    
-    // Sync with main page tracks section
-    renderTrack(selectedTrack);
   });
 }
 
