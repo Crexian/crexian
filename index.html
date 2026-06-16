@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="이미지 중심의 인터랙티브 포트폴리오 사이트">
+    <title>Creative Portfolio</title>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="Creative Portfolio home">
+        <span class="brand-mark"></span>
+        <span>Creative Portfolio</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="icon-button" type="button" data-theme-toggle aria-label="Toggle theme" title="Toggle theme">
+        <span data-theme-icon>☾</span>
+      </button>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-media" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df0852?auto=format&fit=crop&w=1800&q=90" alt="">
+        </div>
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Design / Web / Visual Storytelling</p>
+          <h1 id="hero-title">이미지로 먼저 기억되는 포트폴리오</h1>
+          <p class="hero-copy">대표 프로젝트, 사진 슬라이드, 갤러리 필터, 상세 모달까지 한 화면 안에서 강하게 보여주는 개인 포트폴리오 사이트입니다.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#work">작업 보기</a>
+            <a class="button ghost" href="#contact">문의하기</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro-band" aria-label="Portfolio summary">
+        <div class="metric">
+          <strong>12+</strong>
+          <span>Selected projects</span>
+        </div>
+        <div class="metric">
+          <strong>4</strong>
+          <span>Creative fields</span>
+        </div>
+        <div class="metric">
+          <strong>2026</strong>
+          <span>Ready to publish</span>
+        </div>
+      </section>
+
+      <section class="section split" id="work" aria-labelledby="work-title">
+        <div class="section-copy">
+          <p class="eyebrow">Featured Work</p>
+          <h2 id="work-title">좌우로 넘기는 대표 작업</h2>
+          <p>버튼, 키보드 방향키, 모바일 스와이프로 넘길 수 있는 이미지 슬라이더입니다. 실제 프로젝트 사진으로 교체하면 메인 쇼케이스가 됩니다.</p>
+        </div>
+
+        <div class="slider" data-slider aria-label="Featured project slider">
+          <div class="slider-viewport">
+            <article class="slide is-active" data-slide>
+              <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1500&q=90" alt="Brand identity boards on a table">
+              <div class="slide-caption">
+                <span>01 / Brand Identity</span>
+                <h3>Aurora Visual System</h3>
+                <p>강한 색감과 선명한 그래픽 모티프로 완성한 브랜드 아이덴티티.</p>
+              </div>
+            </article>
+            <article class="slide" data-slide>
+              <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1500&q=90" alt="Modern web design screens">
+              <div class="slide-caption">
+                <span>02 / Web Experience</span>
+                <h3>Studio Landing Page</h3>
+                <p>대형 이미지, 스크롤 모션, 빠른 문의 동선으로 만든 웹 경험.</p>
+              </div>
+            </article>
+            <article class="slide" data-slide>
+              <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1500&q=90" alt="Colorful architectural geometry">
+              <div class="slide-caption">
+                <span>03 / Art Direction</span>
+                <h3>Campaign Scene Kit</h3>
+                <p>캠페인의 분위기를 한 번에 전달하는 이미지 중심 아트 디렉션.</p>
+              </div>
+            </article>
+          </div>
+          <div class="slider-controls">
+            <button class="icon-button" type="button" data-prev aria-label="Previous slide" title="Previous slide">‹</button>
+            <div class="slider-dots" data-dots aria-label="Slide pagination"></div>
+            <button class="icon-button" type="button" data-next aria-label="Next slide" title="Next slide">›</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="gallery" aria-labelledby="gallery-title">
+        <div class="section-heading">
+          <p class="eyebrow">Gallery</p>
+          <h2 id="gallery-title">프로젝트 이미지 갤러리</h2>
+        </div>
+        <div class="filters" aria-label="Gallery filters">
+          <button class="filter-button is-active" type="button" data-filter="all">All</button>
+          <button class="filter-button" type="button" data-filter="brand">Brand</button>
+          <button class="filter-button" type="button" data-filter="web">Web</button>
+          <button class="filter-button" type="button" data-filter="photo">Photo</button>
+        </div>
+        <div class="gallery-grid" data-gallery>
+          <button class="gallery-item tall" type="button" data-category="brand" data-title="Color Language" data-image="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1600&q=90">
+            <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=900&q=90" alt="Bright design objects">
+            <span>Color Language</span>
+          </button>
+          <button class="gallery-item" type="button" data-category="web" data-title="Interface Flow" data-image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=90">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=90" alt="Laptop analytics interface">
+            <span>Interface Flow</span>
+          </button>
+          <button class="gallery-item wide" type="button" data-category="photo" data-title="Campaign Light" data-image="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=90">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1100&q=90" alt="Outdoor campaign mood">
+            <span>Campaign Light</span>
+          </button>
+          <button class="gallery-item" type="button" data-category="brand" data-title="Editorial System" data-image="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1600&q=90">
+            <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=900&q=90" alt="Creative studio workspace">
+            <span>Editorial System</span>
+          </button>
+          <button class="gallery-item" type="button" data-category="web" data-title="Responsive Detail" data-image="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=90">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=90" alt="Laptop on desk">
+            <span>Responsive Detail</span>
+          </button>
+          <button class="gallery-item tall" type="button" data-category="photo" data-title="Visual Story" data-image="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=90">
+            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=90" alt="Landscape photography">
+            <span>Visual Story</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="section about" id="about" aria-labelledby="about-title">
+        <div>
+          <p class="eyebrow">About</p>
+          <h2 id="about-title">브랜드를 화면 위에서 선명하게 만드는 사람</h2>
+        </div>
+        <div class="about-copy">
+          <p>이름, 직무, 실제 작업 소개를 넣으면 바로 개인 포트폴리오로 사용할 수 있습니다. 지금은 디자이너, 개발자, 콘텐츠 크리에이터 모두에게 어울리도록 이미지 중심의 문장과 구성을 넣었습니다.</p>
+          <div class="service-list">
+            <span>Brand Design</span>
+            <span>Web Design</span>
+            <span>Art Direction</span>
+            <span>Interactive UI</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="marquee" aria-label="Capabilities">
+        <div>
+          <span>Photo slider</span>
+          <span>Project modal</span>
+          <span>Responsive gallery</span>
+          <span>Dark mode</span>
+          <span>Mobile swipe</span>
+          <span>Vercel ready</span>
+        </div>
+      </section>
+
+      <section class="section contact" id="contact" aria-labelledby="contact-title">
+        <div class="section-copy">
+          <p class="eyebrow">Contact</p>
+          <h2 id="contact-title">새 프로젝트를 시작해볼까요</h2>
+          <p>아래 정보는 실제 이메일, 인스타그램, 포트폴리오 주소로 교체하면 됩니다.</p>
+        </div>
+        <form class="contact-form" action="mailto:yourname@email.com" method="post" enctype="text/plain">
+          <label>
+            <span>Name</span>
+            <input name="name" type="text" placeholder="Your name">
+          </label>
+          <label>
+            <span>Email</span>
+            <input name="email" type="email" placeholder="your@email.com">
+          </label>
+          <label>
+            <span>Message</span>
+            <textarea name="message" rows="5" placeholder="프로젝트 내용을 적어주세요"></textarea>
+          </label>
+          <button class="button primary" type="submit">메일 보내기</button>
+        </form>
+      </section>
+    </main>
+
+    <div class="modal" data-modal aria-hidden="true" role="dialog" aria-label="Gallery preview">
+      <button class="modal-close" type="button" data-modal-close aria-label="Close preview" title="Close preview">×</button>
+      <img data-modal-image alt="">
+      <p data-modal-title></p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
