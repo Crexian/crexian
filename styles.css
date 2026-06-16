@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'NeoDungGeunMo';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/NeoDungGeunMo.woff') format('woff');
+  font-family: 'Galmuri9';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-1@1.0/Galmuri9.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -72,7 +72,7 @@ body {
   background-image: radial-gradient(var(--line) 1.5px, transparent 1.5px);
   background-size: 24px 24px;
   color: var(--text);
-  font-family: 'NeoDungGeunMo', 'Pixelify Sans', monospace, sans-serif;
+  font-family: 'Galmuri9', 'Pixelify Sans', monospace, sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
@@ -137,7 +137,7 @@ a { color: inherit; text-decoration: none; }
 button, select, input { font: inherit; }
 
 h1, h2, h3, h4, h5, h6, .brand, .tab-button, .button, .card-label, .panel-kicker, .stat-card b {
-  font-family: 'NeoDungGeunMo', 'Pixelify Sans', monospace;
+  font-family: 'Galmuri9', 'Pixelify Sans', monospace;
   letter-spacing: 0em;
 }
 
@@ -1945,7 +1945,7 @@ body.start-active {
 }
 
 .quest-status {
-  font-family: 'NeoDungGeunMo', monospace;
+  font-family: 'Galmuri9', monospace;
   font-size: 0.85rem;
   font-weight: bold;
   padding: 4px 10px;
@@ -1981,7 +1981,7 @@ body.start-active {
   margin: 0;
   font-size: 1.25rem;
   color: var(--blue);
-  font-family: 'NeoDungGeunMo', monospace;
+  font-family: 'Galmuri9', monospace;
 }
 
 .quest-desc {
@@ -2008,7 +2008,7 @@ body.start-active {
   background: var(--text);
   color: var(--bg);
   border: 2.5px solid var(--text);
-  font-family: 'NeoDungGeunMo', monospace;
+  font-family: 'Galmuri9', monospace;
   font-size: 0.72rem;
   padding: 1px 6px;
   margin-bottom: 8px;
@@ -2039,5 +2039,5 @@ body.start-active {
 .brand-text, .panel-kicker, .card-label, .rpg-title, .rpg-class-name, .footer-kicker, .footer-title,
 .hud-label, .hud-value, .system-ready, .insert-coin-btn, .start-title, .blink-text,
 .quest-status, .quest-title {
-  font-family: 'NeoDungGeunMo', 'Pixelify Sans', monospace !important;
+  font-family: 'Galmuri9', 'Pixelify Sans', monospace !important;
 }
