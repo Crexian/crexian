@@ -181,14 +181,14 @@ function playSound(type) {
 }
 
 document.addEventListener("mouseenter", (e) => {
-  const target = e.target.closest(".mode-button, .button, .tab-button, .preview-card, .proof-card, .site-nav a, .thumb-nav-item, .ai-nav-item, [data-player-btn], [data-insert-coin], .stage-node");
+  const target = e.target.closest(".mode-button, .button, .tab-button, .preview-card, .proof-card, .site-nav a, .thumb-nav-item, .ai-nav-item, [data-player-btn], [data-insert-coin], .quest-item");
   if (target) {
     playSound("hover");
   }
 }, true);
 
 document.addEventListener("click", (e) => {
-  const target = e.target.closest(".tab-button, .thumb-nav-item, .ai-nav-item, [data-player-btn], .proof-card, .preview-card, .mode-button, .button, [data-insert-coin], .stage-node");
+  const target = e.target.closest(".tab-button, .thumb-nav-item, .ai-nav-item, [data-player-btn], .proof-card, .preview-card, .mode-button, .button, [data-insert-coin], .quest-item");
   if (target) {
     playSound("click");
     // Gamification: Give points on click!
@@ -275,14 +275,13 @@ function updateHudStage() {
   
   hudStage.textContent = currentStage;
   
-  // Highlight active stage node in workflow section if stage is 04
-  const stageNodes = document.querySelectorAll(".stage-node");
-  if (stageNodes.length > 0) {
-    stageNodes.forEach((node) => {
-      const nodeStage = node.getAttribute("data-stage");
-      const rect = node.getBoundingClientRect();
+  // Highlight active quest item in JRPG quest log on scroll
+  const questItems = document.querySelectorAll(".quest-item");
+  if (questItems.length > 0) {
+    questItems.forEach((item) => {
+      const rect = item.getBoundingClientRect();
       const isActive = (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 3);
-      node.classList.toggle("active-stage", isActive);
+      item.classList.toggle("active-stage", isActive);
     });
   }
 }
