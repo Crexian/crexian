@@ -5,6 +5,9 @@
 ## Included
 
 - Position-specific tabs for Game, MCN Manager, and AI Creator
+- Interactive Content Lab for platform, goal, AI intensity, and creator count
+- Clickable hero focus cards with live score changes
+- Toggleable production checklist
 - Proof board with empty slots for reels, reports, campaigns, and AI work
 - Workflow section for research, planning, creation, and review
 - Preview modal for proof slots

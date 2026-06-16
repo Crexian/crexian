@@ -1,23 +1,23 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="게임, MCN 매니저, AI 콘텐츠 크리에이터 지원용 포트폴리오 시안">
-    <title>Game / MCN / AI Creator Portfolio</title>
+    <meta name="description" content="Interactive portfolio concept for game, MCN, and AI content roles.">
+    <title>Game / MCN / AI Content Portfolio</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <header class="site-header" data-header>
       <a class="brand" href="#top" aria-label="Portfolio home">
         <span class="brand-mark"></span>
-        <span>Candidate Deck</span>
+        <span>Creator Ops Deck</span>
       </a>
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="#tracks">Tracks</a>
+        <a href="#lab">Content Lab</a>
         <a href="#proof">Proof</a>
         <a href="#workflow">Workflow</a>
-        <a href="#profile">Profile</a>
       </nav>
       <button class="mode-button" type="button" data-theme-toggle aria-label="Toggle theme">
         <span data-theme-icon>Light</span>
@@ -27,38 +27,38 @@
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow">Game · MCN · AI Content</p>
-          <h1 id="hero-title">콘텐츠와 커뮤니티를 성장시키는 운영형 크리에이터</h1>
-          <p>게임 이해도, 크리에이터 매니지먼트, AI 제작 툴 활용 능력을 한 화면에서 보여주는 지원용 포트폴리오 시안입니다.</p>
+          <p class="eyebrow">Game / MCN / AI Content</p>
+          <h1 id="hero-title">An interactive portfolio for creator-driven teams.</h1>
+          <p>This concept is built for applications in game publishing, MCN management, AI content creation, creator operations, and social content strategy.</p>
           <div class="hero-actions">
-            <a class="button primary" href="#tracks">직무 역량 보기</a>
-            <a class="button secondary" href="#proof">성과 슬롯 보기</a>
+            <a class="button primary" href="#lab">Try Content Lab</a>
+            <a class="button secondary" href="#proof">View Proof Board</a>
           </div>
         </div>
 
         <div class="hero-board" aria-label="Portfolio preview board">
-          <div class="preview-card large">
+          <button class="preview-card large active-card" type="button" data-focus-card="reel">
             <span class="card-label">Featured Reel</span>
-            <strong>영상 / 쇼릴 슬롯</strong>
-            <small>대표 영상, 게임 클립, AI 콘텐츠 샘플</small>
-          </div>
-          <div class="preview-card">
+            <strong>Showreel Slot</strong>
+            <small>Game clips, AI samples, creator edits</small>
+          </button>
+          <button class="preview-card" type="button" data-focus-card="campaign">
             <span class="card-label">Campaign</span>
-            <strong>MCN 캠페인</strong>
-            <small>브랜드 협업, 크리에이터 운영</small>
-          </div>
-          <div class="preview-card accent">
+            <strong>MCN Campaign</strong>
+            <small>Creator roster, brand brief, KPI report</small>
+          </button>
+          <button class="preview-card accent" type="button" data-focus-card="pipeline">
             <span class="card-label">AI Pipeline</span>
-            <strong>AI 제작 프로세스</strong>
-            <small>기획 → 생성 → 편집 → 배포</small>
+            <strong>AI Workflow</strong>
+            <small>Prompt, generate, edit, publish</small>
+          </button>
+          <div class="stat-card">
+            <b data-hero-score>92</b>
+            <span>fit score</span>
           </div>
           <div class="stat-card">
-            <b>3</b>
-            <span>지원 방향</span>
-          </div>
-          <div class="stat-card">
-            <b>8</b>
-            <span>증거 슬롯</span>
+            <b data-hero-mode>Reel</b>
+            <span>active focus</span>
           </div>
         </div>
       </section>
@@ -66,7 +66,7 @@
       <section class="track-tabs" id="tracks" aria-labelledby="tracks-title">
         <div class="section-heading">
           <p class="eyebrow">Career Tracks</p>
-          <h2 id="tracks-title">지원 포지션별로 다르게 보여주는 구조</h2>
+          <h2 id="tracks-title">Switch the portfolio by target role.</h2>
         </div>
 
         <div class="tab-controls" role="tablist" aria-label="Career tracks">
@@ -75,67 +75,151 @@
           <button class="tab-button" type="button" data-track="ai">AI Creator</button>
         </div>
 
-        <div class="track-panel" data-track-panel>
+        <div class="track-panel">
           <div>
             <span class="panel-kicker" data-track-kicker>Game Portfolio</span>
-            <h3 data-track-title>게임 콘텐츠와 유저 반응을 읽는 사람</h3>
-            <p data-track-copy>게임 클립, 이벤트 운영 아이디어, 커뮤니티 반응 분석, 업데이트 콘텐츠 기획을 보여주는 섹션입니다.</p>
+            <h3 data-track-title>Reads game communities and turns updates into content.</h3>
+            <p data-track-copy>Use this version for game studios, publishers, community teams, and gaming channels.</p>
           </div>
           <ul class="skill-list" data-track-skills>
-            <li>게임 트렌드 리서치</li>
-            <li>유저 커뮤니티 관찰</li>
-            <li>숏폼/롱폼 콘텐츠 기획</li>
+            <li>Game trend research</li>
+            <li>Community insight</li>
+            <li>Short-form content planning</li>
           </ul>
+        </div>
+      </section>
+
+      <section class="lab-section" id="lab" aria-labelledby="lab-title">
+        <div class="section-heading compact">
+          <p class="eyebrow">Interactive Content Lab</p>
+          <h2 id="lab-title">Build a sample content plan live.</h2>
+          <p>Change the platform, campaign goal, and AI intensity. The brief, KPI cards, and production steps update instantly.</p>
+        </div>
+
+        <div class="lab-grid">
+          <form class="lab-controls" aria-label="Content plan controls">
+            <label>
+              <span>Platform</span>
+              <select data-platform>
+                <option value="youtube">YouTube</option>
+                <option value="tiktok">TikTok</option>
+                <option value="shorts">YouTube Shorts</option>
+                <option value="discord">Discord</option>
+              </select>
+            </label>
+            <label>
+              <span>Goal</span>
+              <select data-goal>
+                <option value="awareness">Launch awareness</option>
+                <option value="conversion">Creator conversion</option>
+                <option value="retention">Community retention</option>
+                <option value="experiment">AI format test</option>
+              </select>
+            </label>
+            <label>
+              <span>AI intensity</span>
+              <input type="range" min="0" max="100" value="65" data-ai-range>
+            </label>
+            <label>
+              <span>Creator count</span>
+              <input type="range" min="1" max="12" value="4" data-creator-range>
+            </label>
+          </form>
+
+          <article class="brief-card">
+            <div class="brief-header">
+              <span data-brief-platform>YouTube</span>
+              <strong data-brief-title>Launch awareness sprint</strong>
+            </div>
+            <p data-brief-copy>A 2-week creator content plan built around trailer reaction clips, AI-assisted thumbnail variants, and comment insight loops.</p>
+            <div class="kpi-grid">
+              <div>
+                <b data-kpi-one>4</b>
+                <span>creators</span>
+              </div>
+              <div>
+                <b data-kpi-two>65%</b>
+                <span>AI assist</span>
+              </div>
+              <div>
+                <b data-kpi-three>14d</b>
+                <span>sprint</span>
+              </div>
+            </div>
+          </article>
+
+          <div class="plan-stack" data-plan-stack>
+            <button type="button" class="plan-step is-done" data-step-toggle>
+              <span>01</span>
+              <strong>Audience scan</strong>
+              <small>Find comments, channels, hooks, and reference formats.</small>
+            </button>
+            <button type="button" class="plan-step is-done" data-step-toggle>
+              <span>02</span>
+              <strong>Creative brief</strong>
+              <small>Write angles, thumbnail directions, and talking points.</small>
+            </button>
+            <button type="button" class="plan-step" data-step-toggle>
+              <span>03</span>
+              <strong>Production sprint</strong>
+              <small>Coordinate creators, AI assets, edits, and approvals.</small>
+            </button>
+            <button type="button" class="plan-step" data-step-toggle>
+              <span>04</span>
+              <strong>Performance review</strong>
+              <small>Read metrics, comments, saves, CTR, and next experiments.</small>
+            </button>
+          </div>
         </div>
       </section>
 
       <section class="proof-section" id="proof" aria-labelledby="proof-title">
         <div class="section-heading compact">
           <p class="eyebrow">Proof Board</p>
-          <h2 id="proof-title">사진보다 중요한 건, 보여줄 증거</h2>
-          <p>아래 칸들은 나중에 실제 영상 썸네일, 리포트 캡처, 캠페인 결과, AI 제작물로 교체하면 됩니다.</p>
+          <h2 id="proof-title">Click slots to preview what evidence belongs there.</h2>
+          <p>These empty slots are for real reels, campaign reports, AI outputs, creator operations, and community insight screenshots.</p>
         </div>
 
         <div class="proof-grid">
-          <button class="proof-card tall" type="button" data-title="Showreel Slot">
+          <button class="proof-card tall" type="button" data-title="Showreel Slot" data-proof-copy="Add a 30-60 second reel with game clips, AI samples, thumbnails, and edit pacing.">
             <span>01</span>
-            <strong>대표 쇼릴</strong>
-            <small>게임 클립 / 영상 포트폴리오</small>
+            <strong>Showreel</strong>
+            <small>Game clips / video portfolio</small>
           </button>
-          <button class="proof-card" type="button" data-title="Campaign Report Slot">
+          <button class="proof-card" type="button" data-title="Campaign Report Slot" data-proof-copy="Add a report capture with views, CTR, retention, creator count, and next actions.">
             <span>02</span>
-            <strong>캠페인 리포트</strong>
-            <small>조회수, 참여율, 인사이트</small>
+            <strong>Campaign report</strong>
+            <small>Views, CTR, insights</small>
           </button>
-          <button class="proof-card wide accent" type="button" data-title="AI Content Slot">
+          <button class="proof-card wide accent" type="button" data-title="AI Content Slot" data-proof-copy="Add AI image, video, script, prompt, and final edited output examples.">
             <span>03</span>
-            <strong>AI 콘텐츠 결과물</strong>
-            <small>이미지, 영상, 스크립트, 프롬프트</small>
+            <strong>AI content output</strong>
+            <small>Image, video, script, prompt</small>
           </button>
-          <button class="proof-card" type="button" data-title="Creator Roster Slot">
+          <button class="proof-card" type="button" data-title="Creator Roster Slot" data-proof-copy="Add a roster or workflow sample showing creator fit, status, schedule, and notes.">
             <span>04</span>
-            <strong>크리에이터 관리</strong>
-            <small>섭외, 일정, 커뮤니케이션</small>
+            <strong>Creator ops</strong>
+            <small>Roster, schedule, comms</small>
           </button>
-          <button class="proof-card" type="button" data-title="Community Insight Slot">
+          <button class="proof-card" type="button" data-title="Community Insight Slot" data-proof-copy="Add a screenshot or summary of comment themes, user sentiment, and content ideas.">
             <span>05</span>
-            <strong>커뮤니티 분석</strong>
-            <small>댓글, 반응, 이슈 정리</small>
+            <strong>Community insight</strong>
+            <small>Comments, sentiment, issues</small>
           </button>
-          <button class="proof-card tall cool" type="button" data-title="Content Calendar Slot">
+          <button class="proof-card tall cool" type="button" data-title="Content Calendar Slot" data-proof-copy="Add a calendar showing campaign phases, upload timing, and approval flow.">
             <span>06</span>
-            <strong>콘텐츠 캘린더</strong>
-            <small>업로드 계획 / 캠페인 일정</small>
+            <strong>Content calendar</strong>
+            <small>Upload plan / campaign timing</small>
           </button>
-          <button class="proof-card wide" type="button" data-title="Pitch Deck Slot">
+          <button class="proof-card wide" type="button" data-title="Pitch Deck Slot" data-proof-copy="Add a proposal deck for a game launch, creator activation, or AI content test.">
             <span>07</span>
-            <strong>기획서 / 제안서</strong>
-            <small>브랜드 제안, 게임 이벤트, 채널 성장안</small>
+            <strong>Pitch deck</strong>
+            <small>Game event, brand proposal, channel growth</small>
           </button>
-          <button class="proof-card" type="button" data-title="Tool Stack Slot">
+          <button class="proof-card" type="button" data-title="Tool Stack Slot" data-proof-copy="Add the tools you can use: AI, editing, analytics, project management, and community tools.">
             <span>08</span>
-            <strong>툴 스택</strong>
-            <small>AI, 편집, 분석, 협업 도구</small>
+            <strong>Tool stack</strong>
+            <small>AI, editing, analytics, ops</small>
           </button>
         </div>
       </section>
@@ -143,46 +227,13 @@
       <section class="workflow" id="workflow" aria-labelledby="workflow-title">
         <div class="section-heading">
           <p class="eyebrow">Workflow</p>
-          <h2 id="workflow-title">기획부터 배포까지 이어지는 제작 흐름</h2>
+          <h2 id="workflow-title">A production loop recruiters can understand quickly.</h2>
         </div>
         <div class="steps">
-          <article>
-            <span>01</span>
-            <h3>Research</h3>
-            <p>게임 트렌드, 타깃 시청자, 크리에이터 톤, 경쟁 콘텐츠를 빠르게 정리합니다.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Plan</h3>
-            <p>콘텐츠 콘셉트, 영상 구성, 업로드 일정, 협업 포인트를 문서화합니다.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Create</h3>
-            <p>AI 툴, 편집 툴, 디자인 툴을 조합해 샘플과 결과물을 제작합니다.</p>
-          </article>
-          <article>
-            <span>04</span>
-            <h3>Review</h3>
-            <p>성과 데이터를 보고 다음 콘텐츠의 제목, 썸네일, 포맷을 개선합니다.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="profile" id="profile" aria-labelledby="profile-title">
-        <div>
-          <p class="eyebrow">Profile</p>
-          <h2 id="profile-title">지원자 소개가 들어갈 자리</h2>
-        </div>
-        <div class="profile-copy">
-          <p>이 영역에는 이름, 희망 직무, 강점, 관심 게임/채널/AI 툴, 짧은 자기소개를 넣으면 됩니다. 지금은 채용 담당자가 빠르게 스캔할 수 있도록 짧은 카드형 구조로 남겨두었습니다.</p>
-          <div class="chips">
-            <span>Game Trend</span>
-            <span>Creator Ops</span>
-            <span>AI Workflow</span>
-            <span>Short-form</span>
-            <span>Community</span>
-          </div>
+          <article><span>01</span><h3>Research</h3><p>Map trends, target viewers, creator tone, and competing formats.</p></article>
+          <article><span>02</span><h3>Plan</h3><p>Write concepts, hooks, calendar, AI prompts, and approval notes.</p></article>
+          <article><span>03</span><h3>Create</h3><p>Combine AI tools, edit tools, thumbnails, scripts, and platform-native formats.</p></article>
+          <article><span>04</span><h3>Review</h3><p>Read performance data and improve titles, thumbnails, pacing, and next tests.</p></article>
         </div>
       </section>
     </main>
@@ -191,7 +242,7 @@
       <button class="modal-close mode-button" type="button" data-modal-close>Close</button>
       <div class="modal-card">
         <span data-modal-title>Proof Slot</span>
-        <small>여기에 실제 이미지, 영상 썸네일, 리포트 캡처를 넣으면 됩니다.</small>
+        <small data-modal-copy>Add a real screenshot, thumbnail, report, or short clip here.</small>
       </div>
     </div>
 
