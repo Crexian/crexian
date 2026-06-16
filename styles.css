@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Galmuri9';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-1@1.0/Galmuri9.woff2') format('woff2');
+  src: url('https://cdn.jsdelivr.net/npm/galmuri/dist/Galmuri9.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
