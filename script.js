@@ -52,6 +52,7 @@ const trackKicker = document.querySelector("[data-track-kicker]");
 const trackTitle = document.querySelector("[data-track-title]");
 const trackCopy = document.querySelector("[data-track-copy]");
 const trackSkills = document.querySelector("[data-track-skills]");
+const trackPanel = document.querySelector(".track-panel");
 
 function renderTrack(trackName) {
   const track = trackData[trackName];
@@ -62,6 +63,12 @@ function renderTrack(trackName) {
   trackButtons.forEach((button) => {
     button.classList.toggle("is-active", button.dataset.track === trackName);
   });
+  
+  if (trackPanel) {
+    trackPanel.classList.remove("animate-fade-in");
+    void trackPanel.offsetWidth; // trigger reflow
+    trackPanel.classList.add("animate-fade-in");
+  }
 }
 
 trackButtons.forEach((button) => {
