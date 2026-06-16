@@ -972,7 +972,7 @@ h3 {
   .steps, .proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   
   /* Modal responsive layouts */
-  .tools-category-grid, .ai-split, .campaign-stats-grid, .thumbnail-viewer {
+  .tools-category-grid, .ai-viewer, .campaign-stats-grid, .thumbnail-viewer {
     grid-template-columns: 1fr;
     gap: 20px;
   }
@@ -983,6 +983,83 @@ h3 {
 @media (max-width: 640px) {
   .hero { min-height: auto; padding-top: 106px; }
   .hero-board, .steps, .proof-grid, .kpi-grid { grid-template-columns: 1fr; }
+}
+
+/* --- AI Character Gallery --- */
+.ai-viewer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: center;
+}
+.ai-main-wrapper {
+  border: 2px solid var(--text);
+  border-radius: 16px;
+  background: var(--surface-2);
+  padding: 12px;
+  box-shadow: 4px 4px 0px var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ai-main-img {
+  max-width: 100%;
+  max-height: 360px;
+  border-radius: 8px;
+  border: 2px solid var(--text);
+  object-fit: contain;
+  box-shadow: 2px 2px 0px var(--text);
+}
+.ai-info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 10px;
+}
+.ai-info h4 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 950;
+  color: var(--text);
+}
+.ai-info p {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.ai-carousel {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 8px 4px;
+  scrollbar-width: thin;
+}
+.ai-nav-item {
+  flex: 0 0 100px;
+  aspect-ratio: 1/1;
+  border: 2px solid var(--text);
+  border-radius: 10px;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--surface-2);
+  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+  box-shadow: 2px 2px 0px var(--text);
+}
+.ai-nav-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ai-nav-item:hover, .ai-nav-item.active {
+  transform: translate(-2px, -2px);
+  border-color: var(--blue);
+  box-shadow: 4px 4px 0px var(--blue);
+}
+.ai-nav-item.active {
+  border-color: var(--pink);
+  box-shadow: 4px 4px 0px var(--pink);
 }
 
 /* --- Thumbnail Gallery --- */

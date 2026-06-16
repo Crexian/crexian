@@ -229,27 +229,46 @@ const slotTemplates = {
   `,
   ai: `
     <div class="modal-ai-detail">
-      <div class="ai-split">
-        <div class="ai-prompt-box">
-          <h5>✍ Presets: AI 비주얼 컨셉 프롬프트 설계</h5>
-          <code>A high-quality cyberpunk futuristic sci-fi gaming character concept art, neon glowing details, digital painting style, dark background, professional portfolio asset, 4k resolution</code>
+      <div class="ai-viewer">
+        <div class="ai-main-wrapper">
+          <img src="ai_char_1.png" alt="귀여운 SD 캐릭터 시안 (정비사)" class="ai-main-img" data-ai-main>
+        </div>
+        <div class="ai-info">
+          <h4 data-ai-title>귀여운 SD 캐릭터 시안 (정비사)</h4>
+          <p data-ai-desc>프로젝트나 게임 속 꼬마 정비사 캐릭터를 구상하기 위해 생성한 귀여운 SD 2D 애니메이션 스타일의 캐릭터 시안입니다.</p>
           <div class="ai-tools-used">
             <span class="tool-tag">Midjourney v6</span>
-            <span class="tool-tag">ChatGPT-4o</span>
+            <span class="tool-tag">Stable Diffusion</span>
             <span class="tool-tag">Magnific AI (Upscaler)</span>
           </div>
         </div>
-        <div class="ai-image-preview">
-          <img src="ai_artwork.png" alt="AI Generated Gaming Concept Art" class="artwork-img">
-          <span class="image-caption">개인 관심사에 맞춰 생성한 가상 일러스트 디자인 시안</span>
-        </div>
       </div>
+      
+      <div class="ai-carousel">
+        <button type="button" class="ai-nav-item active" data-ai-index="0">
+          <img src="ai_char_1.png" alt="SD 캐릭터">
+        </button>
+        <button type="button" class="ai-nav-item" data-ai-index="1">
+          <img src="ai_char_2.png" alt="캐릭터 시트">
+        </button>
+        <button type="button" class="ai-nav-item" data-ai-index="2">
+          <img src="ai_char_3.jpg" alt="청명한 하늘 컨셉">
+        </button>
+        <button type="button" class="ai-nav-item" data-ai-index="3">
+          <img src="ai_char_4.jpg" alt="격납고 컨셉">
+        </button>
+        <button type="button" class="ai-nav-item" data-ai-index="4">
+          <img src="ai_char_5.jpg" alt="사이버펑크 테크">
+        </button>
+      </div>
+
       <div class="ai-workflow-desc">
-        <h5>⚙️ 제작 워크플로우 (Pipeline)</h5>
+        <h5>⚙️ 캐릭터 생성 파이프라인 (Pipeline)</h5>
         <ol>
-          <li>ChatGPT 활용 평소 구상하던 캐릭터 외형 묘사 및 프롬프트 구조 설계</li>
-          <li>Midjourney v6 다중 시드(Seed) 조합 및 화면비(Aspect Ratio) 조정 원안 생성</li>
-          <li>AI 업스케일러 활용 노이즈 제거 및 고해상도 디테일 후보정</li>
+          <li><strong>컨셉 기획 및 묘사:</strong> 게임/콘텐츠 세계관에 맞는 캐릭터 외형, 직업(정비사 등), 소품, 감정 상태 묘사</li>
+          <li><strong>생성형 AI 에셋 러프 생성:</strong> 다양한 화면비와 시드 조합을 통해 완성도 높은 캐릭터 시안 생성</li>
+          <li><strong>턴어라운드 및 멀티 뷰 추출:</strong> 캐릭터 원안을 바탕으로 정면/측면/배면 등 3D 모델링용 캐릭터 시트 및 배경 무드 시안 생성</li>
+          <li><strong>디테일 업스케일링:</strong> AI 업스케일러를 이용해 고해상도(4K) 스케일업 및 외곽선 노이즈 제거</li>
         </ol>
       </div>
     </div>
@@ -419,6 +438,55 @@ function setupModalInteractions(slotId) {
       item.addEventListener("click", () => {
         const index = parseInt(item.getAttribute("data-thumb-index"), 10);
         const data = thumbData[index];
+        
+        mainImg.src = data.src;
+        mainImg.alt = data.title;
+        titleEl.textContent = data.title;
+        descEl.textContent = data.desc;
+        
+        navItems.forEach((btn) => btn.classList.toggle("active", btn === item));
+      });
+    });
+  }
+  
+  if (slotId === "ai") {
+    const mainImg = document.querySelector("[data-ai-main]");
+    const titleEl = document.querySelector("[data-ai-title]");
+    const descEl = document.querySelector("[data-ai-desc]");
+    const navItems = document.querySelectorAll(".ai-nav-item");
+    
+    const aiData = [
+      {
+        src: "ai_char_1.png",
+        title: "귀여운 SD 캐릭터 시안 (정비사)",
+        desc: "프로젝트나 게임 속 꼬마 정비사 캐릭터를 구상하기 위해 생성한 귀여운 SD 2D 애니메이션 스타일의 캐릭터 시안입니다."
+      },
+      {
+        src: "ai_char_2.png",
+        title: "캐릭터 시트 (정면/측면 턴어라운드)",
+        desc: "3D 모델링이나 원화 작업의 가이드로 활용할 수 있도록 정면과 측면 턴어라운드로 생성한 캐릭터 설정 설정 시트입니다."
+      },
+      {
+        src: "ai_char_3.jpg",
+        title: "비주얼 무드 시안 (청명한 하늘)",
+        desc: "정비사 캐릭터가 야외 옥상에서 하늘을 올려다보고 있는 무드를 시각화하여 작품의 배경 색감과 분위기를 설정한 일러스트입니다."
+      },
+      {
+        src: "ai_char_4.jpg",
+        title: "비주얼 무드 시안 (격납고 & 클라우드)",
+        desc: "비행 정비소 느낌의 격납고 배경과 뭉게구름을 세밀한 2D 애니메이션 스타일로 묘사하여 공간적 완성도를 높인 배경 시안입니다."
+      },
+      {
+        src: "ai_char_5.jpg",
+        title: "사이버펑크 테크 / DJ 캐릭터",
+        desc: "헤드폰을 쓴 사이버펑크 분위기의 캐릭터 시안으로, 네온 글로우 조명과 전자기기 배경 구도를 실험한 이미지입니다."
+      }
+    ];
+    
+    navItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        const index = parseInt(item.getAttribute("data-ai-index"), 10);
+        const data = aiData[index];
         
         mainImg.src = data.src;
         mainImg.alt = data.title;
