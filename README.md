@@ -1,18 +1,18 @@
-# Creative Portfolio
+# Game / MCN / AI Creator Portfolio
 
-이미지 중심의 정적 포트폴리오 사이트입니다. 별도 빌드 없이 `index.html`을 열면 바로 확인할 수 있고, Vercel이나 Netlify에는 `portfolio-site` 폴더를 정적 사이트로 배포하면 됩니다.
+게임, MCN 매니저, AI 콘텐츠 크리에이터 지원용 포트폴리오 시안입니다. 별도 빌드 없이 `index.html`을 열면 바로 확인할 수 있고, Vercel에는 기본 정적 사이트 설정으로 배포하면 됩니다.
 
 ## Included
 
-- Full-screen hero image
-- Photo slider with autoplay, arrows, keyboard controls, and mobile swipe
-- Filterable image gallery
-- Image preview modal
+- Position-specific tabs for Game, MCN Manager, and AI Creator
+- Proof board with empty slots for reels, reports, campaigns, and AI work
+- Workflow section for research, planning, creation, and review
+- Preview modal for proof slots
 - Dark and light theme toggle
 - Responsive layout
 
 ## Edit
 
-- Replace Unsplash image URLs in `index.html` with your own project images.
-- Replace `Creative Portfolio`, project titles, images, and service text with your real details.
-- To deploy on Vercel, import the repository and set this folder as the project root if needed.
+- Replace the placeholder proof slots with actual thumbnails, reports, and project captures.
+- Update the profile section with your name, role, tools, and application target.
+- Keep the Vercel settings empty/default for this static site.

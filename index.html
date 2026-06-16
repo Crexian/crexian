@@ -1,203 +1,197 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A clean portfolio layout with empty image slots ready for real project photos.">
-    <title>Creative Portfolio</title>
+    <meta name="description" content="게임, MCN 매니저, AI 콘텐츠 크리에이터 지원용 포트폴리오 시안">
+    <title>Game / MCN / AI Creator Portfolio</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <header class="site-header" data-header>
-      <a class="brand" href="#top" aria-label="Creative Portfolio home">
+      <a class="brand" href="#top" aria-label="Portfolio home">
         <span class="brand-mark"></span>
-        <span>Creative Portfolio</span>
+        <span>Candidate Deck</span>
       </a>
       <nav class="site-nav" aria-label="Primary navigation">
-        <a href="#work">Work</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#about">About</a>
+        <a href="#tracks">Tracks</a>
+        <a href="#proof">Proof</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#profile">Profile</a>
       </nav>
-      <button class="icon-button" type="button" data-theme-toggle aria-label="Toggle theme" title="Toggle theme">
+      <button class="mode-button" type="button" data-theme-toggle aria-label="Toggle theme">
         <span data-theme-icon>Light</span>
       </button>
     </header>
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-layout">
-          <div class="hero-copy-block">
-            <p class="eyebrow">Portfolio / Visual Archive</p>
-            <h1 id="hero-title">A bright space for your best work.</h1>
-            <p class="hero-copy">A polished portfolio structure with clean image slots, a project slider, a curated gallery, and refined visual rhythm. Add your photos when you are ready.</p>
-            <div class="hero-actions">
-              <a class="button primary" href="#work">View Work</a>
-              <a class="button ghost" href="#gallery">Open Gallery</a>
-            </div>
-          </div>
-          <div class="hero-showcase" aria-label="Hero image placeholders">
-            <div class="image-slot hero-slot large">
-              <span>Hero Image</span>
-              <small>16:10</small>
-            </div>
-            <div class="image-slot hero-slot">
-              <span>Detail</span>
-              <small>1:1</small>
-            </div>
-            <div class="image-slot hero-slot accent">
-              <span>Portrait</span>
-              <small>3:4</small>
-            </div>
+        <div class="hero-copy">
+          <p class="eyebrow">Game · MCN · AI Content</p>
+          <h1 id="hero-title">콘텐츠와 커뮤니티를 성장시키는 운영형 크리에이터</h1>
+          <p>게임 이해도, 크리에이터 매니지먼트, AI 제작 툴 활용 능력을 한 화면에서 보여주는 지원용 포트폴리오 시안입니다.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#tracks">직무 역량 보기</a>
+            <a class="button secondary" href="#proof">성과 슬롯 보기</a>
           </div>
         </div>
-      </section>
 
-      <section class="intro-band" aria-label="Portfolio summary">
-        <div class="metric">
-          <strong>12</strong>
-          <span>Image slots</span>
-        </div>
-        <div class="metric">
-          <strong>3</strong>
-          <span>Featured slides</span>
-        </div>
-        <div class="metric">
-          <strong>0</strong>
-          <span>Stock photos</span>
-        </div>
-      </section>
-
-      <section class="section split" id="work" aria-labelledby="work-title">
-        <div class="section-copy">
-          <p class="eyebrow">Featured Work</p>
-          <h2 id="work-title">Slide through your lead projects.</h2>
-          <p>Each slide is ready for a project image. Replace the placeholder block with a real photo when you want the final portfolio to feel complete.</p>
-        </div>
-
-        <div class="slider" data-slider aria-label="Featured project slider">
-          <div class="slider-viewport">
-            <article class="slide is-active" data-slide>
-              <div class="image-slot slide-slot">
-                <span>Project Image 01</span>
-                <small>Main visual</small>
-              </div>
-              <div class="slide-caption">
-                <span>01 / Identity</span>
-                <h3>Project Title One</h3>
-                <p>Short project description, role, year, and outcome can go here.</p>
-              </div>
-            </article>
-            <article class="slide" data-slide>
-              <div class="image-slot slide-slot cool">
-                <span>Project Image 02</span>
-                <small>Web or app preview</small>
-              </div>
-              <div class="slide-caption">
-                <span>02 / Digital</span>
-                <h3>Project Title Two</h3>
-                <p>Use this area for product screens, campaign pages, or interface work.</p>
-              </div>
-            </article>
-            <article class="slide" data-slide>
-              <div class="image-slot slide-slot warm">
-                <span>Project Image 03</span>
-                <small>Campaign image</small>
-              </div>
-              <div class="slide-caption">
-                <span>03 / Direction</span>
-                <h3>Project Title Three</h3>
-                <p>Keep this copy brief so the image remains the main focus.</p>
-              </div>
-            </article>
+        <div class="hero-board" aria-label="Portfolio preview board">
+          <div class="preview-card large">
+            <span class="card-label">Featured Reel</span>
+            <strong>영상 / 쇼릴 슬롯</strong>
+            <small>대표 영상, 게임 클립, AI 콘텐츠 샘플</small>
           </div>
-          <div class="slider-controls">
-            <button class="icon-button arrow-button" type="button" data-prev aria-label="Previous slide" title="Previous slide">Prev</button>
-            <div class="slider-dots" data-dots aria-label="Slide pagination"></div>
-            <button class="icon-button arrow-button" type="button" data-next aria-label="Next slide" title="Next slide">Next</button>
+          <div class="preview-card">
+            <span class="card-label">Campaign</span>
+            <strong>MCN 캠페인</strong>
+            <small>브랜드 협업, 크리에이터 운영</small>
+          </div>
+          <div class="preview-card accent">
+            <span class="card-label">AI Pipeline</span>
+            <strong>AI 제작 프로세스</strong>
+            <small>기획 → 생성 → 편집 → 배포</small>
+          </div>
+          <div class="stat-card">
+            <b>3</b>
+            <span>지원 방향</span>
+          </div>
+          <div class="stat-card">
+            <b>8</b>
+            <span>증거 슬롯</span>
           </div>
         </div>
       </section>
 
-      <section class="section gallery-section" id="gallery" aria-labelledby="gallery-title">
+      <section class="track-tabs" id="tracks" aria-labelledby="tracks-title">
         <div class="section-heading">
-          <p class="eyebrow">Gallery</p>
-          <h2 id="gallery-title">Empty slots for your project photos.</h2>
+          <p class="eyebrow">Career Tracks</p>
+          <h2 id="tracks-title">지원 포지션별로 다르게 보여주는 구조</h2>
         </div>
-        <div class="filters" aria-label="Gallery filters">
-          <button class="filter-button is-active" type="button" data-filter="all">All</button>
-          <button class="filter-button" type="button" data-filter="brand">Brand</button>
-          <button class="filter-button" type="button" data-filter="web">Web</button>
-          <button class="filter-button" type="button" data-filter="photo">Photo</button>
-        </div>
-        <div class="gallery-grid" data-gallery>
-          <button class="gallery-item tall" type="button" data-category="brand" data-title="Gallery Slot 01">
-            <span>Gallery Slot 01</span>
-            <small>Brand image</small>
-          </button>
-          <button class="gallery-item" type="button" data-category="web" data-title="Gallery Slot 02">
-            <span>Gallery Slot 02</span>
-            <small>Web screen</small>
-          </button>
-          <button class="gallery-item wide" type="button" data-category="photo" data-title="Gallery Slot 03">
-            <span>Gallery Slot 03</span>
-            <small>Wide photo</small>
-          </button>
-          <button class="gallery-item" type="button" data-category="brand" data-title="Gallery Slot 04">
-            <span>Gallery Slot 04</span>
-            <small>Logo detail</small>
-          </button>
-          <button class="gallery-item" type="button" data-category="web" data-title="Gallery Slot 05">
-            <span>Gallery Slot 05</span>
-            <small>Mobile view</small>
-          </button>
-          <button class="gallery-item tall" type="button" data-category="photo" data-title="Gallery Slot 06">
-            <span>Gallery Slot 06</span>
-            <small>Portrait photo</small>
-          </button>
-          <button class="gallery-item wide soft" type="button" data-category="brand" data-title="Gallery Slot 07">
-            <span>Gallery Slot 07</span>
-            <small>Editorial spread</small>
-          </button>
-          <button class="gallery-item soft" type="button" data-category="photo" data-title="Gallery Slot 08">
-            <span>Gallery Slot 08</span>
-            <small>Detail shot</small>
-          </button>
-        </div>
-      </section>
 
-      <section class="section about" id="about" aria-labelledby="about-title">
-        <div>
-          <p class="eyebrow">About</p>
-          <h2 id="about-title">A calm, polished frame for your story.</h2>
+        <div class="tab-controls" role="tablist" aria-label="Career tracks">
+          <button class="tab-button is-active" type="button" data-track="game">Game</button>
+          <button class="tab-button" type="button" data-track="mcn">MCN Manager</button>
+          <button class="tab-button" type="button" data-track="ai">AI Creator</button>
         </div>
-        <div class="about-copy">
-          <p>This section is intentionally simple. Add your name, role, services, and a short introduction when the visual direction is locked.</p>
-          <div class="service-list">
-            <span>Brand Design</span>
-            <span>Web Design</span>
-            <span>Art Direction</span>
-            <span>Interactive UI</span>
+
+        <div class="track-panel" data-track-panel>
+          <div>
+            <span class="panel-kicker" data-track-kicker>Game Portfolio</span>
+            <h3 data-track-title>게임 콘텐츠와 유저 반응을 읽는 사람</h3>
+            <p data-track-copy>게임 클립, 이벤트 운영 아이디어, 커뮤니티 반응 분석, 업데이트 콘텐츠 기획을 보여주는 섹션입니다.</p>
           </div>
+          <ul class="skill-list" data-track-skills>
+            <li>게임 트렌드 리서치</li>
+            <li>유저 커뮤니티 관찰</li>
+            <li>숏폼/롱폼 콘텐츠 기획</li>
+          </ul>
         </div>
       </section>
 
-      <section class="marquee" aria-label="Capabilities">
+      <section class="proof-section" id="proof" aria-labelledby="proof-title">
+        <div class="section-heading compact">
+          <p class="eyebrow">Proof Board</p>
+          <h2 id="proof-title">사진보다 중요한 건, 보여줄 증거</h2>
+          <p>아래 칸들은 나중에 실제 영상 썸네일, 리포트 캡처, 캠페인 결과, AI 제작물로 교체하면 됩니다.</p>
+        </div>
+
+        <div class="proof-grid">
+          <button class="proof-card tall" type="button" data-title="Showreel Slot">
+            <span>01</span>
+            <strong>대표 쇼릴</strong>
+            <small>게임 클립 / 영상 포트폴리오</small>
+          </button>
+          <button class="proof-card" type="button" data-title="Campaign Report Slot">
+            <span>02</span>
+            <strong>캠페인 리포트</strong>
+            <small>조회수, 참여율, 인사이트</small>
+          </button>
+          <button class="proof-card wide accent" type="button" data-title="AI Content Slot">
+            <span>03</span>
+            <strong>AI 콘텐츠 결과물</strong>
+            <small>이미지, 영상, 스크립트, 프롬프트</small>
+          </button>
+          <button class="proof-card" type="button" data-title="Creator Roster Slot">
+            <span>04</span>
+            <strong>크리에이터 관리</strong>
+            <small>섭외, 일정, 커뮤니케이션</small>
+          </button>
+          <button class="proof-card" type="button" data-title="Community Insight Slot">
+            <span>05</span>
+            <strong>커뮤니티 분석</strong>
+            <small>댓글, 반응, 이슈 정리</small>
+          </button>
+          <button class="proof-card tall cool" type="button" data-title="Content Calendar Slot">
+            <span>06</span>
+            <strong>콘텐츠 캘린더</strong>
+            <small>업로드 계획 / 캠페인 일정</small>
+          </button>
+          <button class="proof-card wide" type="button" data-title="Pitch Deck Slot">
+            <span>07</span>
+            <strong>기획서 / 제안서</strong>
+            <small>브랜드 제안, 게임 이벤트, 채널 성장안</small>
+          </button>
+          <button class="proof-card" type="button" data-title="Tool Stack Slot">
+            <span>08</span>
+            <strong>툴 스택</strong>
+            <small>AI, 편집, 분석, 협업 도구</small>
+          </button>
+        </div>
+      </section>
+
+      <section class="workflow" id="workflow" aria-labelledby="workflow-title">
+        <div class="section-heading">
+          <p class="eyebrow">Workflow</p>
+          <h2 id="workflow-title">기획부터 배포까지 이어지는 제작 흐름</h2>
+        </div>
+        <div class="steps">
+          <article>
+            <span>01</span>
+            <h3>Research</h3>
+            <p>게임 트렌드, 타깃 시청자, 크리에이터 톤, 경쟁 콘텐츠를 빠르게 정리합니다.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Plan</h3>
+            <p>콘텐츠 콘셉트, 영상 구성, 업로드 일정, 협업 포인트를 문서화합니다.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Create</h3>
+            <p>AI 툴, 편집 툴, 디자인 툴을 조합해 샘플과 결과물을 제작합니다.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Review</h3>
+            <p>성과 데이터를 보고 다음 콘텐츠의 제목, 썸네일, 포맷을 개선합니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="profile" id="profile" aria-labelledby="profile-title">
         <div>
-          <span>Image slots</span>
-          <span>Clean gallery</span>
-          <span>Project slider</span>
-          <span>Bright theme</span>
-          <span>Vercel ready</span>
-          <span>Responsive layout</span>
+          <p class="eyebrow">Profile</p>
+          <h2 id="profile-title">지원자 소개가 들어갈 자리</h2>
+        </div>
+        <div class="profile-copy">
+          <p>이 영역에는 이름, 희망 직무, 강점, 관심 게임/채널/AI 툴, 짧은 자기소개를 넣으면 됩니다. 지금은 채용 담당자가 빠르게 스캔할 수 있도록 짧은 카드형 구조로 남겨두었습니다.</p>
+          <div class="chips">
+            <span>Game Trend</span>
+            <span>Creator Ops</span>
+            <span>AI Workflow</span>
+            <span>Short-form</span>
+            <span>Community</span>
+          </div>
         </div>
       </section>
     </main>
 
-    <div class="modal" data-modal aria-hidden="true" role="dialog" aria-label="Gallery preview">
-      <button class="modal-close" type="button" data-modal-close aria-label="Close preview" title="Close preview">Close</button>
-      <div class="modal-placeholder" data-modal-placeholder>
-        <span data-modal-title></span>
-        <small>Image preview slot</small>
+    <div class="modal" data-modal aria-hidden="true" role="dialog" aria-label="Proof slot preview">
+      <button class="modal-close mode-button" type="button" data-modal-close>Close</button>
+      <div class="modal-card">
+        <span data-modal-title>Proof Slot</span>
+        <small>여기에 실제 이미지, 영상 썸네일, 리포트 캡처를 넣으면 됩니다.</small>
       </div>
     </div>
 

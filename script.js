@@ -28,83 +28,55 @@ const setHeaderState = () => {
 setHeaderState();
 window.addEventListener("scroll", setHeaderState, { passive: true });
 
-const slider = document.querySelector("[data-slider]");
-const slides = Array.from(document.querySelectorAll("[data-slide]"));
-const prevButton = document.querySelector("[data-prev]");
-const nextButton = document.querySelector("[data-next]");
-const dotsContainer = document.querySelector("[data-dots]");
-let currentSlide = 0;
-let autoplayId;
-let touchStartX = 0;
+const trackData = {
+  game: {
+    kicker: "Game Portfolio",
+    title: "게임 콘텐츠와 유저 반응을 읽는 사람",
+    copy: "게임 클립, 이벤트 운영 아이디어, 커뮤니티 반응 분석, 업데이트 콘텐츠 기획을 보여주는 섹션입니다.",
+    skills: ["게임 트렌드 리서치", "유저 커뮤니티 관찰", "숏폼/롱폼 콘텐츠 기획"],
+  },
+  mcn: {
+    kicker: "MCN Manager",
+    title: "크리에이터와 브랜드 사이를 연결하는 운영자",
+    copy: "크리에이터 섭외, 일정 관리, 캠페인 제안, 성과 리포트까지 매니저형 역량을 보여주는 섹션입니다.",
+    skills: ["크리에이터 커뮤니케이션", "브랜드 캠페인 운영", "성과 리포트 정리"],
+  },
+  ai: {
+    kicker: "AI Content Creator",
+    title: "AI 툴을 콘텐츠 제작 속도로 바꾸는 사람",
+    copy: "프롬프트 설계, 이미지/영상 생성, 스크립트 제작, 편집 워크플로우를 보여주는 섹션입니다.",
+    skills: ["프롬프트 설계", "AI 이미지/영상 제작", "콘텐츠 자동화 실험"],
+  },
+};
 
-const dots = slides.map((_, index) => {
-  const dot = document.createElement("button");
-  dot.className = "slider-dot";
-  dot.type = "button";
-  dot.setAttribute("aria-label", `Go to slide ${index + 1}`);
-  dot.addEventListener("click", () => showSlide(index));
-  dotsContainer.appendChild(dot);
-  return dot;
-});
+const trackButtons = Array.from(document.querySelectorAll("[data-track]"));
+const trackKicker = document.querySelector("[data-track-kicker]");
+const trackTitle = document.querySelector("[data-track-title]");
+const trackCopy = document.querySelector("[data-track-copy]");
+const trackSkills = document.querySelector("[data-track-skills]");
 
-function showSlide(index) {
-  currentSlide = (index + slides.length) % slides.length;
-  slides.forEach((slide, slideIndex) => {
-    slide.classList.toggle("is-active", slideIndex === currentSlide);
+function renderTrack(trackName) {
+  const track = trackData[trackName];
+  trackKicker.textContent = track.kicker;
+  trackTitle.textContent = track.title;
+  trackCopy.textContent = track.copy;
+  trackSkills.innerHTML = track.skills.map((skill) => `<li>${skill}</li>`).join("");
+  trackButtons.forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.track === trackName);
   });
-  dots.forEach((dot, dotIndex) => {
-    dot.classList.toggle("is-active", dotIndex === currentSlide);
-  });
-  restartAutoplay();
 }
 
-function restartAutoplay() {
-  window.clearInterval(autoplayId);
-  autoplayId = window.setInterval(() => showSlide(currentSlide + 1), 5200);
-}
-
-prevButton.addEventListener("click", () => showSlide(currentSlide - 1));
-nextButton.addEventListener("click", () => showSlide(currentSlide + 1));
-
-slider.addEventListener("touchstart", (event) => {
-  touchStartX = event.changedTouches[0].clientX;
-}, { passive: true });
-
-slider.addEventListener("touchend", (event) => {
-  const distance = event.changedTouches[0].clientX - touchStartX;
-  if (Math.abs(distance) > 48) {
-    showSlide(currentSlide + (distance < 0 ? 1 : -1));
-  }
-}, { passive: true });
-
-window.addEventListener("keydown", (event) => {
-  if (event.key === "ArrowLeft") showSlide(currentSlide - 1);
-  if (event.key === "ArrowRight") showSlide(currentSlide + 1);
-  if (event.key === "Escape") closeModal();
-});
-
-showSlide(0);
-
-const filterButtons = Array.from(document.querySelectorAll("[data-filter]"));
-const galleryItems = Array.from(document.querySelectorAll("[data-category]"));
-
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const filter = button.dataset.filter;
-    filterButtons.forEach((item) => item.classList.toggle("is-active", item === button));
-    galleryItems.forEach((item) => {
-      const shouldShow = filter === "all" || item.dataset.category === filter;
-      item.classList.toggle("is-hidden", !shouldShow);
-    });
-  });
+trackButtons.forEach((button) => {
+  button.addEventListener("click", () => renderTrack(button.dataset.track));
 });
 
 const modal = document.querySelector("[data-modal]");
 const modalTitle = document.querySelector("[data-modal-title]");
 const modalClose = document.querySelector("[data-modal-close]");
+const proofCards = Array.from(document.querySelectorAll("[data-title]"));
 
-function openModal(item) {
-  modalTitle.textContent = item.dataset.title;
+function openModal(card) {
+  modalTitle.textContent = card.dataset.title;
   modal.classList.add("is-open");
   modal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
@@ -117,11 +89,15 @@ function closeModal() {
   document.body.classList.remove("modal-open");
 }
 
-galleryItems.forEach((item) => {
-  item.addEventListener("click", () => openModal(item));
+proofCards.forEach((card) => {
+  card.addEventListener("click", () => openModal(card));
 });
 
 modalClose.addEventListener("click", closeModal);
 modal.addEventListener("click", (event) => {
   if (event.target === modal) closeModal();
+});
+
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeModal();
 });
