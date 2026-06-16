@@ -28,22 +28,22 @@ window.addEventListener("scroll", setHeaderState, { passive: true });
 
 const trackData = {
   game: {
-    kicker: "게임 포트폴리오",
-    title: "게임 커뮤니티를 읽고 업데이트를 콘텐츠로 바꾸는 사람",
-    copy: "게임사, 퍼블리셔, 커뮤니티 팀, 게임 채널 지원에 맞춘 버전입니다.",
-    skills: ["게임 트렌드 리서치", "커뮤니티 인사이트 정리", "숏폼 콘텐츠 기획"],
+    kicker: "게임 퍼블리싱/운영",
+    title: "게임 트렌드와 업데이트를 분석해 흥행 콘텐츠를 기획하는 인재",
+    copy: "게임 퍼블리셔 마케팅, 커뮤니티 운영, 브랜드 홍보 직무에 적합합니다.",
+    skills: ["게임 트렌드 분석 및 리서치", "유저 커뮤니티 동향 모니터링", "숏폼 및 바이럴 콘텐츠 기획"],
   },
   mcn: {
-    kicker: "MCN 매니저",
-    title: "크리에이터, 브랜드, 일정, 성과를 연결하는 운영자",
-    copy: "MCN 에이전시, 크리에이터 파트너십, 인플루언서 캠페인, 채널 운영 지원에 맞춘 버전입니다.",
-    skills: ["크리에이터 커뮤니케이션", "캠페인 운영 조율", "성과 리포트 정리"],
+    kicker: "MCN 매니지먼트",
+    title: "크리에이터와 브랜드를 연결해 성공적인 캠페인을 만드는 운영자",
+    copy: "크리에이터 파트너십, 인플루언서 마케팅, 캠페인 운영 및 채널 관리에 적합합니다.",
+    skills: ["크리에이터 커뮤니케이션", "브랜드 마케팅 캠페인 조율", "프로젝트 관리 및 KPI 리포팅"],
   },
   ai: {
-    kicker: "AI 콘텐츠 크리에이터",
-    title: "AI 툴을 실전 콘텐츠 제작 시스템으로 바꾸는 사람",
-    copy: "AI 콘텐츠 직무, 크리에이티브 운영, 소셜 실험, 비주얼 제작 팀 지원에 맞춘 버전입니다.",
-    skills: ["프롬프트 설계", "AI 이미지/영상 워크플로우", "콘텐츠 자동화 실험"],
+    kicker: "AI 콘텐츠 기획",
+    title: "생성형 AI 툴을 활용한 고효율 콘텐츠 제작 프로세스 설계자",
+    copy: "AI 콘텐츠 제작 및 소셜 채널 운영, 뉴미디어 크리에이티브 부서 지원에 적합합니다.",
+    skills: ["생성형 AI 프롬프트 엔지니어링", "AI 이미지/영상 제작 파이프라인 구축", "콘텐츠 제작 자동화 실험"],
   },
 };
 
@@ -76,9 +76,9 @@ trackButtons.forEach((button) => {
 });
 
 const focusData = {
-  reel: { score: "92", mode: "쇼릴" },
-  campaign: { score: "88", mode: "MCN" },
-  pipeline: { score: "95", mode: "AI" },
+  reel: { score: "92", mode: "가상 쇼릴" },
+  campaign: { score: "88", mode: "모의 캠페인" },
+  pipeline: { score: "95", mode: "AI 워크플로우" },
 };
 
 const focusCards = Array.from(document.querySelectorAll("[data-focus-card]"));
@@ -107,23 +107,23 @@ const kpiThree = document.querySelector("[data-kpi-three]");
 
 const briefData = {
   awareness: {
-    title: "런칭 인지도 스프린트",
-    copy: "리액션 클립, AI 보조 썸네일 시안, 댓글 인사이트 루프를 중심으로 구성한 크리에이터 콘텐츠 플랜입니다.",
+    title: "게임 브랜드 인지도 제고 캠페인",
+    copy: "유튜브 시청자층의 관심을 빠르게 확보하기 위해 리액션 숏폼, AI 보조 썸네일, 첫인상 리뷰를 결합한 단기 집중 기획입니다.",
     length: "14일",
   },
   conversion: {
-    title: "크리에이터 전환 캠페인",
-    copy: "명확한 후킹, 장점 중심 스크립트, 측정 가능한 시청자 행동을 목표로 하는 크리에이터 캠페인입니다.",
+    title: "신규 유저 유치(전환) 프로모션",
+    copy: "명확한 다운로드 유도(CTA), 핵심 강점 중심의 스크립트, 프로모션 코드 노출로 실질적인 유저 유치를 목표로 하는 캠페인입니다.",
     length: "10일",
   },
   retention: {
-    title: "커뮤니티 유지 루프",
-    copy: "디스코드 질문, 패치노트 요약, 주간 하이라이트, 피드백 수집을 묶은 콘텐츠 리듬입니다.",
+    title: "유저 커뮤니티 활성화 캠페인",
+    copy: "게임 패치노트의 숏폼 요약, 디스코드 내 유저 참여형 이벤트, 정기적인 소통 피드백 루프를 통해 유저 이탈을 방지하는 상시형 운영 전략입니다.",
     length: "21일",
   },
   experiment: {
-    title: "AI 포맷 테스트",
-    copy: "AI 생성 비주얼, 짧은 스크립트, 대체 썸네일, 플랫폼 맞춤 편집을 빠르게 검증하는 실험입니다.",
+    title: "신규 AI 포맷 파일럿 테스트",
+    copy: "AI 생성 배경 일러스트와 가상 성우 스크립트를 활용한 숏폼 콘텐츠를 신속히 제작하여, 소셜 채널의 유저 반응과 제작 효율을 검증하는 실험 모델입니다.",
     length: "7일",
   },
 };
@@ -163,7 +163,7 @@ const slotTemplates = {
             <svg class="play-icon" viewBox="0 0 24 24" width="32" height="32"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
             <svg class="pause-icon" viewBox="0 0 24 24" width="32" height="32" style="display:none;"><path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
           </button>
-          <span class="player-status-text">재생 버튼을 누르면 가상 쇼릴 재생이 시작됩니다.</span>
+          <span class="player-status-text">재생 버튼을 누르면 가상 쇼릴 재생 시뮬레이션이 실행됩니다.</span>
         </div>
         <div class="player-visualizer">
           <div class="vis-bar"></div>
@@ -183,20 +183,20 @@ const slotTemplates = {
       </div>
     </div>
     <div class="reel-description">
-      <p><strong>주요 수록 내용</strong>: 인게임 시네마틱 컷편집, AI 생성 일러스트를 활용한 숏폼 모션 그래픽, 게임 패치노트 요약 썸네일/타이틀 모음 등 총 45초의 포트폴리오 요약본입니다.</p>
+      <p><strong>주요 구성</strong>: 인게임 연출 및 컷편집, AI 일러스트 기반 모션 그래픽, 주요 패치노트 요약 썸네일 기획 등 45초 분량의 모의 프로젝트 결과물입니다.</p>
     </div>
   `,
   campaign: `
     <div class="modal-campaign-detail">
-      <h4>모의 캠페인 기획: 신작 인디 게임 런칭 프로모션</h4>
-      <p class="campaign-desc">인지도 확보 및 전환 유도를 위해 숏폼 크리에이터 4인과 협업한 가상 캠페인 성과 데이터 분석입니다.</p>
+      <h4>모의 캠페인 기획서: 신작 인디 게임 브랜드 마케팅</h4>
+      <p class="campaign-desc">신규 유저 인지도 확보 및 전환 극대화를 위해 숏폼 크리에이터 4인과 협업하는 가상 캠페인의 예상 성과 지표입니다.</p>
       
       <div class="campaign-stats-grid">
         <div class="stat-item">
           <span class="stat-label">총 조회수</span>
           <div class="stat-num-container">
             <span class="stat-value">142.5K</span>
-            <span class="stat-target">목표: 100K (142% 달성)</span>
+            <span class="stat-target">목표: 100K (142% 초과 달성)</span>
           </div>
           <div class="stat-progress"><div class="stat-progress-fill" style="width: 0%" data-animate-width="100%"></div></div>
         </div>
@@ -204,7 +204,7 @@ const slotTemplates = {
           <span class="stat-label">평균 CTR (클릭률)</span>
           <div class="stat-num-container">
             <span class="stat-value">8.4%</span>
-            <span class="stat-target">게임 평균: 5.0%</span>
+            <span class="stat-target">업계 평균: 5.0%</span>
           </div>
           <div class="stat-progress"><div class="stat-progress-fill" style="width: 0%" data-animate-width="84%"></div></div>
         </div>
@@ -212,17 +212,17 @@ const slotTemplates = {
           <span class="stat-label">시청 유지율 (Shorts)</span>
           <div class="stat-num-container">
             <span class="stat-value">58.0%</span>
-            <span class="stat-target">인기 영상 기준: 50%+</span>
+            <span class="stat-target">Shorts 흥행 기준: 50%+</span>
           </div>
           <div class="stat-progress"><div class="stat-progress-fill" style="width: 0%" data-animate-width="58%"></div></div>
         </div>
       </div>
 
       <div class="campaign-learnings">
-        <h5>💡 핵심 분석 및 배운 점</h5>
+        <h5>💡 데이터 기반 인사이트 및 개선 방향</h5>
         <ul>
-          <li><strong>초반 3초 후킹 개선:</strong> 인트로에 게임 핵심 타격음과 자막 연출을 배치하여 시청 유지율을 평균 15% 상승시켰습니다.</li>
-          <li><strong>타깃 매칭:</strong> 서브컬처 취향이 뚜렷한 마이크로 인플루언서 조합이 일반 종합게임 크리에이터 대비 전환 효율이 2.4배 높았습니다.</li>
+          <li><strong>초반 3초 후킹 최적화:</strong> 인트로에 임팩트 있는 게임 사운드와 타이포 연출을 적용하여 시청 유지율을 평균 15% 개선했습니다.</li>
+          <li><strong>타깃 매칭의 유효성:</strong> 서브컬처 팬덤이 뚜렷한 마이크로 인플루언서 매칭을 설계하여, 종합 게임 채널 대비 전환 효율을 약 2.4배 향상했습니다.</li>
         </ul>
       </div>
     </div>
@@ -231,7 +231,7 @@ const slotTemplates = {
     <div class="modal-ai-detail">
       <div class="ai-split">
         <div class="ai-prompt-box">
-          <h5>✍️ 사용 프롬프트 (Prompt)</h5>
+          <h5>✍ Presets: 비주얼 컨셉 프롬프트 설계</h5>
           <code>A high-quality cyberpunk futuristic sci-fi gaming character concept art, neon glowing details, digital painting style, dark background, professional portfolio asset, 4k resolution</code>
           <div class="ai-tools-used">
             <span class="tool-tag">Midjourney v6</span>
@@ -241,56 +241,56 @@ const slotTemplates = {
         </div>
         <div class="ai-image-preview">
           <img src="ai_artwork.png" alt="AI Generated Gaming Concept Art" class="artwork-img">
-          <span class="image-caption">실제 프롬프트로 생성한 4K 일러스트레이션</span>
+          <span class="image-caption">프롬프트로 생성한 가상 일러스트 디자인 시안</span>
         </div>
       </div>
       <div class="ai-workflow-desc">
-        <h5>⚙️ 제작 워크플로우</h5>
+        <h5>⚙️ 제작 워크플로우 (Pipeline)</h5>
         <ol>
-          <li>ChatGPT로 게임 세계관에 어울리는 캐릭터 외형 및 배경 묘사 프롬프트 구조 설계</li>
-          <li>Midjourney v6에서 다중 시드 조합 및 배율 조정하여 핵심 원안 이미지 생성</li>
-          <li>스케일링 및 디테일 개선 툴을 활용해 노이즈 제거 및 선명도 업스케일링 진행</li>
+          <li>ChatGPT 활용 캐릭터 외형 묘사 및 프롬프트 구조 정밀 설계</li>
+          <li>Midjourney v6 다중 시드(Seed) 조합 및 화면비(Aspect Ratio) 조정 원안 생성</li>
+          <li>AI 업스케일러 활용 노이즈 제거 및 고해상도 디테일 후보정</li>
         </ol>
       </div>
     </div>
   `,
   tools: `
     <div class="modal-tools-detail">
-      <p class="tools-intro">지원하는 모든 직무에서 즉시 활용할 수 있는 소프트웨어 및 AI 툴 숙련도입니다.</p>
+      <p class="tools-intro">콘텐츠 기획, 영상 프로덕션, AI 제작 파이프라인에서 즉시 활용 가능한 실무 툴 숙련도입니다.</p>
       
       <div class="tools-category-grid">
         <div class="tools-cat">
-          <h5>🎥 영상 제작 & 디자인</h5>
+          <h5>🎥 영상 제작 및 디자인</h5>
           <div class="tool-skill">
-            <div class="tool-meta"><span>Premiere Pro (숏폼 컷편집/자막 템플릿)</span><strong>90%</strong></div>
+            <div class="tool-meta"><span>Premiere Pro (숏폼 편집 및 템플릿 제작)</span><strong>90%</strong></div>
             <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="90%"></div></div>
           </div>
           <div class="tool-skill">
-            <div class="tool-meta"><span>Photoshop / Illustrator (썸네일/아트웍)</span><strong>80%</strong></div>
+            <div class="tool-meta"><span>Photoshop / Illustrator (아트웍 및 썸네일 디자인)</span><strong>80%</strong></div>
             <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="80%"></div></div>
           </div>
         </div>
         
         <div class="tools-cat">
-          <h5>🤖 Generative AI</h5>
+          <h5>🤖 생성형 AI 활용 역량</h5>
           <div class="tool-skill">
-            <div class="tool-meta"><span>Midjourney / Stable Diffusion (컨셉 비주얼)</span><strong>85%</strong></div>
+            <div class="tool-meta"><span>Midjourney / Stable Diffusion (비주얼 시안 생성)</span><strong>85%</strong></div>
             <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="85%"></div></div>
           </div>
           <div class="tool-skill">
-            <div class="tool-meta"><span>ChatGPT / Claude (프롬프트/기획서/대본)</span><strong>90%</strong></div>
+            <div class="tool-meta"><span>ChatGPT / Claude (대본 작성 및 기획안 고도화)</span><strong>90%</strong></div>
             <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="90%"></div></div>
           </div>
         </div>
 
         <div class="tools-cat">
-          <h5>💼 업무 운영 & 협업</h5>
+          <h5>💼 프로젝트 운영 및 협업</h5>
           <div class="tool-skill">
-            <div class="tool-meta"><span>Discord (서버 구축/관리 봇 설정)</span><strong>85%</strong></div>
+            <div class="tool-meta"><span>Discord (커뮤니티 서버 구축 및 봇 연동)</span><strong>85%</strong></div>
             <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="85%"></div></div>
           </div>
           <div class="tool-skill">
-            <div class="tool-meta"><span>Notion / Slack (일정 조율/데이터 관리)</span><strong>90%</strong></div>
+            <div class="tool-meta"><span>Notion / Slack (기획 캘린더 설계 및 일정 조율)</span><strong>90%</strong></div>
             <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="90%"></div></div>
           </div>
         </div>
