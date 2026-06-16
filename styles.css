@@ -72,6 +72,17 @@ body {
 }
 body.modal-open { overflow: hidden; }
 
+/* --- Ambient Glow Blob Wrapper (Containing Block Fix) --- */
+.blob-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 /* Ambient Glow Blobs */
 .glow-blob {
   position: absolute;
@@ -134,11 +145,12 @@ h1, h2, h3, h4, h5, h6, .brand, .tab-button, .button, .card-label, .panel-kicker
   width: 100%;
   gap: 24px;
   padding: 18px clamp(18px, 4vw, 56px);
-  transition: background 180ms ease, border-color 180ms ease;
+  transition: padding 350ms cubic-bezier(0.1, 0.8, 0.2, 1), background 250ms ease, border-color 250ms ease;
   background: transparent;
   border-bottom: 1px solid transparent;
 }
 .site-header.is-scrolled {
+  padding: 10px clamp(18px, 4vw, 56px);
   border-bottom: 1px solid var(--line);
   background: color-mix(in srgb, var(--bg) 75%, transparent);
   backdrop-filter: var(--glass-blur);
@@ -1096,4 +1108,326 @@ h3 {
 .view-visible {
   opacity: 1;
   transform: translateY(0) scale(1);
+}
+
+/* --- Scroll Progress Bar Glowing Effect --- */
+.scroll-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--blue), var(--cyan), var(--pink));
+  box-shadow: 0 1px 8px rgba(122, 66, 255, 0.4);
+  transition: width 80ms cubic-bezier(0.1, 0.8, 0.2, 1);
+  z-index: 21;
+}
+
+/* --- Retro Arcade Start Screen (첫페이지) --- */
+body.start-active {
+  overflow: hidden;
+}
+
+.start-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: hsl(222, 28%, 7%);
+  background-image: 
+    radial-gradient(rgba(122, 66, 255, 0.15) 1.5px, transparent 1.5px),
+    linear-gradient(180deg, #0e111a 0%, #06080d 100%);
+  background-size: 32px 32px, 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  transition: transform 900ms cubic-bezier(0.76, 0, 0.24, 1), opacity 800ms ease;
+  overflow-y: auto;
+}
+
+.start-screen.is-started {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* CRT Scanline & Screen Glow Effect */
+.crt-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.28) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.04));
+  background-size: 100% 4px, 6px 100%;
+  z-index: 5;
+  opacity: 0.85;
+}
+
+.crt-overlay::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: radial-gradient(circle, transparent 60%, rgba(0, 0, 0, 0.5) 100%);
+  z-index: 6;
+}
+
+.start-content {
+  position: relative;
+  z-index: 2;
+  width: min(880px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(28px, 5vw, 48px);
+  text-align: center;
+}
+
+.start-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.system-ready {
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: var(--lime);
+  text-shadow: 0 0 8px rgba(11, 230, 185, 0.6);
+  letter-spacing: 0.15em;
+  font-weight: 800;
+  animation: start-pulse 1.5s infinite alternate ease-in-out;
+}
+
+.start-title {
+  margin: 0;
+  font-size: clamp(2.5rem, 6vw, 4.8rem);
+  line-height: 1.0;
+  font-weight: 950;
+  color: #fff;
+  font-family: Outfit, sans-serif;
+  letter-spacing: -0.03em;
+  text-shadow: 
+    0 0 10px rgba(122, 66, 255, 0.8),
+    0 0 20px rgba(122, 66, 255, 0.4),
+    3px 3px 0px var(--pink),
+    -3px -3px 0px var(--cyan);
+  animation: title-float 4s infinite alternate ease-in-out;
+}
+
+.start-subtitle {
+  margin: 0;
+  font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.character-select {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.select-heading {
+  margin: 0;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.1em;
+  font-weight: 800;
+}
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.character-card {
+  background: rgba(30, 38, 56, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 24px 16px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  transition: all 200ms ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.character-card:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(40, 50, 75, 0.7);
+  transform: translateY(-4px);
+}
+
+.character-card.active {
+  border-color: var(--blue);
+  background: rgba(122, 66, 255, 0.15);
+  box-shadow: 
+    0 0 15px var(--blue-glow),
+    inset 0 0 15px var(--blue-glow),
+    4px 4px 0px var(--blue);
+  transform: translateY(-4px);
+}
+
+.character-card.active[data-char="game"] {
+  border-color: var(--blue);
+  background: rgba(49, 92, 255, 0.15);
+  box-shadow: 0 0 15px rgba(49, 92, 255, 0.25), inset 0 0 15px rgba(49, 92, 255, 0.2), 4px 4px 0px var(--blue);
+}
+
+.character-card.active[data-char="mcn"] {
+  border-color: var(--cyan);
+  background: rgba(2, 184, 197, 0.15);
+  box-shadow: 0 0 15px rgba(2, 184, 197, 0.25), inset 0 0 15px rgba(2, 184, 197, 0.2), 4px 4px 0px var(--cyan);
+}
+
+.character-card.active[data-char="ai"] {
+  border-color: var(--pink);
+  background: rgba(255, 92, 155, 0.15);
+  box-shadow: 0 0 15px rgba(255, 92, 155, 0.25), inset 0 0 15px rgba(255, 92, 155, 0.2), 4px 4px 0px var(--pink);
+}
+
+.char-portrait {
+  width: 64px;
+  height: 64px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  transition: transform 200ms ease;
+}
+
+.character-card.active .char-portrait {
+  transform: scale(1.1);
+  border-color: currentColor;
+}
+
+.character-card[data-char="game"] { color: var(--blue); }
+.character-card[data-char="mcn"] { color: var(--cyan); }
+.character-card[data-char="ai"] { color: var(--pink); }
+
+.char-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.char-class {
+  font-family: monospace;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: bold;
+}
+
+.character-card.active .char-class {
+  color: inherit;
+}
+
+.char-name {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.char-desc {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.character-card.active .char-desc {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.start-action-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.insert-coin-btn {
+  background: var(--pink);
+  border: 3px solid #fff;
+  border-radius: 99px;
+  min-height: 60px;
+  padding: 0 42px;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 950;
+  cursor: pointer;
+  box-shadow: 
+    0 0 15px rgba(255, 92, 155, 0.5),
+    4px 4px 0px #000;
+  transition: transform 100ms ease, box-shadow 100ms ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.insert-coin-btn:hover {
+  background: color-mix(in srgb, var(--pink) 85%, #fff);
+  transform: translate(-2px, -2px);
+  box-shadow: 
+    0 0 25px rgba(255, 92, 155, 0.7),
+    6px 6px 0px #000;
+}
+
+.insert-coin-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #000;
+}
+
+.blink-text {
+  animation: start-blink 1.2s infinite steps(2, start);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.start-hint {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 600;
+}
+
+@keyframes start-pulse {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+@keyframes title-float {
+  0% { transform: translateY(0px) rotate(-1deg); }
+  100% { transform: translateY(-8px) rotate(1deg); }
+}
+
+@keyframes start-blink {
+  to { visibility: hidden; }
+}
+
+@media (max-width: 768px) {
+  .character-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .character-card {
+    flex-direction: row;
+    padding: 16px;
+    text-align: left;
+  }
+  .char-portrait {
+    width: 48px;
+    height: 48px;
+    font-size: 1.6rem;
+  }
 }

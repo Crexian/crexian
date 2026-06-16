@@ -19,12 +19,7 @@ themeToggle.addEventListener("click", () => {
   updateThemeLabel();
 });
 
-function setHeaderState() {
-  header.classList.toggle("is-scrolled", window.scrollY > 16);
-}
-
-setHeaderState();
-window.addEventListener("scroll", setHeaderState, { passive: true });
+// Scroll event listener is consolidated below using requestAnimationFrame for performance.
 
 const trackData = {
   game: {
@@ -167,6 +162,14 @@ function playSound(type) {
       gain.gain.linearRampToValueAtTime(0, now + 0.3);
       osc.start(now);
       osc.stop(now + 0.3);
+    } else if (type === "coin") {
+      osc.type = "square";
+      osc.frequency.setValueAtTime(987.77, now);
+      osc.frequency.setValueAtTime(1318.51, now + 0.08);
+      gain.gain.setValueAtTime(0.05, now);
+      gain.gain.linearRampToValueAtTime(0, now + 0.35);
+      osc.start(now);
+      osc.stop(now + 0.35);
     }
   } catch (e) {
     console.warn("Web Audio API blocked or not supported: ", e);
@@ -175,14 +178,14 @@ function playSound(type) {
 
 // Bind sound events globally using delegation
 document.addEventListener("mouseenter", (e) => {
-  const target = e.target.closest(".mode-button, .button, .tab-button, .preview-card, .proof-card, .site-nav a, .thumb-nav-item, .ai-nav-item, [data-player-btn]");
+  const target = e.target.closest(".mode-button, .button, .tab-button, .preview-card, .proof-card, .site-nav a, .thumb-nav-item, .ai-nav-item, [data-player-btn], .character-card, [data-insert-coin]");
   if (target) {
     playSound("hover");
   }
 }, true);
 
 document.addEventListener("click", (e) => {
-  const target = e.target.closest(".tab-button, .thumb-nav-item, .ai-nav-item, [data-player-btn]");
+  const target = e.target.closest(".tab-button, .thumb-nav-item, .ai-nav-item, [data-player-btn], .character-card");
   if (target) {
     playSound("click");
   }
@@ -227,10 +230,49 @@ tiltCards.forEach((card) => {
   });
 });
 
-// Scroll entry springy pop animations
+// Consolidated scroll handling with requestAnimationFrame for performance
+const scrollProgressBar = document.querySelector("[data-scroll-progress]");
+const blob1 = document.querySelector("[data-blob-1]");
+const blob2 = document.querySelector("[data-blob-2]");
+const blob3 = document.querySelector("[data-blob-3]");
+
+let isScrollTicking = false;
+function handleScroll() {
+  if (!isScrollTicking) {
+    window.requestAnimationFrame(() => {
+      const scrollY = window.scrollY;
+      
+      // Update header scrolled state
+      if (header) {
+        header.classList.toggle("is-scrolled", scrollY > 16);
+      }
+      
+      // Update scroll progress bar
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = height > 0 ? (scrollY / height) * 100 : 0;
+      if (scrollProgressBar) {
+        scrollProgressBar.style.width = scrolled + "%";
+      }
+
+      // Parallax translation on ambient glow blobs
+      if (blob1) blob1.style.transform = `translate3d(0, ${scrollY * 0.15}px, 0)`;
+      if (blob2) blob2.style.transform = `translate3d(0, ${-scrollY * 0.1}px, 0)`;
+      if (blob3) blob3.style.transform = `translate3d(0, ${scrollY * 0.05}px, 0)`;
+
+      isScrollTicking = false;
+    });
+    isScrollTicking = true;
+  }
+}
+
+// Initial invocation to set the state on page load
+handleScroll();
+window.addEventListener("scroll", handleScroll, { passive: true });
+
+// Scroll entry springy pop animations (highly sensitive threshold)
 const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -40px 0px"
+  threshold: 0.01,
+  rootMargin: "0px 0px -10px 0px"
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -676,4 +718,31 @@ modal.addEventListener("click", (event) => {
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeModal();
 });
+
+// --- Retro Arcade Start Screen Logic ---
+const startScreen = document.querySelector("[data-start-screen]");
+const charCards = document.querySelectorAll(".character-card");
+const insertCoinBtn = document.querySelector("[data-insert-coin]");
+let selectedTrack = "game"; // Default selected track
+
+charCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    charCards.forEach((c) => c.classList.remove("active"));
+    card.classList.add("active");
+    selectedTrack = card.dataset.char;
+  });
+});
+
+if (insertCoinBtn && startScreen) {
+  insertCoinBtn.addEventListener("click", () => {
+    playSound("coin");
+    
+    // Animate start screen slide out
+    startScreen.classList.add("is-started");
+    document.body.classList.remove("start-active");
+    
+    // Sync with main page tracks section
+    renderTrack(selectedTrack);
+  });
+}
 
