@@ -25,55 +25,6 @@ themeToggle.addEventListener("click", () => {
 
 // Scroll event listener is consolidated below using requestAnimationFrame for performance.
 
-const trackData = {
-  game: {
-    kicker: "게임 퍼블리싱/운영",
-    title: "게임 트렌드와 업데이트를 분석해 흥행 콘텐츠를 기획하는 인재",
-    copy: "게임 퍼블리셔 마케팅, 커뮤니티 운영, 브랜드 홍보 직무에 적합합니다.",
-    skills: ["게임 트렌드 분석 및 리서치", "유저 커뮤니티 동향 모니터링", "숏폼 및 바이럴 콘텐츠 기획"],
-  },
-  mcn: {
-    kicker: "MCN 매니지먼트",
-    title: "크리에이터와 브랜드를 연결해 성공적인 캠페인을 만드는 운영자",
-    copy: "크리에이터 파트너십, 인플루언서 마케팅, 캠페인 운영 및 채널 관리에 적합합니다.",
-    skills: ["크리에이터 커뮤니케이션", "브랜드 마케팅 캠페인 조율", "프로젝트 관리 및 KPI 리포팅"],
-  },
-  ai: {
-    kicker: "AI 콘텐츠 기획",
-    title: "생성형 AI 툴을 활용한 고효율 콘텐츠 제작 프로세스 설계자",
-    copy: "AI 콘텐츠 제작 및 소셜 채널 운영, 디지털 미디어 & 크리에이티브 부서 지원에 적합합니다.",
-    skills: ["생성형 AI 프롬프트 엔지니어링", "AI 이미지/영상 제작 파이프라인 구축", "콘텐츠 제작 자동화 실험"],
-  },
-};
-
-const trackButtons = Array.from(document.querySelectorAll("[data-track]"));
-const trackKicker = document.querySelector("[data-track-kicker]");
-const trackTitle = document.querySelector("[data-track-title]");
-const trackCopy = document.querySelector("[data-track-copy]");
-const trackSkills = document.querySelector("[data-track-skills]");
-const trackPanel = document.querySelector(".track-panel");
-
-function renderTrack(trackName) {
-  const track = trackData[trackName];
-  trackKicker.textContent = track.kicker;
-  trackTitle.textContent = track.title;
-  trackCopy.textContent = track.copy;
-  trackSkills.innerHTML = track.skills.map((skill) => `<li>${skill}</li>`).join("");
-  trackButtons.forEach((button) => {
-    button.classList.toggle("is-active", button.dataset.track === trackName);
-  });
-  
-  if (trackPanel) {
-    trackPanel.classList.remove("animate-fade-in");
-    void trackPanel.offsetWidth; // trigger reflow
-    trackPanel.classList.add("animate-fade-in");
-  }
-}
-
-trackButtons.forEach((button) => {
-  button.addEventListener("click", () => renderTrack(button.dataset.track));
-});
-
 const focusData = {
   reel: { score: "92", mode: "영상 실험실" },
   campaign: { score: "88", mode: "크리에이터 분석" },
@@ -253,7 +204,6 @@ function updateScore() {
   }
 }
 
-const tracksSection = document.getElementById("tracks");
 const proofSection = document.getElementById("proof");
 const workflowSection = document.getElementById("workflow");
 const footerSection = document.querySelector(".site-footer");
@@ -264,12 +214,10 @@ function updateHudStage() {
   
   let currentStage = "01";
   if (footerSection && scrollY >= footerSection.offsetTop) {
-    currentStage = "05";
-  } else if (workflowSection && scrollY >= workflowSection.offsetTop) {
     currentStage = "04";
-  } else if (proofSection && scrollY >= proofSection.offsetTop) {
+  } else if (workflowSection && scrollY >= workflowSection.offsetTop) {
     currentStage = "03";
-  } else if (tracksSection && scrollY >= tracksSection.offsetTop) {
+  } else if (proofSection && scrollY >= proofSection.offsetTop) {
     currentStage = "02";
   }
   
