@@ -424,43 +424,100 @@ const slotTemplates = {
     </div>
   `,
   tools: `
-    <div class="modal-tools-detail">
-      <p class="tools-intro">콘텐츠 기획, 영상 프로덕션, AI 제작 실험실에서 개인 프로젝트를 진행하며 숙달한 실무 툴 숙련도입니다.</p>
-      
-      <div class="tools-category-grid">
-        <div class="tools-cat">
-          <h5>🎥 영상 제작 및 디자인</h5>
-          <div class="tool-skill">
-            <div class="tool-meta"><span>Premiere Pro (숏폼 편집 및 템플릿 제작)</span><strong>90%</strong></div>
-            <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="90%"></div></div>
+    <div class="modal-tools-layout">
+      <!-- RPG Status Board -->
+      <div class="rpg-status-board">
+        <div class="rpg-header">
+          <span class="rpg-level" data-rpg-level>LV 1</span>
+          <h4 class="rpg-title">CHARACTER STATUS</h4>
+          <p class="rpg-class-name">디지털 미디어 멀티플레이어</p>
+        </div>
+        <div class="rpg-stats-list">
+          <div class="rpg-stat-row">
+            <div class="rpg-stat-label">
+              <strong>STR</strong> <span class="rpg-stat-desc">영상 제작 및 실행력</span>
+            </div>
+            <div class="rpg-stat-control">
+              <span class="rpg-stat-val" data-rpg-stat="str">80</span>
+              <button type="button" class="rpg-plus-btn" data-rpg-inc="str" aria-label="STR 증가">+</button>
+            </div>
           </div>
-          <div class="tool-skill">
-            <div class="tool-meta"><span>Photoshop / Illustrator (아트웍 및 썸네일 디자인)</span><strong>80%</strong></div>
-            <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="80%"></div></div>
+          <div class="rpg-stat-row">
+            <div class="rpg-stat-label">
+              <strong>DEX</strong> <span class="rpg-stat-desc">AI 툴 활용 능력</span>
+            </div>
+            <div class="rpg-stat-control">
+              <span class="rpg-stat-val" data-rpg-stat="dex">82</span>
+              <button type="button" class="rpg-plus-btn" data-rpg-inc="dex" aria-label="DEX 증가">+</button>
+            </div>
+          </div>
+          <div class="rpg-stat-row">
+            <div class="rpg-stat-label">
+              <strong>INT</strong> <span class="rpg-stat-desc">데이터 & 기획 전략</span>
+            </div>
+            <div class="rpg-stat-control">
+              <span class="rpg-stat-val" data-rpg-stat="int">80</span>
+              <button type="button" class="rpg-plus-btn" data-rpg-inc="int" aria-label="INT 증가">+</button>
+            </div>
+          </div>
+          <div class="rpg-stat-row">
+            <div class="rpg-stat-label">
+              <strong>LUK</strong> <span class="rpg-stat-desc">트렌드 감각</span>
+            </div>
+            <div class="rpg-stat-control">
+              <span class="rpg-stat-val" data-rpg-stat="luk">81</span>
+              <button type="button" class="rpg-plus-btn" data-rpg-inc="luk" aria-label="LUK 증가">+</button>
+            </div>
           </div>
         </div>
-        
-        <div class="tools-cat">
-          <h5>🤖 생성형 AI 활용 역량</h5>
-          <div class="tool-skill">
-            <div class="tool-meta"><span>Midjourney / Stable Diffusion (비주얼 시안 생성)</span><strong>85%</strong></div>
-            <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="85%"></div></div>
+        <div class="rpg-footer">
+          <div class="rpg-points-left">
+            <span>남은 스탯 포인트:</span>
+            <strong class="rpg-points-val" data-rpg-points>5</strong>
           </div>
-          <div class="tool-skill">
-            <div class="tool-meta"><span>ChatGPT / Claude (대본 작성 및 기획안 고도화)</span><strong>90%</strong></div>
-            <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="90%"></div></div>
-          </div>
+          <button type="button" class="rpg-reset-btn" data-rpg-reset style="display:none;">RESET STATS</button>
+          <div class="rpg-levelup-msg" data-rpg-msg>스탯 포인트를 모두 분배하면 레벨이 상승합니다!</div>
         </div>
+      </div>
 
-        <div class="tools-cat">
-          <h5>💼 프로젝트 운영 및 협업</h5>
-          <div class="tool-skill">
-            <div class="tool-meta"><span>Discord (커뮤니티 서버 구축 및 봇 연동)</span><strong>85%</strong></div>
-            <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="85%"></div></div>
+      <!-- Tools Proficiency -->
+      <div class="modal-tools-detail">
+        <p class="tools-intro">사이드 프로젝트 진행 및 비즈니스 분석 업무 수행을 위해 숙달한 실무 툴 숙련도입니다.</p>
+        <div class="tools-category-stack">
+          <div class="tools-cat">
+            <h5>🎥 영상 제작 & 디자인</h5>
+            <div class="tool-skill">
+              <div class="tool-meta"><span>Premiere Pro (숏폼 편집 & 템플릿 제작)</span><strong>90%</strong></div>
+              <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="90%"></div></div>
+            </div>
+            <div class="tool-skill">
+              <div class="tool-meta"><span>Photoshop / Illustrator (디자인 & 아트웍)</span><strong>80%</strong></div>
+              <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="80%"></div></div>
+            </div>
           </div>
-          <div class="tool-skill">
-            <div class="tool-meta"><span>Notion / Slack (기획 캘린더 설계 및 일정 조율)</span><strong>90%</strong></div>
-            <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="90%"></div></div>
+          
+          <div class="tools-cat">
+            <h5>🤖 생성형 AI 활용 역량</h5>
+            <div class="tool-skill">
+              <div class="tool-meta"><span>Midjourney / Stable Diffusion (비주얼 시안)</span><strong>85%</strong></div>
+              <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="85%"></div></div>
+            </div>
+            <div class="tool-skill">
+              <div class="tool-meta"><span>ChatGPT / Claude (대본 작성 & 기획안 고도화)</span><strong>90%</strong></div>
+              <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="90%"></div></div>
+            </div>
+          </div>
+
+          <div class="tools-cat">
+            <h5>💼 프로젝트 운영 & 협업</h5>
+            <div class="tool-skill">
+              <div class="tool-meta"><span>Discord / Slack (커뮤니티 빌딩)</span><strong>85%</strong></div>
+              <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="85%"></div></div>
+            </div>
+            <div class="tool-skill">
+              <div class="tool-meta"><span>Notion (기획 캘린더 & 일정 조율)</span><strong>90%</strong></div>
+              <div class="tool-bar"><div class="tool-bar-fill" style="width: 0%" data-animate-width="90%"></div></div>
+            </div>
           </div>
         </div>
       </div>
@@ -663,6 +720,70 @@ function setupModalInteractions(slotId) {
     });
   }
   
+  if (slotId === "tools") {
+    const levelEl = document.querySelector("[data-rpg-level]");
+    const pointsEl = document.querySelector("[data-rpg-points]");
+    const resetBtn = document.querySelector("[data-rpg-reset]");
+    const msgEl = document.querySelector("[data-rpg-msg]");
+    const plusButtons = document.querySelectorAll("[data-rpg-inc]");
+    
+    let stats = { str: 80, dex: 82, int: 80, luk: 81 };
+    let initialStats = { ...stats };
+    let points = 5;
+    let level = 1;
+    
+    function updateRpgUI() {
+      levelEl.textContent = `LV ${level}`;
+      pointsEl.textContent = points;
+      
+      for (const statName in stats) {
+        const valEl = document.querySelector(`[data-rpg-stat="${statName}"]`);
+        if (valEl) valEl.textContent = stats[statName];
+      }
+      
+      if (points === 0) {
+        level = 2;
+        levelEl.textContent = `LV ${level}`;
+        levelEl.classList.add("levelup-blink");
+        msgEl.innerHTML = `<span class="rpg-success-text">🎉 LEVEL UP! 능력을 완벽하게 강화했습니다!</span>`;
+        resetBtn.style.display = "block";
+        plusButtons.forEach(btn => btn.disabled = true);
+        playSound("powerup");
+        
+        // Spawn coin explosion at the LEVEL UP text location!
+        const rect = levelEl.getBoundingClientRect();
+        spawnCoins(rect.left + rect.width / 2, rect.top + rect.height / 2, 20);
+      } else {
+        level = 1;
+        levelEl.classList.remove("levelup-blink");
+        msgEl.textContent = "스탯 포인트를 모두 분배하면 레벨이 상승합니다!";
+        resetBtn.style.display = "none";
+        plusButtons.forEach(btn => btn.disabled = false);
+      }
+    }
+    
+    plusButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const statName = btn.getAttribute("data-rpg-inc");
+        if (points > 0) {
+          stats[statName] += 1;
+          points -= 1;
+          updateRpgUI();
+        }
+      });
+    });
+    
+    if (resetBtn) {
+      resetBtn.addEventListener("click", () => {
+        playSound("click");
+        stats = { ...initialStats };
+        points = 5;
+        level = 1;
+        updateRpgUI();
+      });
+    }
+  }
+  
   const animElements = document.querySelectorAll("[data-animate-width]");
   if (animElements.length > 0) {
     setTimeout(() => {
@@ -724,11 +845,113 @@ const insertCoinBtn = document.querySelector("[data-insert-coin]");
 
 if (insertCoinBtn && startScreen) {
   insertCoinBtn.addEventListener("click", () => {
-    playSound("coin");
+    // Spawn coin explosion right at the start button
+    const rect = insertCoinBtn.getBoundingClientRect();
+    spawnCoins(rect.left + rect.width / 2, rect.top + rect.height / 2, 16);
     
-    // Animate start screen slide out
-    startScreen.classList.add("is-started");
-    document.body.classList.remove("start-active");
+    // Animate start screen slide out after a short explosion delay
+    setTimeout(() => {
+      startScreen.classList.add("is-started");
+      document.body.classList.remove("start-active");
+    }, 200);
   });
 }
+
+// --- Canvas Coin Particle Physics Engine (Easter Egg) ---
+const canvas = document.createElement("canvas");
+canvas.id = "coin-canvas";
+canvas.style.position = "fixed";
+canvas.style.inset = "0";
+canvas.style.pointerEvents = "none";
+canvas.style.zIndex = "9999";
+document.body.appendChild(canvas);
+
+const ctx = canvas.getContext("2d");
+let coins = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+class Coin {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.vx = (Math.random() - 0.5) * 8; // Horizontal velocity
+    this.vy = -Math.random() * 8 - 4;   // Upward velocity
+    this.gravity = 0.35;
+    this.radius = 7;
+    this.rotation = Math.random() * Math.PI;
+    this.rotationSpeed = Math.random() * 0.2 + 0.1;
+    this.bounce = 0.35;
+    this.life = 100;
+  }
+
+  update() {
+    this.vy += this.gravity;
+    this.x += this.vx;
+    this.y += this.vy;
+
+    // Bounce off bottom
+    if (this.y + this.radius > canvas.height) {
+      this.y = canvas.height - this.radius;
+      this.vy = -this.vy * this.bounce;
+      this.vx *= 0.85; // Friction
+    }
+
+    this.rotation += this.rotationSpeed;
+    this.life -= 1.6;
+  }
+
+  draw() {
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.scale(Math.abs(Math.sin(this.rotation)), 1); // Simulate spin
+    ctx.beginPath();
+    ctx.arc(0, 0, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = "#ffd11a"; // Sunny Gold
+    ctx.strokeStyle = "#000000";
+    ctx.lineWidth = 1.5;
+    ctx.fill();
+    ctx.stroke();
+    
+    // Draw inner details (coin rim line)
+    ctx.beginPath();
+    ctx.arc(0, 0, this.radius * 0.5, 0, Math.PI * 2);
+    ctx.strokeStyle = "#000000";
+    ctx.lineWidth = 0.8;
+    ctx.stroke();
+    ctx.restore();
+  }
+}
+
+function spawnCoins(x, y, count = 8) {
+  for (let i = 0; i < count; i++) {
+    coins.push(new Coin(x, y));
+  }
+  playSound("coin");
+}
+
+function animateCoins() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  coins = coins.filter(coin => coin.life > 0);
+  coins.forEach(coin => {
+    coin.update();
+    coin.draw();
+  });
+  requestAnimationFrame(animateCoins);
+}
+animateCoins();
+
+// Bind global click listeners on arcade elements to spawn coins
+document.addEventListener("click", (e) => {
+  const target = e.target.closest(".brand, .brand-mark, .preview-card, .proof-card, .mode-button, .button, .tab-button, .rpg-level, .rpg-plus-btn");
+  // Don't trigger on insertCoinBtn click to avoid double sounds and double spawning
+  if (target && target !== insertCoinBtn) {
+    spawnCoins(e.clientX, e.clientY, 8);
+  }
+});
 
