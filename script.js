@@ -296,6 +296,37 @@ const slotTemplates = {
         </div>
       </div>
     </div>
+  `,
+  thumbnails: `
+    <div class="modal-thumbnails-detail">
+      <div class="thumbnail-viewer">
+        <div class="thumbnail-main-wrapper">
+          <img src="thumb_1.jpg" alt="프로게이머가 알려주는 모배꿀팁 열가지!" class="thumbnail-main-img" data-thumb-main>
+        </div>
+        <div class="thumbnail-info">
+          <h4 data-thumb-title>프로게이머가 알려주는 모배꿀팁 열가지!</h4>
+          <p data-thumb-desc>인게임 4분할 레이아웃과 높은 가독성의 타이포그래피를 적용하여, 유저들에게 실용적인 팁을 제공하는 콘텐츠용 유튜브 썸네일 디자인입니다.</p>
+        </div>
+      </div>
+      
+      <div class="thumbnail-carousel">
+        <button type="button" class="thumb-nav-item active" data-thumb-index="0">
+          <img src="thumb_1.jpg" alt="모배 꿀팁">
+        </button>
+        <button type="button" class="thumb-nav-item" data-thumb-index="1">
+          <img src="thumb_2.jpg" alt="Ssung Super Weekend">
+        </button>
+        <button type="button" class="thumb-nav-item" data-thumb-index="2">
+          <img src="thumb_3.jpg" alt="DRX 주최클랜 대항전">
+        </button>
+        <button type="button" class="thumb-nav-item" data-thumb-index="3">
+          <img src="thumb_4.jpg" alt="RESTART 국가대표 선발전">
+        </button>
+        <button type="button" class="thumb-nav-item" data-thumb-index="4">
+          <img src="thumb_5.jpg" alt="PMGC 스크림 하이라이트">
+        </button>
+      </div>
+    </div>
   `
 };
 
@@ -347,6 +378,55 @@ function setupModalInteractions(slotId) {
         statusText.textContent = "쇼릴 재생이 일시 정지되었습니다.";
         visualizer.classList.remove("is-playing");
       }
+    });
+  }
+  
+  if (slotId === "thumbnails") {
+    const mainImg = document.querySelector("[data-thumb-main]");
+    const titleEl = document.querySelector("[data-thumb-title]");
+    const descEl = document.querySelector("[data-thumb-desc]");
+    const navItems = document.querySelectorAll(".thumb-nav-item");
+    
+    const thumbData = [
+      {
+        src: "thumb_1.jpg",
+        title: "프로게이머가 알려주는 모배꿀팁 열가지!",
+        desc: "인게임 4분할 레이아웃과 높은 가독성의 타이포그래피를 적용하여, 유저들에게 실용적인 팁을 제공하는 콘텐츠용 유튜브 썸네일 디자인입니다."
+      },
+      {
+        src: "thumb_2.jpg",
+        title: "TOP PLAYERS - Ssung (Super Weekend)",
+        desc: "e스포츠 PMGC 대회 브랜딩에 맞춰 선수의 기록 지표를 직관적으로 분석하고 구성한 리포트 카드 디자인입니다."
+      },
+      {
+        src: "thumb_3.jpg",
+        title: "DRX 주최클랜 대항전",
+        desc: "프로게임단 DRX 주최 대회 홍보용 썸네일로, 다수의 대전 클랜 로고와 정보를 정돈된 그리드 레이아웃으로 전달합니다."
+      },
+      {
+        src: "thumb_4.jpg",
+        title: "RESTART 국가대표 선발전",
+        desc: "배틀그라운드 모바일 공식 선발전 중계용 썸네일로, 레드 포인트 타이포그래피와 공식 엠블럼을 조화롭게 배치했습니다."
+      },
+      {
+        src: "thumb_5.jpg",
+        title: "PMGC 스크림 하이라이트!",
+        desc: "대회 메인 그래픽 에셋과 하이라이트 훈장/메달 오브제를 전면에 배치해 박진감 넘치는 매치 영상의 특성을 부각했습니다."
+      }
+    ];
+    
+    navItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        const index = parseInt(item.getAttribute("data-thumb-index"), 10);
+        const data = thumbData[index];
+        
+        mainImg.src = data.src;
+        mainImg.alt = data.title;
+        titleEl.textContent = data.title;
+        descEl.textContent = data.desc;
+        
+        navItems.forEach((btn) => btn.classList.toggle("active", btn === item));
+      });
     });
   }
   
