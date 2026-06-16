@@ -928,11 +928,18 @@ class Coin {
   }
 }
 
+let isAnimating = false;
+
 function spawnCoins(x, y, count = 8) {
   for (let i = 0; i < count; i++) {
     coins.push(new Coin(x, y));
   }
   playSound("coin");
+  
+  if (!isAnimating) {
+    isAnimating = true;
+    animateCoins();
+  }
 }
 
 function animateCoins() {
@@ -942,16 +949,12 @@ function animateCoins() {
     coin.update();
     coin.draw();
   });
-  requestAnimationFrame(animateCoins);
-}
-animateCoins();
-
-// Bind global click listeners on arcade elements to spawn coins
-document.addEventListener("click", (e) => {
-  const target = e.target.closest(".brand, .brand-mark, .preview-card, .proof-card, .mode-button, .button, .tab-button, .rpg-level, .rpg-plus-btn");
-  // Don't trigger on insertCoinBtn click to avoid double sounds and double spawning
-  if (target && target !== insertCoinBtn) {
-    spawnCoins(e.clientX, e.clientY, 8);
+  
+  if (coins.length > 0) {
+    requestAnimationFrame(animateCoins);
+  } else {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    isAnimating = false;
   }
-});
+}
 
