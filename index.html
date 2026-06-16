@@ -1,11 +1,10 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="이미지 중심의 인터랙티브 포트폴리오 사이트">
+    <meta name="description" content="A clean portfolio layout with empty image slots ready for real project photos.">
     <title>Creative Portfolio</title>
-    <link rel="preconnect" href="https://images.unsplash.com">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -20,88 +19,109 @@
         <a href="#about">About</a>
       </nav>
       <button class="icon-button" type="button" data-theme-toggle aria-label="Toggle theme" title="Toggle theme">
-        <span data-theme-icon>☾</span>
+        <span data-theme-icon>Light</span>
       </button>
     </header>
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-media" aria-hidden="true">
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df0852?auto=format&fit=crop&w=1800&q=90" alt="">
-        </div>
-        <div class="hero-shade"></div>
-        <div class="hero-content">
-          <p class="eyebrow">Design / Web / Visual Storytelling</p>
-          <h1 id="hero-title">이미지로 먼저 기억되는 포트폴리오</h1>
-          <p class="hero-copy">대표 프로젝트, 사진 슬라이드, 갤러리 필터, 상세 모달까지 한 화면 안에서 강하게 보여주는 개인 포트폴리오 사이트입니다.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="#work">작업 보기</a>
-            <a class="button ghost" href="#gallery">갤러리 보기</a>
+        <div class="hero-layout">
+          <div class="hero-copy-block">
+            <p class="eyebrow">Portfolio / Visual Archive</p>
+            <h1 id="hero-title">A bright space for your best work.</h1>
+            <p class="hero-copy">A polished portfolio structure with clean image slots, a project slider, a curated gallery, and refined visual rhythm. Add your photos when you are ready.</p>
+            <div class="hero-actions">
+              <a class="button primary" href="#work">View Work</a>
+              <a class="button ghost" href="#gallery">Open Gallery</a>
+            </div>
+          </div>
+          <div class="hero-showcase" aria-label="Hero image placeholders">
+            <div class="image-slot hero-slot large">
+              <span>Hero Image</span>
+              <small>16:10</small>
+            </div>
+            <div class="image-slot hero-slot">
+              <span>Detail</span>
+              <small>1:1</small>
+            </div>
+            <div class="image-slot hero-slot accent">
+              <span>Portrait</span>
+              <small>3:4</small>
+            </div>
           </div>
         </div>
       </section>
 
       <section class="intro-band" aria-label="Portfolio summary">
         <div class="metric">
-          <strong>12+</strong>
-          <span>Selected projects</span>
+          <strong>12</strong>
+          <span>Image slots</span>
         </div>
         <div class="metric">
-          <strong>4</strong>
-          <span>Creative fields</span>
+          <strong>3</strong>
+          <span>Featured slides</span>
         </div>
         <div class="metric">
-          <strong>2026</strong>
-          <span>Ready to publish</span>
+          <strong>0</strong>
+          <span>Stock photos</span>
         </div>
       </section>
 
       <section class="section split" id="work" aria-labelledby="work-title">
         <div class="section-copy">
           <p class="eyebrow">Featured Work</p>
-          <h2 id="work-title">좌우로 넘기는 대표 작업</h2>
-          <p>버튼, 키보드 방향키, 모바일 스와이프로 넘길 수 있는 이미지 슬라이더입니다. 실제 프로젝트 사진으로 교체하면 메인 쇼케이스가 됩니다.</p>
+          <h2 id="work-title">Slide through your lead projects.</h2>
+          <p>Each slide is ready for a project image. Replace the placeholder block with a real photo when you want the final portfolio to feel complete.</p>
         </div>
 
         <div class="slider" data-slider aria-label="Featured project slider">
           <div class="slider-viewport">
             <article class="slide is-active" data-slide>
-              <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1500&q=90" alt="Brand identity boards on a table">
+              <div class="image-slot slide-slot">
+                <span>Project Image 01</span>
+                <small>Main visual</small>
+              </div>
               <div class="slide-caption">
-                <span>01 / Brand Identity</span>
-                <h3>Aurora Visual System</h3>
-                <p>강한 색감과 선명한 그래픽 모티프로 완성한 브랜드 아이덴티티.</p>
+                <span>01 / Identity</span>
+                <h3>Project Title One</h3>
+                <p>Short project description, role, year, and outcome can go here.</p>
               </div>
             </article>
             <article class="slide" data-slide>
-              <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1500&q=90" alt="Modern web design screens">
+              <div class="image-slot slide-slot cool">
+                <span>Project Image 02</span>
+                <small>Web or app preview</small>
+              </div>
               <div class="slide-caption">
-                <span>02 / Web Experience</span>
-                <h3>Studio Landing Page</h3>
-                <p>대형 이미지, 스크롤 모션, 빠른 문의 동선으로 만든 웹 경험.</p>
+                <span>02 / Digital</span>
+                <h3>Project Title Two</h3>
+                <p>Use this area for product screens, campaign pages, or interface work.</p>
               </div>
             </article>
             <article class="slide" data-slide>
-              <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1500&q=90" alt="Colorful architectural geometry">
+              <div class="image-slot slide-slot warm">
+                <span>Project Image 03</span>
+                <small>Campaign image</small>
+              </div>
               <div class="slide-caption">
-                <span>03 / Art Direction</span>
-                <h3>Campaign Scene Kit</h3>
-                <p>캠페인의 분위기를 한 번에 전달하는 이미지 중심 아트 디렉션.</p>
+                <span>03 / Direction</span>
+                <h3>Project Title Three</h3>
+                <p>Keep this copy brief so the image remains the main focus.</p>
               </div>
             </article>
           </div>
           <div class="slider-controls">
-            <button class="icon-button" type="button" data-prev aria-label="Previous slide" title="Previous slide">‹</button>
+            <button class="icon-button arrow-button" type="button" data-prev aria-label="Previous slide" title="Previous slide">Prev</button>
             <div class="slider-dots" data-dots aria-label="Slide pagination"></div>
-            <button class="icon-button" type="button" data-next aria-label="Next slide" title="Next slide">›</button>
+            <button class="icon-button arrow-button" type="button" data-next aria-label="Next slide" title="Next slide">Next</button>
           </div>
         </div>
       </section>
 
-      <section class="section" id="gallery" aria-labelledby="gallery-title">
+      <section class="section gallery-section" id="gallery" aria-labelledby="gallery-title">
         <div class="section-heading">
           <p class="eyebrow">Gallery</p>
-          <h2 id="gallery-title">프로젝트 이미지 갤러리</h2>
+          <h2 id="gallery-title">Empty slots for your project photos.</h2>
         </div>
         <div class="filters" aria-label="Gallery filters">
           <button class="filter-button is-active" type="button" data-filter="all">All</button>
@@ -110,29 +130,37 @@
           <button class="filter-button" type="button" data-filter="photo">Photo</button>
         </div>
         <div class="gallery-grid" data-gallery>
-          <button class="gallery-item tall" type="button" data-category="brand" data-title="Color Language" data-image="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1600&q=90">
-            <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=900&q=90" alt="Bright design objects">
-            <span>Color Language</span>
+          <button class="gallery-item tall" type="button" data-category="brand" data-title="Gallery Slot 01">
+            <span>Gallery Slot 01</span>
+            <small>Brand image</small>
           </button>
-          <button class="gallery-item" type="button" data-category="web" data-title="Interface Flow" data-image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=90">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=90" alt="Laptop analytics interface">
-            <span>Interface Flow</span>
+          <button class="gallery-item" type="button" data-category="web" data-title="Gallery Slot 02">
+            <span>Gallery Slot 02</span>
+            <small>Web screen</small>
           </button>
-          <button class="gallery-item wide" type="button" data-category="photo" data-title="Campaign Light" data-image="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=90">
-            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1100&q=90" alt="Outdoor campaign mood">
-            <span>Campaign Light</span>
+          <button class="gallery-item wide" type="button" data-category="photo" data-title="Gallery Slot 03">
+            <span>Gallery Slot 03</span>
+            <small>Wide photo</small>
           </button>
-          <button class="gallery-item" type="button" data-category="brand" data-title="Editorial System" data-image="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1600&q=90">
-            <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=900&q=90" alt="Creative studio workspace">
-            <span>Editorial System</span>
+          <button class="gallery-item" type="button" data-category="brand" data-title="Gallery Slot 04">
+            <span>Gallery Slot 04</span>
+            <small>Logo detail</small>
           </button>
-          <button class="gallery-item" type="button" data-category="web" data-title="Responsive Detail" data-image="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=90">
-            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=90" alt="Laptop on desk">
-            <span>Responsive Detail</span>
+          <button class="gallery-item" type="button" data-category="web" data-title="Gallery Slot 05">
+            <span>Gallery Slot 05</span>
+            <small>Mobile view</small>
           </button>
-          <button class="gallery-item tall" type="button" data-category="photo" data-title="Visual Story" data-image="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1600&q=90">
-            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=90" alt="Landscape photography">
-            <span>Visual Story</span>
+          <button class="gallery-item tall" type="button" data-category="photo" data-title="Gallery Slot 06">
+            <span>Gallery Slot 06</span>
+            <small>Portrait photo</small>
+          </button>
+          <button class="gallery-item wide soft" type="button" data-category="brand" data-title="Gallery Slot 07">
+            <span>Gallery Slot 07</span>
+            <small>Editorial spread</small>
+          </button>
+          <button class="gallery-item soft" type="button" data-category="photo" data-title="Gallery Slot 08">
+            <span>Gallery Slot 08</span>
+            <small>Detail shot</small>
           </button>
         </div>
       </section>
@@ -140,10 +168,10 @@
       <section class="section about" id="about" aria-labelledby="about-title">
         <div>
           <p class="eyebrow">About</p>
-          <h2 id="about-title">브랜드를 화면 위에서 선명하게 만드는 사람</h2>
+          <h2 id="about-title">A calm, polished frame for your story.</h2>
         </div>
         <div class="about-copy">
-          <p>이름, 직무, 실제 작업 소개를 넣으면 바로 개인 포트폴리오로 사용할 수 있습니다. 지금은 디자이너, 개발자, 콘텐츠 크리에이터 모두에게 어울리도록 이미지 중심의 문장과 구성을 넣었습니다.</p>
+          <p>This section is intentionally simple. Add your name, role, services, and a short introduction when the visual direction is locked.</p>
           <div class="service-list">
             <span>Brand Design</span>
             <span>Web Design</span>
@@ -155,20 +183,22 @@
 
       <section class="marquee" aria-label="Capabilities">
         <div>
-          <span>Photo slider</span>
-          <span>Project modal</span>
-          <span>Responsive gallery</span>
-          <span>Dark mode</span>
-          <span>Mobile swipe</span>
+          <span>Image slots</span>
+          <span>Clean gallery</span>
+          <span>Project slider</span>
+          <span>Bright theme</span>
           <span>Vercel ready</span>
+          <span>Responsive layout</span>
         </div>
       </section>
     </main>
 
     <div class="modal" data-modal aria-hidden="true" role="dialog" aria-label="Gallery preview">
-      <button class="modal-close" type="button" data-modal-close aria-label="Close preview" title="Close preview">×</button>
-      <img data-modal-image alt="">
-      <p data-modal-title></p>
+      <button class="modal-close" type="button" data-modal-close aria-label="Close preview" title="Close preview">Close</button>
+      <div class="modal-placeholder" data-modal-placeholder>
+        <span data-modal-title></span>
+        <small>Image preview slot</small>
+      </div>
     </div>
 
     <script src="script.js"></script>

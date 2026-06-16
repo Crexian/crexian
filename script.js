@@ -6,14 +6,19 @@ const themeIcon = document.querySelector("[data-theme-icon]");
 const savedTheme = localStorage.getItem("portfolio-theme");
 if (savedTheme) {
   root.dataset.theme = savedTheme;
-  themeIcon.textContent = savedTheme === "light" ? "☀" : "☾";
 }
 
+function updateThemeLabel() {
+  themeIcon.textContent = root.dataset.theme === "dark" ? "Dark" : "Light";
+}
+
+updateThemeLabel();
+
 themeToggle.addEventListener("click", () => {
-  const nextTheme = root.dataset.theme === "light" ? "dark" : "light";
+  const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
   root.dataset.theme = nextTheme;
   localStorage.setItem("portfolio-theme", nextTheme);
-  themeIcon.textContent = nextTheme === "light" ? "☀" : "☾";
+  updateThemeLabel();
 });
 
 const setHeaderState = () => {
@@ -95,13 +100,10 @@ filterButtons.forEach((button) => {
 });
 
 const modal = document.querySelector("[data-modal]");
-const modalImage = document.querySelector("[data-modal-image]");
 const modalTitle = document.querySelector("[data-modal-title]");
 const modalClose = document.querySelector("[data-modal-close]");
 
 function openModal(item) {
-  modalImage.src = item.dataset.image;
-  modalImage.alt = item.dataset.title;
   modalTitle.textContent = item.dataset.title;
   modal.classList.add("is-open");
   modal.setAttribute("aria-hidden", "false");
@@ -113,7 +115,6 @@ function closeModal() {
   modal.classList.remove("is-open");
   modal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("modal-open");
-  modalImage.removeAttribute("src");
 }
 
 galleryItems.forEach((item) => {
