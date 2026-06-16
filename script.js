@@ -76,9 +76,9 @@ trackButtons.forEach((button) => {
 });
 
 const focusData = {
-  reel: { score: "92", mode: "가상 쇼릴" },
-  campaign: { score: "88", mode: "모의 캠페인" },
-  pipeline: { score: "95", mode: "AI 워크플로우" },
+  reel: { score: "92", mode: "영상 실험실" },
+  campaign: { score: "88", mode: "크리에이터 분석" },
+  pipeline: { score: "95", mode: "AI 비주얼" },
 };
 
 const focusCards = Array.from(document.querySelectorAll("[data-focus-card]"));
@@ -163,7 +163,7 @@ const slotTemplates = {
             <svg class="play-icon" viewBox="0 0 24 24" width="32" height="32"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
             <svg class="pause-icon" viewBox="0 0 24 24" width="32" height="32" style="display:none;"><path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
           </button>
-          <span class="player-status-text">재생 버튼을 누르면 가상 쇼릴 재생 시뮬레이션이 실행됩니다.</span>
+          <span class="player-status-text">재생 버튼을 누르면 영상 편집 실험 재생 시뮬레이션이 실행됩니다.</span>
         </div>
         <div class="player-visualizer">
           <div class="vis-bar"></div>
@@ -183,13 +183,13 @@ const slotTemplates = {
       </div>
     </div>
     <div class="reel-description">
-      <p><strong>주요 구성</strong>: 인게임 연출 및 컷편집, AI 일러스트 기반 모션 그래픽, 주요 패치노트 요약 썸네일 기획 등 45초 분량의 모의 프로젝트 결과물입니다.</p>
+      <p><strong>주요 구성</strong>: 인게임 연출 및 컷편집, AI 일러스트 기반 모션 그래픽, 주요 패치노트 요약 썸네일 기획 등 개인적인 실험과 취미로 제작한 영상들의 요약본입니다.</p>
     </div>
   `,
   campaign: `
     <div class="modal-campaign-detail">
-      <h4>모의 캠페인 기획서: 신작 인디 게임 브랜드 마케팅</h4>
-      <p class="campaign-desc">신규 유저 인지도 확보 및 전환 극대화를 위해 숏폼 크리에이터 4인과 협업하는 가상 캠페인의 예상 성과 지표입니다.</p>
+      <h4>개인 캠페인 기획: 신작 인디 게임 브랜드 마케팅</h4>
+      <p class="campaign-desc">좋아하는 인디 게임의 인지도 확보 및 팬덤 형성을 위해, 평소 눈여겨본 크리에이터 4인과의 모의 협업을 데이터로 구상한 캠페인 리포트입니다.</p>
       
       <div class="campaign-stats-grid">
         <div class="stat-item">
@@ -231,7 +231,7 @@ const slotTemplates = {
     <div class="modal-ai-detail">
       <div class="ai-split">
         <div class="ai-prompt-box">
-          <h5>✍ Presets: 비주얼 컨셉 프롬프트 설계</h5>
+          <h5>✍ Presets: AI 비주얼 컨셉 프롬프트 설계</h5>
           <code>A high-quality cyberpunk futuristic sci-fi gaming character concept art, neon glowing details, digital painting style, dark background, professional portfolio asset, 4k resolution</code>
           <div class="ai-tools-used">
             <span class="tool-tag">Midjourney v6</span>
@@ -241,13 +241,13 @@ const slotTemplates = {
         </div>
         <div class="ai-image-preview">
           <img src="ai_artwork.png" alt="AI Generated Gaming Concept Art" class="artwork-img">
-          <span class="image-caption">프롬프트로 생성한 가상 일러스트 디자인 시안</span>
+          <span class="image-caption">개인 관심사에 맞춰 생성한 가상 일러스트 디자인 시안</span>
         </div>
       </div>
       <div class="ai-workflow-desc">
         <h5>⚙️ 제작 워크플로우 (Pipeline)</h5>
         <ol>
-          <li>ChatGPT 활용 캐릭터 외형 묘사 및 프롬프트 구조 정밀 설계</li>
+          <li>ChatGPT 활용 평소 구상하던 캐릭터 외형 묘사 및 프롬프트 구조 설계</li>
           <li>Midjourney v6 다중 시드(Seed) 조합 및 화면비(Aspect Ratio) 조정 원안 생성</li>
           <li>AI 업스케일러 활용 노이즈 제거 및 고해상도 디테일 후보정</li>
         </ol>
@@ -256,7 +256,7 @@ const slotTemplates = {
   `,
   tools: `
     <div class="modal-tools-detail">
-      <p class="tools-intro">콘텐츠 기획, 영상 프로덕션, AI 제작 파이프라인에서 즉시 활용 가능한 실무 툴 숙련도입니다.</p>
+      <p class="tools-intro">콘텐츠 기획, 영상 프로덕션, AI 제작 실험실에서 개인 프로젝트를 진행하며 숙달한 실무 툴 숙련도입니다.</p>
       
       <div class="tools-category-grid">
         <div class="tools-cat">
