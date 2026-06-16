@@ -94,58 +94,157 @@ focusCards.forEach((card) => {
   });
 });
 
-const platformInput = document.querySelector("[data-platform]");
-const goalInput = document.querySelector("[data-goal]");
-const aiInput = document.querySelector("[data-ai-range]");
-const creatorInput = document.querySelector("[data-creator-range]");
-const briefPlatform = document.querySelector("[data-brief-platform]");
-const briefTitle = document.querySelector("[data-brief-title]");
-const briefCopy = document.querySelector("[data-brief-copy]");
-const kpiOne = document.querySelector("[data-kpi-one]");
-const kpiTwo = document.querySelector("[data-kpi-two]");
-const kpiThree = document.querySelector("[data-kpi-three]");
+// Arcade Sound Synth Engine (Web Audio API)
+let soundEnabled = localStorage.getItem("portfolio-sound") !== "false";
+const soundToggle = document.querySelector("[data-sound-toggle]");
+const soundIcon = document.querySelector("[data-sound-icon]");
 
-const briefData = {
-  awareness: {
-    title: "게임 브랜드 인지도 제고 캠페인",
-    copy: "유튜브 시청자층의 관심을 빠르게 확보하기 위해 리액션 숏폼, AI 보조 썸네일, 첫인상 리뷰를 결합한 단기 집중 기획입니다.",
-    length: "14일",
-  },
-  conversion: {
-    title: "신규 유저 유치(전환) 프로모션",
-    copy: "명확한 다운로드 유도(CTA), 핵심 강점 중심의 스크립트, 프로모션 코드 노출로 실질적인 유저 유치를 목표로 하는 캠페인입니다.",
-    length: "10일",
-  },
-  retention: {
-    title: "유저 커뮤니티 활성화 캠페인",
-    copy: "게임 패치노트의 숏폼 요약, 디스코드 내 유저 참여형 이벤트, 정기적인 소통 피드백 루프를 통해 유저 이탈을 방지하는 상시형 운영 전략입니다.",
-    length: "21일",
-  },
-  experiment: {
-    title: "신규 AI 포맷 파일럿 테스트",
-    copy: "AI 생성 배경 일러스트와 가상 성우 스크립트를 활용한 숏폼 콘텐츠를 신속히 제작하여, 소셜 채널의 유저 반응과 제작 효율을 검증하는 실험 모델입니다.",
-    length: "7일",
-  },
-};
+function updateSoundButton() {
+  if (soundToggle && soundIcon) {
+    soundIcon.textContent = soundEnabled ? "🔊 소리 켬" : "🔇 소리 끎";
+    soundToggle.classList.toggle("sound-muted", !soundEnabled);
+  }
+}
+updateSoundButton();
 
-function updateBrief() {
-  const selectedGoal = briefData[goalInput.value];
-  briefPlatform.textContent = platformInput.options[platformInput.selectedIndex].text;
-  briefTitle.textContent = selectedGoal.title;
-  briefCopy.textContent = selectedGoal.copy;
-  kpiOne.textContent = creatorInput.value;
-  kpiTwo.textContent = `${aiInput.value}%`;
-  kpiThree.textContent = selectedGoal.length;
+if (soundToggle) {
+  soundToggle.addEventListener("click", () => {
+    soundEnabled = !soundEnabled;
+    localStorage.setItem("portfolio-sound", soundEnabled);
+    updateSoundButton();
+    if (soundEnabled) playSound("powerup");
+  });
 }
 
-[platformInput, goalInput, aiInput, creatorInput].forEach((input) => {
-  input.addEventListener("input", updateBrief);
+function playSound(type) {
+  if (!soundEnabled) return;
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    const now = ctx.currentTime;
+
+    if (type === "hover") {
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(440, now);
+      osc.frequency.exponentialRampToValueAtTime(880, now + 0.08);
+      gain.gain.setValueAtTime(0.015, now);
+      gain.gain.linearRampToValueAtTime(0, now + 0.08);
+      osc.start(now);
+      osc.stop(now + 0.08);
+    } else if (type === "click") {
+      osc.type = "square";
+      osc.frequency.setValueAtTime(600, now);
+      osc.frequency.setValueAtTime(900, now + 0.05);
+      gain.gain.setValueAtTime(0.025, now);
+      gain.gain.linearRampToValueAtTime(0, now + 0.12);
+      osc.start(now);
+      osc.stop(now + 0.12);
+    } else if (type === "open") {
+      osc.type = "square";
+      osc.frequency.setValueAtTime(987.77, now);
+      osc.frequency.setValueAtTime(1318.51, now + 0.08);
+      gain.gain.setValueAtTime(0.035, now);
+      gain.gain.linearRampToValueAtTime(0, now + 0.25);
+      osc.start(now);
+      osc.stop(now + 0.25);
+    } else if (type === "close") {
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(523.25, now);
+      osc.frequency.exponentialRampToValueAtTime(261.63, now + 0.15);
+      gain.gain.setValueAtTime(0.035, now);
+      gain.gain.linearRampToValueAtTime(0, now + 0.15);
+      osc.start(now);
+      osc.stop(now + 0.15);
+    } else if (type === "powerup") {
+      osc.type = "triangle";
+      osc.frequency.setValueAtTime(300, now);
+      osc.frequency.exponentialRampToValueAtTime(1200, now + 0.3);
+      gain.gain.setValueAtTime(0.035, now);
+      gain.gain.linearRampToValueAtTime(0, now + 0.3);
+      osc.start(now);
+      osc.stop(now + 0.3);
+    }
+  } catch (e) {
+    console.warn("Web Audio API blocked or not supported: ", e);
+  }
+}
+
+// Bind sound events globally using delegation
+document.addEventListener("mouseenter", (e) => {
+  const target = e.target.closest(".mode-button, .button, .tab-button, .preview-card, .proof-card, .site-nav a, .thumb-nav-item, .ai-nav-item, [data-player-btn]");
+  if (target) {
+    playSound("hover");
+  }
+}, true);
+
+document.addEventListener("click", (e) => {
+  const target = e.target.closest(".tab-button, .thumb-nav-item, .ai-nav-item, [data-player-btn]");
+  if (target) {
+    playSound("click");
+  }
+}, true);
+
+// 3D Card Hover Tilt Parallax Effect
+const tiltCards = document.querySelectorAll(".preview-card, .proof-card");
+tiltCards.forEach((card) => {
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const xc = rect.width / 2;
+    const yc = rect.height / 2;
+    
+    const angleX = (yc - y) / 10;
+    const angleY = (x - xc) / 15;
+    
+    card.style.transform = `perspective(800px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1.03)`;
+    
+    const shadowX = -angleY * 1.5;
+    const shadowY = angleX * 1.5;
+    
+    let shadowColor = "var(--text)";
+    if (card.dataset.slotId === "reel") shadowColor = "var(--blue)";
+    else if (card.dataset.slotId === "campaign") shadowColor = "var(--cyan)";
+    else if (card.dataset.slotId === "ai") shadowColor = "var(--pink)";
+    else if (card.dataset.slotId === "tools") shadowColor = "var(--lime)";
+    else if (card.dataset.slotId === "thumbnails") shadowColor = "var(--gold)";
+    else if (card.classList.contains("accent")) shadowColor = "var(--pink)";
+    else if (card.dataset.focusCard === "reel") shadowColor = "var(--blue)";
+    else if (card.dataset.focusCard === "campaign") shadowColor = "var(--cyan)";
+    else if (card.dataset.focusCard === "pipeline") shadowColor = "var(--pink)";
+    
+    card.style.boxShadow = `${8 + shadowX}px ${8 + shadowY}px 0px ${shadowColor}`;
+  });
+  
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "";
+    card.style.boxShadow = "";
+  });
 });
 
-updateBrief();
+// Scroll entry springy pop animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -40px 0px"
+};
 
-document.querySelectorAll("[data-step-toggle]").forEach((step) => {
-  step.addEventListener("click", () => step.classList.toggle("is-done"));
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("view-visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll(".preview-card, .proof-card, .track-panel, .steps article, .section-heading").forEach((el) => {
+  el.classList.add("view-hidden");
+  observer.observe(el);
 });
 
 const modal = document.querySelector("[data-modal]");
@@ -556,6 +655,8 @@ function openModal(card) {
   modal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
   modalClose.focus();
+  
+  playSound("open");
 }
 
 function closeModal() {
@@ -563,6 +664,8 @@ function closeModal() {
   modal.classList.remove("is-open");
   modal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("modal-open");
+  
+  playSound("close");
 }
 
 proofCards.forEach((card) => card.addEventListener("click", () => openModal(card)));

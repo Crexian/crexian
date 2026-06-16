@@ -21,13 +21,17 @@
       </a>
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="#tracks">지원 직무</a>
-        <a href="#lab">기획 시뮬레이터</a>
         <a href="#proof">탐구 기록 보드</a>
         <a href="#workflow">성장 루프</a>
       </nav>
-      <button class="mode-button" type="button" data-theme-toggle aria-label="Toggle theme">
-        <span data-theme-icon>라이트</span>
-      </button>
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <button class="mode-button" type="button" data-sound-toggle aria-label="Toggle sound">
+          <span data-sound-icon>🔊 소리 켬</span>
+        </button>
+        <button class="mode-button" type="button" data-theme-toggle aria-label="Toggle theme">
+          <span data-theme-icon>라이트</span>
+        </button>
+      </div>
     </header>
 
     <main id="top">
@@ -37,8 +41,8 @@
           <h1 id="hero-title">관심사에서 출발하여 실무 기획으로 확장하는 뉴미디어 탐구</h1>
           <p>게임 플레이, 크리에이터 분석, AI 콘텐츠 생성을 취미와 사이드 프로젝트로 즐겨왔습니다. 순수한 흥미에서 시작해 기획서 설계, 데이터 분석, 프로덕션 조율까지 자발적으로 학습하고 실험한 기록입니다.</p>
           <div class="hero-actions">
-            <a class="button primary" href="#lab">기획 시뮬레이터 체험</a>
-            <a class="button secondary" href="#proof">탐구 보드 보기</a>
+            <a class="button primary" href="#proof">탐구 보드 체험</a>
+            <a class="button secondary" href="#workflow">성장 루프 보기</a>
           </div>
         </div>
 
@@ -92,90 +96,6 @@
             <li>유저 커뮤니티 동향 모니터링</li>
             <li>숏폼 및 바이럴 콘텐츠 기획</li>
           </ul>
-        </div>
-      </section>
-
-      <section class="lab-section" id="lab" aria-labelledby="lab-title">
-        <div class="section-heading compact">
-          <p class="eyebrow">콘텐츠 기획 시뮬레이터 (Content Lab)</p>
-          <h2 id="lab-title">조건을 조절하여 맞춤 캠페인 전략을 구성해 보세요.</h2>
-          <p>취미로 구상해 본 게임 홍보 콘텐츠 플랜을 직접 조합해 보세요. 플랫폼과 목표를 설정하면 자발적으로 정리한 가상의 브리프가 도출됩니다.</p>
-        </div>
-
-        <div class="lab-grid">
-          <form class="lab-controls" aria-label="Content plan controls">
-            <label>
-              <span>플랫폼 선택</span>
-              <select data-platform>
-                <option value="youtube">YouTube</option>
-                <option value="tiktok">TikTok</option>
-                <option value="shorts">YouTube Shorts</option>
-                <option value="discord">Discord</option>
-              </select>
-            </label>
-            <label>
-              <span>기획 목표</span>
-              <select data-goal>
-                <option value="awareness">브랜드 인지도 제고</option>
-                <option value="conversion">신규 유저 유치(전환)</option>
-                <option value="retention">유저 커뮤니티 활성화</option>
-                <option value="experiment">AI 비주얼 파일럿 테스트</option>
-              </select>
-            </label>
-            <label>
-              <span>AI 활용 비중</span>
-              <input type="range" min="0" max="100" value="65" data-ai-range>
-            </label>
-            <label>
-              <span>협업 크리에이터 수</span>
-              <input type="range" min="1" max="12" value="4" data-creator-range>
-            </label>
-          </form>
-
-          <article class="brief-card">
-            <div class="brief-header">
-              <span data-brief-platform>YouTube</span>
-              <strong data-brief-title>게임 브랜드 인지도 제고 캠페인</strong>
-            </div>
-            <p data-brief-copy>유튜브 시청자층의 관심을 빠르게 확보하기 위해 리액션 숏폼, AI 보조 썸네일, 첫인상 리뷰를 결합한 단기 집중 기획입니다.</p>
-            <div class="kpi-grid">
-              <div>
-                <b data-kpi-one>4</b>
-                <span>협업 크리에이터</span>
-              </div>
-              <div>
-                <b data-kpi-two>65%</b>
-                <span>AI 활용 비중</span>
-              </div>
-              <div>
-                <b data-kpi-three>14d</b>
-                <span>진행 기간</span>
-              </div>
-            </div>
-          </article>
-
-          <div class="plan-stack" data-plan-stack>
-            <button type="button" class="plan-step is-done" data-step-toggle>
-              <span>01</span>
-              <strong>타깃 리서치</strong>
-              <small>유저 댓글 반응 모니터링 및 채널 분석을 통해 핵심 흥행 포맷을 설정합니다.</small>
-            </button>
-            <button type="button" class="plan-step is-done" data-step-toggle>
-              <span>02</span>
-              <strong>콘셉트 기획</strong>
-              <small>콘텐츠 메인 콘셉트, 비주얼 연출 방향, 스크립트 핵심 구조를 도출합니다.</small>
-            </button>
-            <button type="button" class="plan-step" data-step-toggle>
-              <span>03</span>
-              <strong>프로덕션 조율</strong>
-              <small>협업 크리에이터 섭외, AI 리소스 제작 및 가이드 배포, 편집 검수를 조율합니다.</small>
-            </button>
-            <button type="button" class="plan-step" data-step-toggle>
-              <span>04</span>
-              <strong>데이터 분석</strong>
-              <small>조회수, 클릭률(CTR), 유저 댓글 등의 지표를 정량 분석하여 다음 기획을 도출합니다.</small>
-            </button>
-          </div>
         </div>
       </section>
 

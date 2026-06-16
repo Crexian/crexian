@@ -269,7 +269,7 @@ h3 {
   letter-spacing: -0.01em;
   font-weight: 800;
 }
-.hero-copy p, .section-heading p, .track-panel p, .steps p, .brief-card p {
+.hero-copy p, .section-heading p, .track-panel p, .steps p {
   color: var(--muted);
   font-size: clamp(1rem, 1.3vw, 1.1rem);
 }
@@ -281,7 +281,7 @@ h3 {
   grid-auto-rows: minmax(138px, auto);
   gap: 14px;
 }
-.preview-card, .stat-card, .proof-card, .track-panel, .steps article, .brief-card, .lab-controls, .plan-step {
+.preview-card, .stat-card, .proof-card, .track-panel, .steps article {
   border: 2px solid var(--text);
   border-radius: 16px;
   background: var(--surface);
@@ -379,87 +379,7 @@ h3 {
   border-color: var(--blue);
 }
 
-.lab-section { background: transparent; }
-.lab-grid {
-  display: grid;
-  grid-template-columns: minmax(240px, 0.75fr) minmax(280px, 1.2fr) minmax(260px, 1.05fr);
-  gap: 16px;
-  align-items: stretch;
-}
-.lab-controls, .brief-card, .plan-stack { min-width: 0; }
-.lab-controls {
-  display: grid;
-  gap: 16px;
-  padding: 24px;
-}
-.lab-controls label { display: grid; gap: 8px; color: var(--text); font-weight: 850; }
-.lab-controls select, .lab-controls input[type="range"] {
-  width: 100%;
-  border: 2px solid var(--text);
-  border-radius: 10px;
-  background: var(--surface-2);
-  color: var(--text);
-  padding: 11px 12px;
-}
-.brief-card {
-  display: grid;
-  align-content: space-between;
-  gap: 22px;
-  min-height: 360px;
-  padding: 24px;
-  background:
-    linear-gradient(135deg, rgba(122, 66, 255, 0.13), transparent 44%),
-    var(--surface);
-}
-.brief-header { justify-content: space-between; gap: 14px; }
-.brief-header span {
-  border: 2px solid var(--text);
-  border-radius: 999px;
-  padding: 6px 12px;
-  background: var(--text);
-  color: var(--bg);
-  font-size: 0.8rem;
-  font-weight: 950;
-}
-.brief-header strong { font-size: clamp(1.35rem, 2.5vw, 2.3rem); line-height: 1.05; text-align: right; }
-.kpi-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-.kpi-grid div {
-  border: 2px solid var(--text);
-  border-radius: 12px;
-  padding: 14px;
-  background: var(--surface-2);
-  box-shadow: 2px 2px 0px var(--text);
-}
-.kpi-grid b { display: block; font-size: clamp(1.4rem, 2.5vw, 2.2rem); line-height: 1; color: var(--blue); }
-.kpi-grid span { color: var(--muted); font-weight: 800; font-size: 0.85rem; }
-.plan-stack { display: grid; gap: 10px; }
-.plan-step {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 4px 12px;
-  padding: 16px;
-  color: var(--text);
-  cursor: pointer;
-  text-align: left;
-}
-.plan-step:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px var(--text);
-}
-.plan-step span { grid-row: span 2; color: var(--blue); font-weight: 950; }
-.plan-step small { color: var(--muted); font-weight: 750; }
-.plan-step.is-done {
-  border-color: var(--cyan);
-  background: linear-gradient(135deg, rgba(11, 230, 185, 0.12), transparent 54%), var(--surface);
-  box-shadow: 4px 4px 0px var(--cyan);
-}
-.plan-step.is-done:hover {
-  box-shadow: 6px 6px 0px var(--cyan);
-}
+
 
 .proof-grid {
   display: grid;
@@ -1151,4 +1071,29 @@ h3 {
 }
 .animate-fade-in {
   animation: fadeIn 400ms cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+}
+
+/* --- Sound Toggle Custom Styles --- */
+.mode-button.sound-muted {
+  border-color: var(--muted);
+  color: var(--muted);
+  box-shadow: 2px 2px 0px var(--muted);
+}
+.mode-button.sound-muted:hover {
+  box-shadow: 3px 3px 0px var(--muted);
+}
+
+/* --- Scroll-triggered Springy Pop Animation --- */
+.view-hidden {
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  transition: opacity 700ms cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              transform 700ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              background-color 250ms ease,
+              border-color 250ms ease,
+              box-shadow 250ms ease;
+}
+.view-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
