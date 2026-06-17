@@ -2913,3 +2913,316 @@ body {
   animation: none !important;
 }
 
+/* ==========================================================================
+   MABINOGI RPG STYLE POLISHING (마비노기 RPG 감성 비주얼 시스템 개편)
+   ========================================================================== */
+
+/* 1. 상단 사이트 헤더 다크 우드 및 골드 스타일 */
+.site-header {
+  background: #4a3525 !important; /* 마비노기 다크 우드 브라운 */
+  border-bottom: 3.5px solid var(--gold) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25) !important;
+  color: #faf6ee !important;
+}
+
+.site-header.is-scrolled {
+  background: #4a3525 !important;
+  border-bottom: 3.5px solid var(--gold) !important;
+  padding: 10px clamp(18px, 4vw, 56px) !important;
+}
+
+.brand-text {
+  color: #d4b074 !important; /* 골드 */
+  font-family: 'Cinzel', 'Noto Serif KR', serif !important;
+  font-weight: 700 !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4) !important;
+}
+
+.brand-mark {
+  background: #d4b074 !important; /* 골드 */
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid #967151 !important;
+}
+
+.site-nav a {
+  color: #e6c89c !important; /* 부드러운 양피지 골드 */
+  font-family: 'Cinzel', 'Noto Serif KR', serif !important;
+  font-weight: 700 !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) !important;
+  transition: all 0.2s ease !important;
+}
+
+.site-nav a:hover {
+  color: #faf6ee !important;
+  text-shadow: 0 0 8px rgba(212, 176, 116, 0.6) !important;
+}
+
+.site-nav a::after {
+  background: #d4b074 !important;
+}
+
+/* 2. 대기/시작 화면 (Start Screen) - JRPG 클래식 판타지 감성으로 리모델링 */
+.start-screen {
+  background-image: 
+    linear-gradient(rgba(54, 42, 33, 0.55), rgba(54, 42, 33, 0.75)), /* 다크 초콜릿 양피지 오버레이 */
+    url('ai_artwork.png') !important; /* AI 판타지 배경 */
+  background-size: cover !important;
+  background-position: center center !important;
+}
+
+.start-title {
+  color: #f7d070 !important; /* 선명한 리치 골드 */
+  font-family: 'Cinzel', 'Noto Serif KR', serif !important;
+  font-weight: 900 !important;
+  text-shadow: 
+    2px 2px 0px #362a21, 
+    4px 4px 15px rgba(54, 42, 33, 0.9) !important;
+  animation: title-float 6s infinite alternate ease-in-out !important;
+}
+
+.start-subtitle {
+  color: #faf6ee !important;
+  font-family: 'Noto Serif KR', serif !important;
+  font-size: 1.15rem !important;
+  font-weight: 400 !important;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7) !important;
+  letter-spacing: 0.02em !important;
+}
+
+.system-ready {
+  color: #e6c89c !important;
+  font-family: 'Cinzel', 'Noto Serif KR', serif !important;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6) !important;
+  border: 1px solid rgba(212, 176, 116, 0.3) !important;
+  padding: 4px 14px !important;
+  background: rgba(74, 53, 37, 0.75) !important;
+  border-radius: 3px !important;
+  animation: none !important;
+}
+
+.insert-coin-btn {
+  background: #543b27 !important; /* 가죽 갈색 */
+  color: #faf6ee !important;
+  border: 2.5px solid #d4b074 !important; /* 골드 보더 */
+  border-radius: 4px !important;
+  font-family: 'Cinzel', 'Noto Serif KR', serif !important;
+  font-size: 1.15rem !important;
+  padding: 12px 48px !important;
+  box-shadow: 
+    inset 1px 1px 0px rgba(255, 255, 255, 0.15),
+    0 4px 15px rgba(0, 0, 0, 0.45) !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) !important;
+  transition: all 0.2s ease !important;
+}
+
+.insert-coin-btn:hover {
+  background: #75553b !important;
+  border-color: #ffcc66 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 
+    0 0 15px rgba(212, 176, 116, 0.4),
+    0 6px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+.start-hint {
+  color: rgba(250, 246, 238, 0.6) !important;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7) !important;
+  font-family: 'Noto Sans KR', sans-serif !important;
+}
+
+/* 3. 영웅 보드 액티브 카드 하이라이트 기능 복구 */
+.preview-card.active-card {
+  border-color: #ffcc66 !important;
+  transform: translateY(-6px) !important;
+  box-shadow: 
+    0 0 20px rgba(212, 176, 116, 0.65), 
+    0 8px 24px rgba(54, 42, 33, 0.22) !important;
+  background: var(--surface-2) !important; /* 포커싱 효과 */
+}
+
+/* 4. 캐릭터 정보창 및 퀘스트창 헤더 마비노기 타이틀바로 리뉴얼 */
+.status-panel-card .panel-header,
+.jrpg-quest-container .panel-header {
+  background: #4a3525 !important; /* 우드 브라운 */
+  color: #faf6ee !important;
+  border-bottom: 2px solid var(--gold) !important;
+  padding: 10px 18px !important;
+  font-family: 'Cinzel', 'Noto Serif KR', serif !important;
+  font-weight: 700 !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4) !important;
+  border-radius: 2px 2px 0 0 !important;
+}
+
+.status-panel-card .panel-header .panel-tag,
+.jrpg-quest-container .panel-header .panel-tag {
+  color: #d4b074 !important; /* 골드 */
+  font-size: 0.85rem !important;
+  letter-spacing: 0.08em !important;
+  font-weight: 700 !important;
+}
+
+.jrpg-quest-container {
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.jrpg-quest-log {
+  padding: 24px !important;
+}
+
+/* 5. 퀘스트 로그 리스트 정제 및 선택기 화살표 개선 */
+.quest-item:hover,
+.quest-item.active-stage {
+  border-color: var(--gold) !important;
+  background: rgba(179, 142, 75, 0.12) !important; /* 따뜻한 골드 셀렉션 */
+}
+
+[data-theme="dark"] .quest-item:hover,
+[data-theme="dark"] .quest-item.active-stage {
+  background: rgba(212, 176, 116, 0.18) !important;
+}
+
+.quest-pointer {
+  color: var(--gold) !important;
+  font-size: 1.1rem !important;
+  font-weight: bold !important;
+}
+
+/* 6. 모달 창 타이틀바 및 닫기 버튼 마비노기 윈도우 스타일 리포지셔닝 */
+.modal-card {
+  padding: 0 !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.modal-card [data-modal-title] {
+  display: block !important;
+  background: #4a3525 !important;
+  color: #d4b074 !important;
+  border-bottom: 2px solid var(--gold) !important;
+  padding: 14px 24px !important;
+  font-family: 'Cinzel', 'Noto Serif KR', serif !important;
+  font-weight: 700 !important;
+  font-size: 1.25rem !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4) !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+.modal-body {
+  padding: 28px !important;
+}
+
+.modal-card .modal-close {
+  position: absolute !important;
+  top: 10px !important;
+  right: 14px !important;
+  z-index: 15 !important;
+  min-height: 28px !important;
+  width: 28px !important;
+  height: 28px !important;
+  padding: 0 !important;
+  background: #543b27 !important; /* 우드 브라운 */
+  color: #d4b074 !important; /* 골드 */
+  border: 1.5px solid #d4b074 !important;
+  border-radius: 2px !important;
+  font-family: 'Cinzel', serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  display: grid !important;
+  place-items: center !important;
+  box-shadow: inset 1px 1px 0px rgba(255,255,255,0.1), 0 2px 4px rgba(0,0,0,0.15) !important;
+  cursor: pointer !important;
+  text-shadow: none !important;
+}
+
+.modal-card .modal-close:hover {
+  background: #75553b !important;
+  border-color: #ffcc66 !important;
+  transform: scale(1.05) !important;
+}
+
+/* 7. 스탯 분배 및 보드 컴포넌트 마비노기풍 비주얼화 */
+.rpg-stat-row {
+  border: 1px solid rgba(179, 142, 75, 0.4) !important;
+  background: var(--surface-2) !important;
+  box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.35), 0 2px 6px rgba(54, 42, 33, 0.05) !important;
+  padding: 10px 16px !important;
+  margin-bottom: 4px !important;
+}
+
+.rpg-plus-btn {
+  background: #967151 !important; /* 가죽 브라운 */
+  color: #faf6ee !important;
+  border: 1.5px solid #543b27 !important;
+  border-radius: 2px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+  font-family: 'Cinzel', 'Noto Serif KR', serif !important;
+  font-weight: 700 !important;
+}
+
+.rpg-plus-btn:hover:not(:disabled) {
+  background: #b58d68 !important;
+  border-color: #543b27 !important;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2) !important;
+  transform: translateY(-1px) !important;
+}
+
+.rpg-points-val {
+  background: var(--surface-2) !important;
+  color: var(--pink) !important;
+  border: 1.5px solid var(--gold) !important;
+  border-radius: 3px !important;
+  box-shadow: inset 1px 1px 2px rgba(54, 42, 33, 0.08) !important;
+  font-family: 'Cinzel', 'Noto Serif KR', serif !important;
+  font-weight: 700 !important;
+  font-size: 1.15rem !important;
+  padding: 2px 10px !important;
+}
+
+.rpg-reset-btn {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1.5px solid var(--gold) !important;
+  border-radius: 2px !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08) !important;
+  font-family: 'Noto Sans KR', sans-serif !important;
+  font-weight: 700 !important;
+  transition: all 0.2s ease !important;
+}
+
+.rpg-reset-btn:hover {
+  background: var(--surface-2) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.12) !important;
+}
+
+/* 8. 양피지 종이 질감(Parchment Grain) 디테일 부여 */
+.preview-card, 
+.stat-card, 
+.proof-card, 
+.track-panel, 
+.steps article, 
+.stage-node, 
+.status-panel-card, 
+.footer-card, 
+.contact-card, 
+.modal-card, 
+.sim-container, 
+.sim-res-box, 
+.timeline-item,
+.jrpg-quest-container {
+  background: 
+    radial-gradient(rgba(54, 42, 33, 0.015) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%),
+    var(--surface) !important;
+  background-size: 8px 8px, 100% 100% !important;
+}
+
+.avatar-area img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+}
+

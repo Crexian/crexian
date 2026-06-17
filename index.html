@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@400;500;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=1.6.0">
+    <link rel="stylesheet" href="styles.css?v=1.7.0">
   </head>
   <body class="start-active">
     <!-- CRT screen scanline & curve vignette simulation -->
@@ -84,7 +84,9 @@
               <span class="panel-tag">CHARACTER STATUS</span>
             </div>
             <div class="character-body">
-              <div class="avatar-area" aria-hidden="true">🎮</div>
+              <div class="avatar-area" aria-hidden="true">
+                <img src="ai_char_1.png" alt="Profile Avatar">
+              </div>
               <div class="details-area">
                 <span class="char-class">Lv.99 크리에이티브 기획자</span>
                 <strong class="char-name">손영우 (YOUNGWOO SON)</strong>
@@ -244,9 +246,12 @@
           <h2 id="workflow-title">좋아하는 마음에서 출발해 기획과 분석으로 이어지는 성장 루프</h2>
         </div>
         <div class="jrpg-quest-container">
+          <div class="panel-header">
+            <span class="panel-tag">QUEST LOG</span>
+          </div>
           <div class="jrpg-quest-log" role="list" aria-label="성장 루프 퀘스트 로그">
             <div class="quest-item" role="listitem" data-quest="1">
-              <span class="quest-pointer" aria-hidden="true">👉</span>
+              <span class="quest-pointer" aria-hidden="true">▶</span>
               <span class="quest-status status-ok">[ OK ]</span>
               <div class="quest-content">
                 <h3 class="quest-title">QUEST 01: 리서치</h3>
@@ -254,7 +259,7 @@
               </div>
             </div>
             <div class="quest-item" role="listitem" data-quest="2">
-              <span class="quest-pointer" aria-hidden="true">👉</span>
+              <span class="quest-pointer" aria-hidden="true">▶</span>
               <span class="quest-status status-ok">[ OK ]</span>
               <div class="quest-content">
                 <h3 class="quest-title">QUEST 02: 기획</h3>
@@ -262,7 +267,7 @@
               </div>
             </div>
             <div class="quest-item" role="listitem" data-quest="3">
-              <span class="quest-pointer" aria-hidden="true">👉</span>
+              <span class="quest-pointer" aria-hidden="true">▶</span>
               <span class="quest-status status-ok">[ OK ]</span>
               <div class="quest-content">
                 <h3 class="quest-title">QUEST 03: 제작</h3>
@@ -270,7 +275,7 @@
               </div>
             </div>
             <div class="quest-item active-quest" role="listitem" data-quest="4">
-              <span class="quest-pointer" aria-hidden="true">👉</span>
+              <span class="quest-pointer" aria-hidden="true">▶</span>
               <span class="quest-status status-active">[ ACTIVE ]</span>
               <div class="quest-content">
                 <h3 class="quest-title">QUEST 04: 분석</h3>
@@ -377,8 +382,8 @@
     </footer>
 
     <div class="modal" data-modal aria-hidden="true" role="dialog" aria-label="Proof slot preview">
-      <button class="modal-close mode-button" type="button" data-modal-close>닫기</button>
       <div class="modal-card">
+        <button class="modal-close mode-button" type="button" data-modal-close aria-label="닫기">X</button>
         <span data-modal-title>증거 슬롯</span>
         <div class="modal-body" data-modal-body>
           <small data-modal-copy>여기에 실제 스크린샷, 썸네일, 리포트, 짧은 클립을 넣으면 됩니다.</small>
@@ -386,6 +391,6 @@
       </div>
     </div>
 
-    <script src="script.js?v=1.6.0"></script>
+    <script src="script.js?v=1.7.0"></script>
   </body>
 </html>
