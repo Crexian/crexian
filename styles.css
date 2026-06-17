@@ -2654,13 +2654,17 @@ body.start-active {
 }
 
 /* 폰트 전면 가독성 개선 */
-body, p, ul, ol, li, input, button, textarea, table, td, th, .btn-text, .quest-desc, .contact-card-value {
+body, p, ul, ol, li, input, button, textarea, table, td, th, 
+.btn-text, .quest-desc, .contact-card-value, .quest-status, .slot-index, 
+.map-link-btn, .bar-label, .rpg-points-left, .rpg-points-left span, .rpg-points-left strong,
+.player-time, .footer-subtitle, .footer-copyright-top, .campaign-desc, .sim-help, .sim-control label,
+.contact-card-info span, .contact-card-info strong, .quest-desc, .hud-value, .eyebrow {
   font-family: 'Noto Sans KR', 'Inter', sans-serif !important;
   letter-spacing: -0.01em !important;
 }
 
 h1, h2, h3, h4, h5, h6, .brand-text, .panel-kicker, .card-label, .rpg-title, .rpg-class-name, .footer-kicker, .footer-title,
-.hud-label, .insert-coin-btn, .start-title, .blink-text, .quest-status, .quest-title, .char-class, .quest-subject {
+.hud-label, .insert-coin-btn, .start-title, .blink-text, .quest-title, .char-class, .quest-subject, .brand, .tab-button, .button, .stat-card b {
   font-family: 'Cinzel', 'Noto Serif KR', serif !important;
   font-weight: 700 !important;
 }

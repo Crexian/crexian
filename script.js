@@ -618,7 +618,7 @@ const slotTemplates = {
         <div class="rpg-stats-list">
           <div class="rpg-stat-row">
             <div class="rpg-stat-label">
-              <strong>체력 (STR)</strong> <span class="rpg-stat-desc">영상 제작 및 실행력</span>
+              <strong>STR</strong> <span class="rpg-stat-desc">영상 제작 및 실행력</span>
             </div>
             <div class="rpg-stat-control">
               <span class="rpg-stat-val" data-rpg-stat="str">80</span>
@@ -627,7 +627,7 @@ const slotTemplates = {
           </div>
           <div class="rpg-stat-row">
             <div class="rpg-stat-label">
-              <strong>솜씨 (DEX)</strong> <span class="rpg-stat-desc">AI 툴 활용 능력</span>
+              <strong>DEX</strong> <span class="rpg-stat-desc">AI 툴 활용 능력</span>
             </div>
             <div class="rpg-stat-control">
               <span class="rpg-stat-val" data-rpg-stat="dex">82</span>
@@ -636,7 +636,7 @@ const slotTemplates = {
           </div>
           <div class="rpg-stat-row">
             <div class="rpg-stat-label">
-              <strong>지력 (INT)</strong> <span class="rpg-stat-desc">데이터 & 기획 전략</span>
+              <strong>INT</strong> <span class="rpg-stat-desc">데이터 & 기획 전략</span>
             </div>
             <div class="rpg-stat-control">
               <span class="rpg-stat-val" data-rpg-stat="int">80</span>
@@ -645,7 +645,7 @@ const slotTemplates = {
           </div>
           <div class="rpg-stat-row">
             <div class="rpg-stat-label">
-              <strong>행운 (LUK)</strong> <span class="rpg-stat-desc">트렌드 감각</span>
+              <strong>LUK</strong> <span class="rpg-stat-desc">트렌드 감각</span>
             </div>
             <div class="rpg-stat-control">
               <span class="rpg-stat-val" data-rpg-stat="luk">81</span>
