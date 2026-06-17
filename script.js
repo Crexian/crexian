@@ -1227,3 +1227,23 @@ function animateCoins() {
   }
 }
 
+// --- Quick Map Link Actions ---
+const mapLinks = document.querySelectorAll("[data-go-slot]");
+mapLinks.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const slotId = btn.getAttribute("data-go-slot");
+    const targetSlotCard = document.querySelector(`[data-slot-id="${slotId}"]`);
+    if (targetSlotCard) {
+      const targetSec = document.getElementById("proof");
+      if (targetSec) {
+        // Smooth scroll to the proof section
+        targetSec.scrollIntoView({ behavior: "smooth" });
+        // Automatically open modal once scroll completes
+        setTimeout(() => {
+          openModal(targetSlotCard);
+        }, 550);
+      }
+    }
+  });
+});
+

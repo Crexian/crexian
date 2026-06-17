@@ -253,12 +253,12 @@ h1, h2, h3, h4, h5, h6, .brand, .tab-button, .button, .card-label, .panel-kicker
 }
 
 .hero {
-  min-height: 96svh;
+  min-height: auto;
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(330px, 1.08fr);
   gap: clamp(32px, 6vw, 86px);
   align-items: center;
-  padding: 118px clamp(18px, 6vw, 76px) 64px;
+  padding: 32px clamp(18px, 6vw, 76px) 64px;
 }
 .eyebrow {
   margin: 0 0 12px;
@@ -1168,7 +1168,7 @@ h3 {
   .site-nav { display: none; }
   .arcade-hud { display: none !important; }
   /* 헤더 높이(~80px) + 여유 */
-  .hero { padding-top: 120px; }
+  .hero { padding-top: 24px; }
   .hero, .track-panel { grid-template-columns: 1fr; }
   .steps, .proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
@@ -1182,7 +1182,7 @@ h3 {
   }
 }
 @media (max-width: 640px) {
-  .hero { min-height: auto; padding-top: 108px; }
+  .hero { min-height: auto; padding-top: 20px; }
   .hero-board, .steps, .proof-grid, .kpi-grid { grid-template-columns: 1fr; }
 }
 
@@ -2399,4 +2399,212 @@ body.start-active {
 .hud-label, .hud-value, .system-ready, .insert-coin-btn, .start-title, .blink-text,
 .quest-status, .quest-title {
   font-family: 'Galmuri9', 'Pixelify Sans', monospace !important;
+}
+
+/* --- Player Status Dashboard Banner --- */
+.player-status-section {
+  padding: 118px clamp(18px, 6vw, 76px) 0px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 980px) {
+  .player-status-section {
+    padding: 100px clamp(18px, 6vw, 76px) 0px;
+  }
+}
+
+@media (max-width: 640px) {
+  .player-status-section {
+    padding: 96px 18px 0px;
+  }
+}
+
+.status-panel-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 1.15fr;
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .status-panel-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.status-panel-card {
+  border: 3.5px solid var(--text);
+  background: var(--surface);
+  box-shadow: 5px 5px 0px var(--text);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.status-panel-card .panel-header {
+  border-radius: 0px !important;
+}
+
+.character-body {
+  padding: 18px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.avatar-area {
+  font-size: 3rem;
+  background: var(--surface-2);
+  border: 2px solid var(--text);
+  width: 80px;
+  height: 80px;
+  display: grid;
+  place-items: center;
+  box-shadow: 2px 2px 0px var(--text);
+  flex-shrink: 0;
+}
+
+.details-area {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.char-class {
+  font-size: 0.78rem;
+  color: var(--blue);
+  font-weight: 850;
+  font-family: 'Galmuri9', monospace;
+}
+
+.char-name {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+.bar-label {
+  font-size: 0.65rem;
+  color: var(--muted);
+  font-weight: 900;
+  font-family: 'Galmuri9', monospace;
+}
+
+.status-bar {
+  height: 10px;
+  background: var(--surface-2);
+  border: 2px solid var(--text);
+  overflow: hidden;
+}
+
+.hp-bar .bar-fill {
+  height: 100%;
+  background: var(--pink);
+  width: 100%;
+  transition: width 1s ease;
+}
+
+.mp-bar .bar-fill {
+  height: 100%;
+  background: var(--cyan);
+  width: 100%;
+  transition: width 1s ease;
+}
+
+.quest-body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  height: 100%;
+}
+
+.quest-subject {
+  font-size: 1.05rem;
+  font-weight: 950;
+  color: var(--blue);
+  line-height: 1.3;
+}
+
+.quest-summary {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0;
+  font-weight: 600;
+}
+
+.inventory-map-body {
+  padding: 12px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.map-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.map-link-btn {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: 'Galmuri9', monospace;
+  font-size: 0.82rem;
+  font-weight: 800;
+  transition: all 0.1s ease;
+}
+
+.map-link-btn:hover {
+  background: var(--surface-2);
+  transform: translateX(3px);
+}
+
+.map-link-btn:hover .btn-bullet {
+  color: var(--pink);
+  transform: rotate(90deg);
+}
+
+.map-link-btn.highlight {
+  color: var(--pink);
+  background: color-mix(in srgb, var(--pink) 8%, transparent);
+}
+
+.map-link-btn.highlight:hover {
+  background: color-mix(in srgb, var(--pink) 15%, transparent);
+}
+
+.btn-bullet {
+  font-size: 0.65rem;
+  color: var(--muted);
+  transition: transform 0.1s ease;
+  display: inline-block;
+}
+
+.btn-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

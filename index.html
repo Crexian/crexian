@@ -76,6 +76,75 @@
     </header>
 
     <main id="top">
+      <!-- Arcade Status Banner (플레이어 대시보드 및 전체 오버뷰) -->
+      <section class="player-status-section" aria-label="플레이어 프로필 및 탐구 요약">
+        <div class="status-panel-grid">
+          <!-- Character Card (플레이어 프로필) -->
+          <div class="status-panel-card character-card">
+            <div class="panel-header">
+              <span class="panel-tag">CHARACTER STATUS</span>
+            </div>
+            <div class="character-body">
+              <div class="avatar-area" aria-hidden="true">🎮</div>
+              <div class="details-area">
+                <span class="char-class">Lv.99 크리에이티브 기획자</span>
+                <strong class="char-name">손영우 (YOUNGWOO SON)</strong>
+                <div class="bar-container">
+                  <span class="bar-label">HP (PASSION)</span>
+                  <div class="status-bar hp-bar"><div class="bar-fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="bar-container">
+                  <span class="bar-label">MP (CREATIVITY)</span>
+                  <div class="status-bar mp-bar"><div class="bar-fill" style="width: 100%;"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Current Quest Card (포트폴리오 핵심 목표) -->
+          <div class="status-panel-card quest-card">
+            <div class="panel-header">
+              <span class="panel-tag">ACTIVE QUEST</span>
+            </div>
+            <div class="quest-body">
+              <strong class="quest-subject">MCN 매니저 & 게임 퍼블리셔 전직 프로젝트</strong>
+              <p class="quest-summary">좋아하는 게임 생태계와 서브컬처 팬덤에 대한 깊은 이해를 바탕으로, 기획서 설계, 데이터 분석(SQL), 생성형 AI 워크플로우를 결합하여 실무 성과를 제안하는 탐구 퀘스트입니다.</p>
+            </div>
+          </div>
+
+          <!-- Inventory/Site Map Card (단축 키맵) -->
+          <div class="status-panel-card inventory-map-card">
+            <div class="panel-header">
+              <span class="panel-tag">INVENTORY QUICK MAP</span>
+            </div>
+            <div class="inventory-map-body">
+              <nav class="map-links" aria-label="Inventory slots quick links">
+                <button type="button" class="map-link-btn" data-go-slot="reel">
+                  <span class="btn-bullet" aria-hidden="true">▶</span>
+                  <span class="btn-text">SLOT 01: 사이드 프로젝트 쇼릴</span>
+                </button>
+                <button type="button" class="map-link-btn highlight" data-go-slot="campaign">
+                  <span class="btn-bullet" aria-hidden="true">▶</span>
+                  <span class="btn-text">SLOT 02: 마케팅 캠페인 제안서</span>
+                </button>
+                <button type="button" class="map-link-btn" data-go-slot="ai">
+                  <span class="btn-bullet" aria-hidden="true">▶</span>
+                  <span class="btn-text">SLOT 03: AI 비주얼 실험실</span>
+                </button>
+                <button type="button" class="map-link-btn" data-go-slot="tools">
+                  <span class="btn-bullet" aria-hidden="true">▶</span>
+                  <span class="btn-text">SLOT 04: 보유 툴 숙련도 (Stats)</span>
+                </button>
+                <button type="button" class="map-link-btn" data-go-slot="thumbnails">
+                  <span class="btn-bullet" aria-hidden="true">▶</span>
+                  <span class="btn-text">SLOT 05: 게임 썸네일 디자인</span>
+                </button>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
           <p class="eyebrow">게임 / MCN / AI 콘텐츠</p>
