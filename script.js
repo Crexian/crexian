@@ -27,7 +27,7 @@ themeToggle.addEventListener("click", () => {
 
 const focusData = {
   reel: { score: "92", mode: "영상 실험실" },
-  campaign: { score: "88", mode: "크리에이터 분석" },
+  campaign: { score: "88", mode: "캠페인 기획" },
   pipeline: { score: "95", mode: "AI 비주얼" },
 };
 
@@ -378,42 +378,179 @@ const slotTemplates = {
   `,
   campaign: `
     <div class="modal-campaign-detail">
-      <h4>개인 캠페인 기획: 신작 인디 게임 브랜드 마케팅</h4>
-      <p class="campaign-desc">좋아하는 인디 게임의 인지도 확보 및 팬덤 형성을 위해, 평소 눈여겨본 크리에이터 4인과의 모의 협업을 데이터로 구상한 캠페인 리포트입니다.</p>
-      
-      <div class="campaign-stats-grid">
-        <div class="stat-item">
-          <span class="stat-label">총 조회수</span>
-          <div class="stat-num-container">
-            <span class="stat-value">142.5K</span>
-            <span class="stat-target">목표: 100K (142% 초과 달성)</span>
+      <div class="campaign-header">
+        <h4>차세대 AI 에이전트 코딩 플랫폼 마케팅 제안서</h4>
+        <span class="campaign-sub">Agentic AI를 활용한 1인 개발 자동화 파이프라인 구축 라이브</span>
+      </div>
+
+      <div class="campaign-meta-info">
+        <div class="meta-badge-grid">
+          <div class="meta-badge">
+            <span class="meta-label">WRITER</span>
+            <strong class="meta-val">손영우 (광고사업팀)</strong>
           </div>
-          <div class="stat-progress"><div class="stat-progress-fill" style="width: 0%" data-animate-width="100%"></div></div>
-        </div>
-        <div class="stat-item">
-          <span class="stat-label">평균 CTR (클릭률)</span>
-          <div class="stat-num-container">
-            <span class="stat-value">8.4%</span>
-            <span class="stat-target">업계 평균: 5.0%</span>
+          <div class="meta-badge">
+            <span class="meta-label">CLIENT</span>
+            <strong class="meta-val">구글 클라우드 코리아 / Antigravity 마케팅 파트</strong>
           </div>
-          <div class="stat-progress"><div class="stat-progress-fill" style="width: 0%" data-animate-width="84%"></div></div>
-        </div>
-        <div class="stat-item">
-          <span class="stat-label">시청 유지율 (Shorts)</span>
-          <div class="stat-num-container">
-            <span class="stat-value">58.0%</span>
-            <span class="stat-target">Shorts 흥행 기준: 50%+</span>
+          <div class="meta-badge">
+            <span class="meta-label">CREATOR</span>
+            <strong class="meta-val">똘똘똘이 (인챈트 MCN 소속)</strong>
           </div>
-          <div class="stat-progress"><div class="stat-progress-fill" style="width: 0%" data-animate-width="58%"></div></div>
         </div>
       </div>
 
-      <div class="campaign-learnings">
-        <h5>💡 데이터 기반 인사이트 및 개선 방향</h5>
-        <ul>
-          <li><strong>초반 3초 후킹 최적화:</strong> 인트로에 임팩트 있는 게임 사운드와 타이포 연출을 적용하여 시청 유지율을 평균 15% 개선했습니다.</li>
-          <li><strong>타깃 매칭의 유효성:</strong> 서브컬처 팬덤이 뚜렷한 마이크로 인플루언서 매칭을 설계하여, 종합 게임 채널 대비 전환 효율을 약 2.4배 향상했습니다.</li>
-        </ul>
+      <div class="campaign-tabs" role="tablist">
+        <button type="button" class="campaign-tab active" data-tab-btn="1">기획 의도 & 요약</button>
+        <button type="button" class="campaign-tab" data-tab-btn="2">분석 & 매칭</button>
+        <button type="button" class="campaign-tab" data-tab-btn="3">콘텐츠 연출안</button>
+        <button type="button" class="campaign-tab" data-tab-btn="4">예산 & 시뮬레이션</button>
+        <button type="button" class="campaign-tab" data-tab-btn="5">위기 대응</button>
+      </div>
+
+      <div class="campaign-tab-contents">
+        <!-- TAB 1 -->
+        <div class="campaign-tab-pane active" data-tab-pane="1">
+          <div class="pane-section">
+            <h5>💡 기획 의도</h5>
+            <p>언리얼 엔진 5(UE5) 기반 PVE MOBA 및 익스트랙션 장르 개발 과정에서 ComfyUI, ChatGPT 등 다양한 AI 도구를 직접 워크플로우에 적용하며, 보조형 AI를 넘어 <strong>스스로 실행하는 자율형 에이전트(Autonomous Agent)</strong>로의 패러다임 전환을 실감했습니다.</p>
+            <p>본 기획은 단순히 구독자 수에 기반한 브랜드 매칭을 탈피하여, <strong>채널의 특유 서브컬처와 제품의 기술적 강점을 정확하게 일치</strong>시키는 MCN 파트너십 실무자로서의 전략을 담고 있습니다.</p>
+          </div>
+          <div class="pane-section border-top-dashed">
+            <h5>📋 제안 요약</h5>
+            <p>구글의 차세대 자율형 코딩 에이전트 플랫폼 <strong>'Antigravity'</strong>의 한국 개발자 시장 안착을 목적으로 합니다.</p>
+            <p>과거 AI 오류로 "믛죈25"라는 전설적인 방송 밈을 탄생시켰던 전직 개발자 스트리머 <strong>'똘똘똘이'</strong>와 함께, 스트리머는 지시만 하고 빌드와 디버깅은 AI가 다 하는 <strong>"1인 개발 쇼케이스: 믛죈26"</strong>을 제안합니다.</p>
+          </div>
+        </div>
+
+        <!-- TAB 2 -->
+        <div class="campaign-tab-pane" data-tab-pane="2">
+          <div class="pane-section">
+            <h5>🔍 크리에이터 매칭 포인트</h5>
+            <ul class="pixel-list">
+              <li><strong>국내 유일의 포지션:</strong> 전직 인디 게임 개발자 출신으로, 어려운 코딩 개념을 유머러스하게 해설하는 2030 남성 IT/개발 매니아층 팬덤 보유.</li>
+              <li><strong>믛 세계관의 확장:</strong> 완벽한 AI보다 에러와 씨름하고 협업하는 과정에서 나오는 돌발 상황에 시청자들이 더 크게 열광하며, 이는 높은 방송 몰입도로 직결됩니다.</li>
+              <li><strong>무결점 라이브 지원:</strong> 인챈트 내부의 기술/기획 지원팀이 컴파일 환경을 사전 알파 테스트하여 라이브 돌발 사고 리스크를 최소화합니다.</li>
+            </ul>
+          </div>
+          <div class="pane-section border-top-dashed">
+            <h5>🤖 Antigravity 제품 특성 & 연출 매칭</h5>
+            <p>Antigravity는 자율형 에이전트로서 <strong>AI가 스스로 디렉토리를 생성하고, 파일을 읽고 쓰며 디버깅을 실행하는 모습</strong>을 실시간 대시보드(패널)로 보여줍니다.</p>
+            <p>이 독특한 특징을 살려 마치 <strong>"엉뚱하지만 부지런한 신입 개발자를 고용해 일시키는 상황"</strong>으로 의인화하여 중계하는 '방관형 코딩 예능' 포맷을 설계했습니다.</p>
+          </div>
+        </div>
+
+        <!-- TAB 3 -->
+        <div class="campaign-tab-pane" data-tab-pane="3">
+          <div class="pane-section">
+            <h5>🎬 콘텐츠 발행 & 방송 연출 계획</h5>
+            <div class="timeline-row">
+              <div class="timeline-item">
+                <span class="timeline-badge">생방송</span>
+                <strong>치지직 라이브 (1회)</strong>
+                <p>실시간 게임 개발 생중계, 런타임 에러 디버깅 중계 및 시청자 훈수/소통</p>
+              </div>
+              <div class="timeline-item">
+                <span class="timeline-badge accent">유튜브</span>
+                <strong>메인 기획 영상 (1편)</strong>
+                <p>기획 단계부터 빌드 완료, 게임 시연까지의 하이라이트 요약본 (15분 내외)</p>
+              </div>
+              <div class="timeline-item">
+                <span class="timeline-badge cool">숏폼</span>
+                <strong>쇼츠 콘텐츠 (2편)</strong>
+                <p>에이전트의 재치 넘치는 버그 대처 상황 및 웃음 벨 에피소드를 클립화하여 확산</p>
+              </div>
+            </div>
+          </div>
+          <div class="pane-section border-top-dashed">
+            <h5>🎮 크리에이티브 시나리오 ("믛죈26")</h5>
+            <p><strong>[미션 지시]</strong> 스트리머는 관리자로서 "메탈슬러그 풍 횡스크롤 슈팅 게임을 제작하라"는 대략적인 기획 목표만 입력합니다.</p>
+            <p><strong>[자율 실행]</strong> AI 에이전트들이 분업하여 폴더 생성, 코드 작성, 컴파일 및 빌드를 실시간으로 수행합니다. 에러 발생 시 스스로 로그를 읽고 디버깅합니다.</p>
+            <p><strong>[차별화 이벤트]</strong> 구글 클라우드 가입 활성화를 극대화하기 위해, <strong>'믛죈26' 기념 전용 굿즈(빌드 성공 티셔츠 & 스티커 팩)</strong>를 제작하여 가입 후 프로젝트를 시작한 유저에게 추첨 지급합니다. (비용은 인챈트 마케팅 예산으로 선투자 제안)</p>
+          </div>
+        </div>
+
+        <!-- TAB 4 -->
+        <div class="campaign-tab-pane" data-tab-pane="4">
+          <div class="pane-section">
+            <h5>💰 스탠다드 제안 예산안</h5>
+            <table class="pixel-table">
+              <thead>
+                <tr>
+                  <th>구분</th>
+                  <th>상세 세부 구성</th>
+                  <th>제안 예산 (원)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>치지직 라이브</strong></td>
+                  <td>실시간 코딩 챌린지 및 브랜디드 생중계 (2시간+)</td>
+                  <td>₩15,000,000</td>
+                </tr>
+                <tr>
+                  <td><strong>유튜브 영상</strong></td>
+                  <td>편집 기획본 1편 제작 및 똘똘똘이 채널 발행</td>
+                  <td>₩12,000,000</td>
+                </tr>
+                <tr>
+                  <td><strong>쇼츠 제작</strong></td>
+                  <td>유튜브 쇼츠 / 치지직 클립 2편 제작 및 확산</td>
+                  <td>₩3,000,000</td>
+                </tr>
+                <tr>
+                  <td><strong>굿즈 제작/배송</strong></td>
+                  <td>MCN (인챈트) 자체 선투자 프로모션</td>
+                  <td>₩0 (자체 투자)</td>
+                </tr>
+                <tr class="table-total">
+                  <td><strong>합계</strong></td>
+                  <td>패키지 최종 금액 (VAT 별도)</td>
+                  <td>₩30,000,000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="pane-section border-top-dashed">
+            <h5>📊 실시간 성과 시뮬레이터 (조회수 4만 회 기준)</h5>
+            <p class="sim-help">슬라이더를 조정하여 전환율에 따른 가입 유저 수와 고객 획득 비용(CPA)을 예측해 보세요.</p>
+            
+            <div class="sim-container">
+              <div class="sim-control">
+                <label for="sim-ctr-slider">예상 가입 전환율: <span id="sim-ctr-val">1.5</span>%</label>
+                <input type="range" id="sim-ctr-slider" min="0.5" max="5.0" step="0.1" value="1.5">
+              </div>
+              <div class="sim-results">
+                <div class="sim-res-box">
+                  <span>예상 가입자 수</span>
+                  <strong><span id="sim-users">600</span> 명</strong>
+                </div>
+                <div class="sim-res-box">
+                  <span>CPA (고객 획득 비용)</span>
+                  <strong><span id="sim-cpa">50,000</span> 원</strong>
+                </div>
+                <div class="sim-res-box">
+                  <span>캠페인 평가 등급</span>
+                  <strong id="sim-grade" class="grade-normal">EXPECTED</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 5 -->
+        <div class="campaign-tab-pane" data-tab-pane="5">
+          <div class="pane-section">
+            <h5>⚠️ 소통형 위기관리 시나리오</h5>
+            <p>라이브 코딩의 특성상 무한 루프나 치명적 런타임 에러는 필연적으로 발생합니다. 하지만 이를 방송 실패로 규정하지 않고, AI의 멈춤 상태를 **'에이전트 조는 중'**, **'에이전트가 삐짐'** 등으로 밈화하여 시청자들의 실시간 훈수와 개입을 유도합니다.</p>
+            <p>오히려 시청자가 스트리머에게 힌트를 주고 스트리머가 AI에게 피드백을 전달하는 소통 구조를 통해, 기술 광고주의 플랫폼을 친근하고 유쾌한 플레이그라운드로 브랜딩하는 마케팅 효과를 낳을 것입니다.</p>
+          </div>
+          <div class="pane-section border-top-dashed">
+            <h5>💡 종합 파트너십 제언</h5>
+            <p>구글 클라우드 Antigravity 마케팅 파트가 바라는 기술의 유용성 전달과, 크리에이터 똘똘똘이가 가진 독특한 문법("믛죈")을 자연스럽게 엮었습니다.</p>
+            <p>광고주의 비용 리스크는 줄이면서 적극적인 고객 유치를 달성하는, 실행 가능한 최고의 마케팅 제안이 될 것을 자신합니다.</p>
+          </div>
+        </div>
       </div>
     </div>
   `,
@@ -831,6 +968,58 @@ function setupModalInteractions(slotId) {
         level = 1;
         updateRpgUI();
       });
+    }
+  }
+
+  if (slotId === "campaign") {
+    const tabBtns = document.querySelectorAll("[data-tab-btn]");
+    const tabPanes = document.querySelectorAll("[data-tab-pane]");
+    
+    tabBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const tabId = btn.getAttribute("data-tab-btn");
+        
+        tabBtns.forEach((b) => b.classList.toggle("active", b === btn));
+        tabPanes.forEach((p) => p.classList.toggle("active", p.getAttribute("data-tab-pane") === tabId));
+        playSound("click");
+      });
+    });
+    
+    // Simulator logic
+    const slider = document.getElementById("sim-ctr-slider");
+    const ctrVal = document.getElementById("sim-ctr-val");
+    const usersVal = document.getElementById("sim-users");
+    const cpaVal = document.getElementById("sim-cpa");
+    const gradeVal = document.getElementById("sim-grade");
+    
+    if (slider) {
+      const updateSim = () => {
+        const ctr = parseFloat(slider.value);
+        ctrVal.textContent = ctr.toFixed(1);
+        
+        const views = 40000;
+        const budget = 30000000; // ₩30,000,000
+        const users = Math.round(views * (ctr / 100));
+        usersVal.textContent = users.toLocaleString();
+        
+        const cpa = Math.round(budget / users);
+        cpaVal.textContent = cpa.toLocaleString();
+        
+        // Grade thresholds
+        if (ctr < 1.0) {
+          gradeVal.textContent = "CONSERVATIVE (보수적)";
+          gradeVal.className = "grade-low";
+        } else if (ctr < 2.5) {
+          gradeVal.textContent = "EXPECTED (기대 수준)";
+          gradeVal.className = "grade-normal";
+        } else {
+          gradeVal.textContent = "OPTIMISTIC (초과 달성!)";
+          gradeVal.className = "grade-high";
+        }
+      };
+      
+      slider.addEventListener("input", updateSim);
+      updateSim(); // initial call
     }
   }
   
