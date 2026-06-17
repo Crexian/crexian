@@ -2664,7 +2664,8 @@ body, p, ul, ol, li, input, button, textarea, table, td, th,
 }
 
 h1, h2, h3, h4, h5, h6, .brand-text, .panel-kicker, .card-label, .rpg-title, .rpg-class-name, .footer-kicker, .footer-title,
-.hud-label, .insert-coin-btn, .start-title, .blink-text, .quest-title, .char-class, .quest-subject, .brand, .tab-button, .button, .stat-card b {
+.hud-label, .insert-coin-btn, .start-title, .blink-text, .quest-title, .char-class, .quest-subject, .brand, .tab-button, .button, .stat-card b,
+.preview-card strong, .proof-card strong, .modal-card strong, .modal-card h3 {
   font-family: 'Cinzel', 'Noto Serif KR', serif !important;
   font-weight: 700 !important;
 }
@@ -2853,5 +2854,62 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #967151 !important;
+}
+
+/* 인벤토리 슬롯 레이아웃 및 마비노기 감성 스타일링 강화 */
+.slot-inner {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 5px !important;
+  width: 100% !important;
+}
+
+.slot-inner strong {
+  display: block !important;
+  width: 100% !important;
+  font-family: 'Cinzel', 'Noto Serif KR', serif !important;
+  font-weight: 700 !important;
+  font-size: 1.25rem !important;
+  line-height: 1.25 !important;
+  margin-bottom: 2px !important;
+}
+
+.slot-inner small {
+  display: block !important;
+  width: 100% !important;
+  font-family: 'Noto Sans KR', sans-serif !important;
+  font-size: 0.85rem !important;
+  line-height: 1.4 !important;
+  color: var(--muted) !important;
+}
+
+/* 인벤토리 SLOT 배지 디자인 - 마비노기풍 가죽/골드 느낌 강화 */
+.inventory-slot .slot-index {
+  display: inline-block !important;
+  background: #543b27 !important; /* 마비노기 브라운 가죽 */
+  color: #d4b074 !important; /* 선명한 골드 텍스트 */
+  border: 1px solid #967151 !important; /* 테두리 */
+  border-radius: 3px !important;
+  font-family: 'Cinzel', 'Noto Serif KR', serif !important;
+  font-weight: 700 !important;
+  padding: 2px 8px !important;
+  margin-bottom: 8px !important;
+  box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.1), 0 2px 4px rgba(0, 0, 0, 0.12) !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* 인벤토리 슬롯 내부 테두리 (.pixel-corners) 마비노기풍으로 변경 */
+.pixel-corners {
+  border: 1px solid rgba(179, 142, 75, 0.35) !important;
+  inset: 6px !important;
+  border-radius: 2px !important;
+}
+
+/* 호버 시 아케이드용 select-flash 애니메이션 비활성화 및 은은한 골드 강조 */
+.inventory-slot:hover .pixel-corners {
+  border-color: rgba(179, 142, 75, 0.75) !important;
+  background: rgba(179, 142, 75, 0.05) !important;
+  animation: none !important;
 }
 
