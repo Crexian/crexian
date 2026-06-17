@@ -296,11 +296,25 @@ function handleScroll() {
 handleScroll();
 window.addEventListener("scroll", handleScroll, { passive: true });
 
-// Scroll entry springy pop animations (highly sensitive threshold)
+// 스크롤 등장 애니메이션 — 관찰 대상 전체 확장
 const observerOptions = {
   threshold: 0.01,
   rootMargin: "0px 0px -10px 0px"
 };
+
+const ANIM_SELECTORS = [
+  ".preview-card",
+  ".proof-card",
+  ".track-panel",
+  ".steps article",
+  ".section-heading",
+  ".quest-item",
+  ".contact-heading",
+  ".contact-card",
+  ".history-item",
+  ".steam-monitor-panel",
+  ".footer-header",
+].join(", ");
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -311,8 +325,16 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-document.querySelectorAll(".preview-card, .proof-card, .track-panel, .steps article, .section-heading").forEach((el) => {
+document.querySelectorAll(ANIM_SELECTORS).forEach((el, index) => {
   el.classList.add("view-hidden");
+  // 같은 부모 안의 요소들은 순차적으로 등장
+  const siblings = el.parentElement
+    ? Array.from(el.parentElement.children).filter(c => c.classList.contains(el.classList[0]))
+    : [];
+  const siblingIndex = siblings.indexOf(el);
+  if (siblingIndex > 0) {
+    el.style.transitionDelay = `${siblingIndex * 80}ms`;
+  }
   observer.observe(el);
 });
 
