@@ -923,19 +923,11 @@ h3 {
   .lab-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 980px) {
-  /* 헤더 2열(brand | controls)으로 정리, arcade-hud는 헤더 안에 유지하되 크기 축소 */
+  /* 헤더: brand | controls 단일 행 유지를 위해 HUD 숨김 */
   .site-header { grid-template-columns: 1fr auto; }
   .site-nav { display: none; }
-  .arcade-hud {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    gap: 10px;
-    padding: 2px 10px;
-    font-size: 0.85em;
-  }
-  /* 헤더 단일단 높이(~80px) + 여유 40px */
+  .arcade-hud { display: none !important; }
+  /* 헤더 높이(~80px) + 여유 */
   .hero { padding-top: 120px; }
   .hero, .track-panel { grid-template-columns: 1fr; }
   .steps, .proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -950,9 +942,6 @@ h3 {
   }
 }
 @media (max-width: 640px) {
-  /* 모바일에서 arcade-hud 숨김 — 헤더가 2단으로 밀리는 문제 해결 */
-  .arcade-hud { display: none; }
-  /* 단일단 헤더 높이(~72px) + 여유 36px = 충분한 여백 확보 */
   .hero { min-height: auto; padding-top: 108px; }
   .hero-board, .steps, .proof-grid, .kpi-grid { grid-template-columns: 1fr; }
 }
