@@ -66,10 +66,21 @@ if (soundToggle) {
   });
 }
 
+// AudioContext Singleton — 브라우저 최대 6개 한도 대비, 매 호출마다 생성하지 않고 하나를 재사용합니다.
+let _audioCtx = null;
+function getAudioContext() {
+  if (!_audioCtx) {
+    _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  // 브라우저 정책(autoplay policy)으로 suspended 상태일 수 있으므로 resume 보장
+  if (_audioCtx.state === "suspended") _audioCtx.resume();
+  return _audioCtx;
+}
+
 function playSound(type) {
   if (!soundEnabled) return;
   try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const ctx = getAudioContext();
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
     osc.connect(gain);
@@ -148,40 +159,51 @@ document.addEventListener("click", (e) => {
   }
 }, true);
 
-// 3D Card Hover Tilt Parallax Effect
+// 3D Card Hover Tilt Parallax Effect — requestAnimationFrame으로 throttle하여 프레임 드랍 방지
 const tiltCards = document.querySelectorAll(".preview-card, .proof-card");
 tiltCards.forEach((card) => {
+  let tiltRafId = null;
+
   card.addEventListener("mousemove", (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    const xc = rect.width / 2;
-    const yc = rect.height / 2;
-    
-    const angleX = (yc - y) / 10;
-    const angleY = (x - xc) / 15;
-    
-    card.style.transform = `perspective(800px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1.03)`;
-    
-    const shadowX = -angleY * 1.5;
-    const shadowY = angleX * 1.5;
-    
-    let shadowColor = "var(--text)";
-    if (card.dataset.slotId === "reel") shadowColor = "var(--blue)";
-    else if (card.dataset.slotId === "campaign") shadowColor = "var(--cyan)";
-    else if (card.dataset.slotId === "ai") shadowColor = "var(--pink)";
-    else if (card.dataset.slotId === "tools") shadowColor = "var(--lime)";
-    else if (card.dataset.slotId === "thumbnails") shadowColor = "var(--gold)";
-    else if (card.classList.contains("accent")) shadowColor = "var(--pink)";
-    else if (card.dataset.focusCard === "reel") shadowColor = "var(--blue)";
-    else if (card.dataset.focusCard === "campaign") shadowColor = "var(--cyan)";
-    else if (card.dataset.focusCard === "pipeline") shadowColor = "var(--pink)";
-    
-    card.style.boxShadow = `${8 + shadowX}px ${8 + shadowY}px 0px ${shadowColor}`;
+    if (tiltRafId) return; // 이전 프레임 처리 중이면 새 이벤트 무시
+    tiltRafId = requestAnimationFrame(() => {
+      tiltRafId = null;
+
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const xc = rect.width / 2;
+      const yc = rect.height / 2;
+
+      const angleX = (yc - y) / 10;
+      const angleY = (x - xc) / 15;
+
+      card.style.transform = `perspective(800px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1.03)`;
+
+      const shadowX = -angleY * 1.5;
+      const shadowY = angleX * 1.5;
+
+      let shadowColor = "var(--text)";
+      if (card.dataset.slotId === "reel") shadowColor = "var(--blue)";
+      else if (card.dataset.slotId === "campaign") shadowColor = "var(--cyan)";
+      else if (card.dataset.slotId === "ai") shadowColor = "var(--pink)";
+      else if (card.dataset.slotId === "tools") shadowColor = "var(--lime)";
+      else if (card.dataset.slotId === "thumbnails") shadowColor = "var(--gold)";
+      else if (card.classList.contains("accent")) shadowColor = "var(--pink)";
+      else if (card.dataset.focusCard === "reel") shadowColor = "var(--blue)";
+      else if (card.dataset.focusCard === "campaign") shadowColor = "var(--cyan)";
+      else if (card.dataset.focusCard === "pipeline") shadowColor = "var(--pink)";
+
+      card.style.boxShadow = `${8 + shadowX}px ${8 + shadowY}px 0px ${shadowColor}`;
+    });
   });
-  
+
   card.addEventListener("mouseleave", () => {
+    if (tiltRafId) {
+      cancelAnimationFrame(tiltRafId);
+      tiltRafId = null;
+    }
     card.style.transform = "";
     card.style.boxShadow = "";
   });
@@ -208,10 +230,14 @@ const proofSection = document.getElementById("proof");
 const workflowSection = document.getElementById("workflow");
 const footerSection = document.querySelector(".site-footer");
 
+// DOM 캐싱 — 스크롤마다 querySelectorAll을 반복 호출하지 않도록 초기화 시 한 번만 조회
+const hudCredits = document.querySelector("[data-hud-credits]");
+const questItems = Array.from(document.querySelectorAll(".quest-item"));
+
 function updateHudStage() {
   if (!hudStage) return;
   const scrollY = window.scrollY + window.innerHeight / 3;
-  
+
   let currentStage = "01";
   if (footerSection && scrollY >= footerSection.offsetTop) {
     currentStage = "04";
@@ -220,11 +246,10 @@ function updateHudStage() {
   } else if (proofSection && scrollY >= proofSection.offsetTop) {
     currentStage = "02";
   }
-  
+
   hudStage.textContent = currentStage;
-  
+
   // Highlight active quest item in JRPG quest log on scroll
-  const questItems = document.querySelectorAll(".quest-item");
   if (questItems.length > 0) {
     questItems.forEach((item) => {
       const rect = item.getBoundingClientRect();
@@ -838,8 +863,9 @@ modalClose.addEventListener("click", closeModal);
 modal.addEventListener("click", (event) => {
   if (event.target === modal) closeModal();
 });
+// Escape 가드 — 모달이 열려 있을 때만 닫기 동작 실행 (불필요한 사운드 방지)
 window.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") closeModal();
+  if (event.key === "Escape" && modal.classList.contains("is-open")) closeModal();
 });
 
 // --- Retro Arcade Start Screen Logic ---
@@ -876,7 +902,12 @@ function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 }
-window.addEventListener("resize", resizeCanvas);
+// resize debounce — 리사이즈 이벤트 폭발 방지 (연속 이벤트 중 마지막 것만 처리)
+let _resizeDebounceId = null;
+window.addEventListener("resize", () => {
+  if (_resizeDebounceId) clearTimeout(_resizeDebounceId);
+  _resizeDebounceId = setTimeout(resizeCanvas, 150);
+});
 resizeCanvas();
 
 class Coin {
@@ -939,9 +970,8 @@ function spawnCoins(x, y, count = 8) {
   }
   playSound("coin");
   
-  // Increment credits in HUD!
+  // Increment credits in HUD! (hudCredits는 상단에서 캐싱된 변수 사용)
   totalCredits += count;
-  const hudCredits = document.querySelector("[data-hud-credits]");
   if (hudCredits) {
     hudCredits.textContent = String(totalCredits).padStart(2, '0');
   }

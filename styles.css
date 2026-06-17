@@ -394,7 +394,7 @@ h3 {
 .skill-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
 .skill-list li {
   border: 2px solid var(--text);
-  border-radius: 12px;
+  border-radius: 0px;
   padding: 14px 18px;
   background: var(--surface-2);
   backdrop-filter: var(--glass-blur);
@@ -1813,6 +1813,10 @@ body.start-active {
   font-size: 0.78rem;
   color: rgba(255, 255, 255, 0.4);
   font-weight: bold;
+}
+.footer-copyright-top {
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
 }
 
 @media (max-width: 980px) {
