@@ -3230,3 +3230,67 @@ body {
   box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.4), 0 2px 5px rgba(0, 0, 0, 0.08) !important;
 }
 
+/* 9. 서브컬처 게임 연대기 (Footer Card) 가독성 개선 및 양피지화 */
+.footer-card {
+  color: var(--text) !important;
+}
+
+.footer-card::before {
+  border: 1px solid rgba(179, 142, 75, 0.25) !important; /* 내경 골드 실선 */
+  inset: 12px !important;
+}
+
+.footer-kicker {
+  color: var(--pink) !important;
+  text-shadow: none !important;
+}
+
+.footer-title {
+  color: var(--text) !important;
+  text-shadow: none !important;
+}
+
+.footer-subtitle {
+  color: var(--muted) !important;
+}
+
+.history-item,
+.monitor-caption {
+  background: var(--surface-2) !important; /* 크림 골드 */
+  border: 1px solid rgba(179, 142, 75, 0.4) !important;
+  box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.35), 0 3px 8px rgba(54, 42, 33, 0.04) !important;
+  border-radius: 4px !important;
+}
+
+.history-item:hover {
+  border-color: var(--gold) !important;
+  box-shadow: 0 4px 12px rgba(179, 142, 75, 0.2) !important;
+  transform: translateY(-2px) !important;
+}
+
+.history-icon {
+  background: var(--surface) !important;
+  border: 1px solid rgba(179, 142, 75, 0.35) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04) !important;
+}
+
+.history-meta strong,
+.monitor-caption strong {
+  color: var(--text) !important;
+}
+
+.history-meta span,
+.monitor-caption small {
+  color: var(--muted) !important;
+}
+
+.monitor-caption span {
+  color: var(--blue) !important;
+}
+
+.footer-copyright {
+  border-top: 1px dashed var(--line) !important;
+  color: var(--muted) !important;
+}
+
