@@ -715,6 +715,62 @@ h3 {
   color: var(--text);
   font-weight: 800;
 }
+.campaign-overview-card {
+  background: var(--surface);
+  border: 2px solid var(--text);
+  padding: 16px;
+  border-radius: 0px;
+  box-shadow: inset 2px 2px 0px rgba(255, 255, 255, 0.1), 3px 3px 0px var(--text);
+  margin-top: 14px;
+}
+.overview-title {
+  font-family: 'Pixelify Sans', 'VT323', monospace;
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: var(--pink);
+  margin-bottom: 12px;
+  border-bottom: 2px dashed var(--text);
+  padding-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+.overview-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.ov-badge {
+  background: var(--blue);
+  color: var(--bg);
+  font-size: 0.72rem;
+  font-weight: 900;
+  padding: 2px 8px;
+  text-transform: uppercase;
+  border: 1px solid var(--text);
+  min-width: 60px;
+  text-align: center;
+  margin-top: 2px;
+}
+.ov-badge.accent {
+  background: var(--cyan);
+  color: var(--text);
+}
+.ov-text {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin: 0;
+  color: var(--text);
+  font-weight: 600;
+}
+.ov-text strong {
+  color: var(--blue);
+  font-weight: 800;
+}
 .campaign-tabs {
   display: flex;
   flex-wrap: wrap;

@@ -400,6 +400,20 @@ const slotTemplates = {
         </div>
       </div>
 
+      <div class="campaign-overview-card">
+        <div class="overview-title">👾 10초 핵심 오버뷰 (Executive Summary)</div>
+        <div class="overview-grid">
+          <div class="overview-item">
+            <div class="ov-badge">Concept</div>
+            <p class="ov-text">자율 코딩 AI(Antigravity)와 개발자 스트리머(똘똘똘이)의 <strong>'1인 자율 게임 개발 생중계 (믛죈26)'</strong></p>
+          </div>
+          <div class="overview-item">
+            <div class="ov-badge accent">Strategy</div>
+            <p class="ov-text">서브컬처 팬덤에 최적화된 테크 굿즈(티셔츠, 스티커) 리워드로 <strong>구글 클라우드 신규 Active 가입 유도</strong></p>
+          </div>
+        </div>
+      </div>
+
       <div class="campaign-tabs" role="tablist">
         <button type="button" class="campaign-tab active" data-tab-btn="1">기획 의도 & 요약</button>
         <button type="button" class="campaign-tab" data-tab-btn="2">분석 & 매칭</button>
