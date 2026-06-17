@@ -81,61 +81,43 @@ function playSound(type) {
   if (!soundEnabled) return;
   try {
     const ctx = getAudioContext();
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-
     const now = ctx.currentTime;
 
+    const playTone = (freq, typeStr, startTime, duration, startGain, endGain) => {
+      const osc = ctx.createOscillator();
+      const gainNode = ctx.createGain();
+      osc.type = typeStr;
+      osc.frequency.setValueAtTime(freq, startTime);
+      gainNode.gain.setValueAtTime(startGain, startTime);
+      gainNode.gain.exponentialRampToValueAtTime(endGain, startTime + duration);
+      osc.connect(gainNode);
+      gainNode.connect(ctx.destination);
+      osc.start(startTime);
+      osc.stop(startTime + duration + 0.02);
+    };
+
     if (type === "hover") {
-      osc.type = "sine";
-      osc.frequency.setValueAtTime(440, now);
-      osc.frequency.exponentialRampToValueAtTime(880, now + 0.08);
-      gain.gain.setValueAtTime(0.015, now);
-      gain.gain.linearRampToValueAtTime(0, now + 0.08);
-      osc.start(now);
-      osc.stop(now + 0.08);
+      playTone(987.77, "sine", now, 0.08, 0.015, 0.0001);
     } else if (type === "click") {
-      osc.type = "square";
-      osc.frequency.setValueAtTime(600, now);
-      osc.frequency.setValueAtTime(900, now + 0.05);
-      gain.gain.setValueAtTime(0.025, now);
-      gain.gain.linearRampToValueAtTime(0, now + 0.12);
-      osc.start(now);
-      osc.stop(now + 0.12);
+      playTone(523.25, "triangle", now, 0.12, 0.03, 0.0001);
     } else if (type === "open") {
-      osc.type = "square";
-      osc.frequency.setValueAtTime(987.77, now);
-      osc.frequency.setValueAtTime(1318.51, now + 0.08);
-      gain.gain.setValueAtTime(0.035, now);
-      gain.gain.linearRampToValueAtTime(0, now + 0.25);
-      osc.start(now);
-      osc.stop(now + 0.25);
+      const notes = [523.25, 659.25, 783.99, 1046.50];
+      notes.forEach((freq, idx) => {
+        playTone(freq, "sine", now + idx * 0.05, 0.25, 0.02, 0.0001);
+      });
     } else if (type === "close") {
-      osc.type = "sine";
-      osc.frequency.setValueAtTime(523.25, now);
-      osc.frequency.exponentialRampToValueAtTime(261.63, now + 0.15);
-      gain.gain.setValueAtTime(0.035, now);
-      gain.gain.linearRampToValueAtTime(0, now + 0.15);
-      osc.start(now);
-      osc.stop(now + 0.15);
+      const notes = [1046.50, 783.99, 659.25, 523.25];
+      notes.forEach((freq, idx) => {
+        playTone(freq, "sine", now + idx * 0.05, 0.2, 0.02, 0.0001);
+      });
     } else if (type === "powerup") {
-      osc.type = "triangle";
-      osc.frequency.setValueAtTime(300, now);
-      osc.frequency.exponentialRampToValueAtTime(1200, now + 0.3);
-      gain.gain.setValueAtTime(0.035, now);
-      gain.gain.linearRampToValueAtTime(0, now + 0.3);
-      osc.start(now);
-      osc.stop(now + 0.3);
+      const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98];
+      notes.forEach((freq, idx) => {
+        playTone(freq, "triangle", now + idx * 0.04, 0.35, 0.025, 0.0001);
+      });
     } else if (type === "coin") {
-      osc.type = "square";
-      osc.frequency.setValueAtTime(987.77, now);
-      osc.frequency.setValueAtTime(1318.51, now + 0.08);
-      gain.gain.setValueAtTime(0.05, now);
-      gain.gain.linearRampToValueAtTime(0, now + 0.35);
-      osc.start(now);
-      osc.stop(now + 0.35);
+      playTone(1046.50, "sine", now, 0.4, 0.03, 0.0001);
+      playTone(1318.51, "sine", now + 0.04, 0.35, 0.02, 0.0001);
     }
   } catch (e) {
     console.warn("Web Audio API blocked or not supported: ", e);
