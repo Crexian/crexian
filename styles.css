@@ -2963,10 +2963,11 @@ body {
 
 /* 2. 대기/시작 화면 (Start Screen) - JRPG 클래식 판타지 감성으로 리모델링 */
 .start-screen {
+  background-color: #1a130e !important; /* 캠프파이어 다크 브라운 */
   background-image: 
-    linear-gradient(rgba(54, 42, 33, 0.55), rgba(54, 42, 33, 0.75)), /* 다크 초콜릿 양피지 오버레이 */
-    url('ai_artwork.png') !important; /* AI 판타지 배경 */
-  background-size: cover !important;
+    radial-gradient(rgba(212, 176, 116, 0.07) 1.5px, transparent 1.5px),
+    linear-gradient(180deg, #2c1e15 0%, #150c07 100%) !important; /* 마비노기 로그인화면 느낌의 캠프파이어 그라디언트 */
+  background-size: 28px 28px, 100% 100% !important;
   background-position: center center !important;
 }
 
@@ -3219,10 +3220,13 @@ body {
   background-size: 8px 8px, 100% 100% !important;
 }
 
-.avatar-area img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  border-radius: 50% !important;
+.avatar-area {
+  background: #543b27 !important; /* 가죽 갈색 */
+  color: #d4b074 !important; /* 황금 문양 */
+  font-size: 2.3rem !important;
+  display: grid !important;
+  place-items: center !important;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.4), 0 2px 5px rgba(0, 0, 0, 0.08) !important;
 }
 
