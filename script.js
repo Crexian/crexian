@@ -97,27 +97,31 @@ function playSound(type) {
     };
 
     if (type === "hover") {
-      playTone(987.77, "sine", now, 0.08, 0.015, 0.0001);
+      playTone(1318.51, "sine", now, 0.15, 0.005, 0.0001); // E6, 아주 부드러운 차임벨
     } else if (type === "click") {
-      playTone(523.25, "triangle", now, 0.12, 0.03, 0.0001);
+      playTone(440.00, "triangle", now, 0.25, 0.01, 0.0001); // A4 harp pluck
+      playTone(659.25, "sine", now, 0.2, 0.006, 0.0001); // E5 soft ring
     } else if (type === "open") {
-      const notes = [523.25, 659.25, 783.99, 1046.50];
+      const notes = [261.63, 329.63, 392.00, 493.88]; // C4, E4, G4, B4 (C 메이저 7도 아르페지오)
       notes.forEach((freq, idx) => {
-        playTone(freq, "sine", now + idx * 0.05, 0.25, 0.02, 0.0001);
+        playTone(freq, "triangle", now + idx * 0.06, 0.45, 0.01, 0.0001);
       });
     } else if (type === "close") {
-      const notes = [1046.50, 783.99, 659.25, 523.25];
+      const notes = [493.88, 392.00, 329.63, 261.63]; // B4, G4, E4, C4
       notes.forEach((freq, idx) => {
-        playTone(freq, "sine", now + idx * 0.05, 0.2, 0.02, 0.0001);
+        playTone(freq, "triangle", now + idx * 0.05, 0.35, 0.008, 0.0001);
       });
     } else if (type === "powerup") {
-      const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98];
+      const notes = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25, 783.99, 880.00, 1046.50]; // 화려한 펜타토닉 스케일
       notes.forEach((freq, idx) => {
-        playTone(freq, "triangle", now + idx * 0.04, 0.35, 0.025, 0.0001);
+        const timeOffset = idx * 0.04;
+        const typeStr = idx % 2 === 0 ? "triangle" : "sine";
+        playTone(freq, typeStr, now + timeOffset, 0.5, 0.008, 0.0001);
       });
     } else if (type === "coin") {
-      playTone(1046.50, "sine", now, 0.4, 0.03, 0.0001);
-      playTone(1318.51, "sine", now + 0.04, 0.35, 0.02, 0.0001);
+      playTone(987.77, "sine", now, 0.3, 0.008, 0.0001); // B5
+      playTone(1318.51, "sine", now + 0.03, 0.35, 0.006, 0.0001); // E6
+      playTone(1567.98, "sine", now + 0.06, 0.4, 0.004, 0.0001); // G6
     }
   } catch (e) {
     console.warn("Web Audio API blocked or not supported: ", e);
@@ -1145,8 +1149,8 @@ class Coin {
     ctx.scale(Math.abs(Math.sin(this.rotation)), 1); // Simulate spin
     ctx.beginPath();
     ctx.arc(0, 0, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = "#ffd11a"; // Sunny Gold
-    ctx.strokeStyle = "#000000";
+    ctx.fillStyle = "#d4b074"; // Mabinogi gold
+    ctx.strokeStyle = "#543b27"; // Dark wood brown
     ctx.lineWidth = 1.5;
     ctx.fill();
     ctx.stroke();
@@ -1154,7 +1158,7 @@ class Coin {
     // Draw inner details (coin rim line)
     ctx.beginPath();
     ctx.arc(0, 0, this.radius * 0.5, 0, Math.PI * 2);
-    ctx.strokeStyle = "#000000";
+    ctx.strokeStyle = "#967151"; // Leather brown
     ctx.lineWidth = 0.8;
     ctx.stroke();
     ctx.restore();
