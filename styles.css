@@ -24,6 +24,7 @@
   --gold-glow: rgba(179, 142, 75, 0.35);
   --shadow: 0 4px 15px rgba(54, 42, 33, 0.07);
   --glass-blur: blur(14px);
+  --card-overlay: linear-gradient(to top, var(--surface) 30%, rgba(247, 241, 227, 0.4) 75%, rgba(247, 241, 227, 0.15) 100%);
 }
 
 [data-theme="dark"] {
@@ -44,6 +45,7 @@
   --gold: #d4b074;
   --gold-glow: rgba(212, 176, 116, 0.45);
   --shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  --card-overlay: linear-gradient(to top, var(--surface) 35%, rgba(46, 38, 31, 0.4) 75%, rgba(46, 38, 31, 0.2) 100%);
 }
 
 * { box-sizing: border-box; }
@@ -346,19 +348,21 @@ h3 {
 .preview-card.large {
   grid-row: span 2;
   min-height: 430px;
-  background:
-    linear-gradient(135deg, rgba(122, 66, 255, 0.12), transparent 45%),
-    repeating-linear-gradient(135deg, rgba(122, 66, 255, 0.02) 0 12px, transparent 12px 24px),
-    var(--surface);
 }
-[data-theme="dark"] .preview-card.large {
-  background:
-    linear-gradient(135deg, rgba(122, 66, 255, 0.2), transparent 45%),
-    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0 12px, transparent 12px 24px),
-    var(--surface);
+.preview-card[data-focus-card="campaign"] {
+  background-image: var(--card-overlay), url('ai_artwork.png');
+  background-size: cover;
+  background-position: center;
 }
-.preview-card.accent {
-  background: linear-gradient(135deg, rgba(255, 92, 155, 0.12), transparent 44%), var(--surface);
+.preview-card[data-focus-card="thumbnails"] {
+  background-image: var(--card-overlay), url('thumb_1.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.preview-card[data-focus-card="pipeline"] {
+  background-image: var(--card-overlay), url('ai_char_3.jpg');
+  background-size: cover;
+  background-position: center;
 }
 .preview-card.active-card {
   border-color: var(--blue);
