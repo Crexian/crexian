@@ -278,9 +278,10 @@ h1 {
   font-weight: 900;
 }
 #hero-title {
-  max-width: 20ch;
-  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  max-width: 24ch;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
   line-height: 1.25;
+  word-break: keep-all;
 }
 h2 {
   margin: 0;
@@ -2658,14 +2659,16 @@ body, p, ul, ol, li, input, button, textarea, table, td, th,
 .btn-text, .quest-desc, .contact-card-value, .quest-status, .slot-index, 
 .map-link-btn, .bar-label, .rpg-points-left, .rpg-points-left span, .rpg-points-left strong,
 .player-time, .footer-subtitle, .footer-copyright-top, .campaign-desc, .sim-help, .sim-control label,
-.contact-card-info span, .contact-card-info strong, .quest-desc, .hud-value, .eyebrow {
+.contact-card-info span, .contact-card-info strong, .quest-desc, .eyebrow,
+.rpg-levelup-msg, .monitor-caption span, .footer-copyright {
   font-family: 'Noto Sans KR', 'Inter', sans-serif !important;
   letter-spacing: -0.01em !important;
 }
 
 h1, h2, h3, h4, h5, h6, .brand-text, .panel-kicker, .card-label, .rpg-title, .rpg-class-name, .footer-kicker, .footer-title,
 .hud-label, .insert-coin-btn, .start-title, .blink-text, .quest-title, .char-class, .quest-subject, .brand, .tab-button, .button, .stat-card b,
-.preview-card strong, .proof-card strong, .modal-card strong, .modal-card h3 {
+.preview-card strong, .proof-card strong, .modal-card strong, .modal-card h3,
+.rpg-level, .rpg-stat-val, .contact-card-label, .hud-value {
   font-family: 'Cinzel', 'Noto Serif KR', serif !important;
   font-weight: 700 !important;
 }

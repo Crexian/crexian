@@ -166,18 +166,10 @@ tiltCards.forEach((card) => {
       const shadowX = -angleY * 1.5;
       const shadowY = angleX * 1.5;
 
-      let shadowColor = "var(--text)";
-      if (card.dataset.slotId === "reel") shadowColor = "var(--blue)";
-      else if (card.dataset.slotId === "campaign") shadowColor = "var(--cyan)";
-      else if (card.dataset.slotId === "ai") shadowColor = "var(--pink)";
-      else if (card.dataset.slotId === "tools") shadowColor = "var(--lime)";
-      else if (card.dataset.slotId === "thumbnails") shadowColor = "var(--gold)";
-      else if (card.classList.contains("accent")) shadowColor = "var(--pink)";
-      else if (card.dataset.focusCard === "reel") shadowColor = "var(--blue)";
-      else if (card.dataset.focusCard === "campaign") shadowColor = "var(--cyan)";
-      else if (card.dataset.focusCard === "pipeline") shadowColor = "var(--pink)";
-
-      card.style.boxShadow = `${8 + shadowX}px ${8 + shadowY}px 0px ${shadowColor}`;
+      // 마비노기 판타지 RPG 테마에 맞춰 그림자를 부드러운 골드 브라운 그림자로 동적 투영
+      const offsetFactor = 0.8;
+      const blurFactor = 15;
+      card.style.boxShadow = `${shadowX * offsetFactor}px ${8 + shadowY * offsetFactor}px ${blurFactor}px rgba(54, 42, 33, 0.15), 0 0 12px var(--gold-glow), inset 1.5px 1.5px 0px rgba(255, 255, 255, 0.35)`;
     });
   });
 
