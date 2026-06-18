@@ -355,19 +355,24 @@ h3 {
   text-align: left;
 }
 .celtic-divider {
+  display: flex;
+  align-items: center;
   width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
   margin: 16px 0;
-  position: relative;
+}
+.celtic-divider::before {
+  content: "";
+  flex: 1;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--gold) 100%);
 }
 .celtic-divider::after {
-  content: "⚜️";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--surface);
+  content: "";
+  flex: 1;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+}
+.celtic-divider span {
   padding: 0 10px;
   font-size: 0.95rem;
   color: var(--gold);
