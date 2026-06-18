@@ -26,9 +26,42 @@ themeToggle.addEventListener("click", () => {
 // Scroll event listener is consolidated below using requestAnimationFrame for performance.
 
 const focusData = {
-  campaign: { score: "88", mode: "캠페인 기획" },
-  pipeline: { score: "95", mode: "AI 비주얼" },
-  thumbnails: { score: "91", mode: "썸네일 디자인" },
+  campaign: {
+    score: "88",
+    mode: "캠페인 기획",
+    label: "캠페인 기획",
+    title: "마케팅 캠페인 제안서",
+    desc: "구글 클라우드 Antigravity 플랫폼 마케팅을 위해 개발자 스트리머 '똘똘똘이'와의 라이브 게임 개발 방송(\"믛죈26\") 및 한정판 테크 굿즈 리워드 배포를 제안하는 MCN 광고 기획안입니다.",
+    bullets: [
+      "<strong>주요 타겟:</strong> 2030 남성 IT/개발 매니아층 및 팬덤",
+      "<strong>실행 전략:</strong> 치지직 생방송 (1회) + 유튜브 하이라이트 (1편)",
+      "<strong>기대 효과:</strong> 신규 Active 유저 대거 유치 및 브랜드 친밀도 확보"
+    ]
+  },
+  thumbnails: {
+    score: "91",
+    mode: "썸네일 디자인",
+    label: "썸네일 디자인",
+    title: "게임 썸네일 디자인",
+    desc: "직접 기획하고 디자인한 게임 및 e스포츠 유튜브 썸네일 컬렉션입니다. 눈을 사로잡는 고가독성 타이포그래피와 레이아웃을 통해 높은 클릭률(CTR)을 유도합니다.",
+    bullets: [
+      "<strong>디자인 방향:</strong> 인게임 4분할 레이아웃 및 엠블럼 조화",
+      "<strong>실제 실적:</strong> DRX 주최 대항전 및 PMGC 스크림 중계 썸네일",
+      "<strong>사용 툴:</strong> Photoshop 및 Illustrator 그래픽 작업"
+    ]
+  },
+  pipeline: {
+    score: "95",
+    mode: "AI 비주얼",
+    label: "AI 이미지 실험",
+    title: "AI 비주얼 실험실",
+    desc: "Stable Diffusion (SDXL) 및 ComfyUI ControlNet 노드 파이프라인을 연동하여, 애니메이션 캐릭터의 컨셉아트 및 배경 일러스트 시안을 일관된 스타일로 생성하는 워크플로우를 정밀 제어한 실험 기록입니다.",
+    bullets: [
+      "<strong>핵심 기술:</strong> Pose/Depth ControlNet 및 IP-Adapter 적용",
+      "<strong>주요 결과:</strong> 정면/측면 턴어라운드 시트 및 12가지 표정 시트 생성",
+      "<strong>강점:</strong> 캐릭터 직업/의상 등의 일관적인 비주얼 컨셉 유지"
+    ]
+  }
 };
 
 const focusCards = Array.from(document.querySelectorAll("[data-focus-card]"));
@@ -40,7 +73,22 @@ focusCards.forEach((card) => {
     const focus = focusData[card.dataset.focusCard];
     heroScore.textContent = focus.score;
     heroMode.textContent = focus.mode;
+    
+    // Update active state on right cards
     focusCards.forEach((item) => item.classList.toggle("active-card", item === card));
+    
+    // Update detailed panel on the left
+    const detailLabel = document.querySelector("[data-hero-detail-label]");
+    const detailTitle = document.querySelector("[data-hero-detail-title]");
+    const detailDesc = document.querySelector("[data-hero-detail-desc]");
+    const detailBullets = document.querySelector("[data-hero-detail-bullets]");
+    
+    if (detailLabel) detailLabel.textContent = focus.label;
+    if (detailTitle) detailTitle.textContent = focus.title;
+    if (detailDesc) detailDesc.textContent = focus.desc;
+    if (detailBullets) {
+      detailBullets.innerHTML = focus.bullets.map(b => `<li>${b}</li>`).join("");
+    }
   });
 });
 

@@ -150,7 +150,23 @@
         </div>
 
         <div class="hero-board" aria-label="Portfolio preview board">
-          <button class="preview-card large active-card" type="button" data-focus-card="campaign">
+          <!-- Left: Detailed Monitor Panel (div, read-only) -->
+          <div class="preview-card large active-card" data-hero-detail-panel>
+            <span class="card-label" data-hero-detail-label>캠페인 기획</span>
+            <strong data-hero-detail-title>마케팅 캠페인 제안서</strong>
+            <p class="hero-detail-desc" data-hero-detail-desc>
+              구글 클라우드 Antigravity 플랫폼 마케팅을 위해 개발자 스트리머 '똘똘똘이'와의 라이브 게임 개발 방송("믛죈26") 및 한정판 테크 굿즈 리워드 배포를 제안하는 MCN 광고 기획안입니다.
+            </p>
+            <div class="celtic-divider" aria-hidden="true"></div>
+            <ul class="hero-detail-bullets" data-hero-detail-bullets>
+              <li><strong>주요 타겟:</strong> 2030 남성 IT/개발 매니아층 및 팬덤</li>
+              <li><strong>실행 전략:</strong> 치지직 생방송 (1회) + 유튜브 하이라이트 (1편)</li>
+              <li><strong>기대 효과:</strong> 신규 Active 유저 대거 유치 및 브랜드 친밀도 확보</li>
+            </ul>
+          </div>
+
+          <!-- Right: Selection Buttons -->
+          <button class="preview-card active-card" type="button" data-focus-card="campaign">
             <span class="card-label">캠페인 기획</span>
             <strong>마케팅 캠페인 제안서</strong>
             <small>Antigravity x 똘똘똘이 기획안</small>
@@ -160,11 +176,13 @@
             <strong>게임 썸네일 디자인</strong>
             <small>e스포츠 및 유튜브 썸네일 컬렉션</small>
           </button>
-          <button class="preview-card accent" type="button" data-focus-card="pipeline">
+          <button class="preview-card" type="button" data-focus-card="pipeline">
             <span class="card-label">AI 이미지 실험</span>
             <strong>AI 비주얼 실험실</strong>
             <small>프롬프트 설계 및 4K 이미지 생성</small>
           </button>
+
+          <!-- Bottom: Stat Indicators -->
           <div class="stat-card">
             <b data-hero-score>88</b>
             <span>성장 잠재력 스코어</span>
