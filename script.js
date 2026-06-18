@@ -26,9 +26,9 @@ themeToggle.addEventListener("click", () => {
 // Scroll event listener is consolidated below using requestAnimationFrame for performance.
 
 const focusData = {
-  reel: { score: "92", mode: "영상 실험실" },
   campaign: { score: "88", mode: "캠페인 기획" },
   pipeline: { score: "95", mode: "AI 비주얼" },
+  thumbnails: { score: "91", mode: "썸네일 디자인" },
 };
 
 const focusCards = Array.from(document.querySelectorAll("[data-focus-card]"));
@@ -323,37 +323,6 @@ const modalClose = document.querySelector("[data-modal-close]");
 const proofCards = Array.from(document.querySelectorAll("[data-slot-id]"));
 
 const slotTemplates = {
-  reel: `
-    <div class="mock-player">
-      <div class="player-screen">
-        <div class="player-overlay">
-          <button type="button" class="play-trigger" data-player-btn aria-label="재생">
-            <svg class="play-icon" viewBox="0 0 24 24" width="32" height="32"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
-            <svg class="pause-icon" viewBox="0 0 24 24" width="32" height="32" style="display:none;"><path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-          </button>
-          <span class="player-status-text">재생 버튼을 누르면 영상 편집 실험 재생 시뮬레이션이 실행됩니다.</span>
-        </div>
-        <div class="player-visualizer">
-          <div class="vis-bar"></div>
-          <div class="vis-bar"></div>
-          <div class="vis-bar"></div>
-          <div class="vis-bar"></div>
-          <div class="vis-bar"></div>
-          <div class="vis-bar"></div>
-          <div class="vis-bar"></div>
-        </div>
-      </div>
-      <div class="player-controls">
-        <span class="player-time" data-player-time>00:00 / 00:45</span>
-        <div class="player-progress-track">
-          <div class="player-progress-bar" data-player-progress style="width: 0%"></div>
-        </div>
-      </div>
-    </div>
-    <div class="reel-description">
-      <p><strong>주요 구성</strong>: 인게임 연출 및 컷편집, AI 일러스트 기반 모션 그래픽, 주요 패치노트 요약 썸네일 기획 등 개인적인 실험과 취미로 제작한 영상들의 요약본입니다.</p>
-    </div>
-  `,
   campaign: `
     <div class="modal-campaign-detail">
       <div class="campaign-header">
@@ -738,54 +707,6 @@ const slotTemplates = {
 let playerInterval = null;
 
 function setupModalInteractions(slotId) {
-  if (slotId === "reel") {
-    const playBtn = document.querySelector("[data-player-btn]");
-    const playIcon = document.querySelector(".play-icon");
-    const pauseIcon = document.querySelector(".pause-icon");
-    const statusText = document.querySelector(".player-status-text");
-    const progressBar = document.querySelector("[data-player-progress]");
-    const timeDisplay = document.querySelector("[data-player-time]");
-    const visualizer = document.querySelector(".player-visualizer");
-    
-    let isPlaying = false;
-    let currentSeconds = 0;
-    const totalSeconds = 45;
-    
-    playBtn.addEventListener("click", () => {
-      isPlaying = !isPlaying;
-      if (isPlaying) {
-        playIcon.style.display = "none";
-        pauseIcon.style.display = "block";
-        statusText.textContent = "가상 쇼릴을 재생 중입니다...";
-        visualizer.classList.add("is-playing");
-        
-        playerInterval = setInterval(() => {
-          currentSeconds += 1;
-          if (currentSeconds > totalSeconds) {
-            currentSeconds = 0;
-            isPlaying = false;
-            clearInterval(playerInterval);
-            playIcon.style.display = "block";
-            pauseIcon.style.display = "none";
-            statusText.textContent = "쇼릴 재생이 완료되었습니다.";
-            visualizer.classList.remove("is-playing");
-          }
-          const pct = (currentSeconds / totalSeconds) * 100;
-          progressBar.style.width = `${pct}%`;
-          const min = String(Math.floor(currentSeconds / 60)).padStart(2, '0');
-          const sec = String(currentSeconds % 60).padStart(2, '0');
-          timeDisplay.textContent = `${min}:${sec} / 00:45`;
-        }, 1000);
-      } else {
-        clearInterval(playerInterval);
-        playIcon.style.display = "block";
-        pauseIcon.style.display = "none";
-        statusText.textContent = "쇼릴 재생이 일시 정지되었습니다.";
-        visualizer.classList.remove("is-playing");
-      }
-    });
-  }
-  
   if (slotId === "thumbnails") {
     const mainImg = document.querySelector("[data-thumb-main]");
     const titleEl = document.querySelector("[data-thumb-title]");
