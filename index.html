@@ -14,7 +14,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@400;500;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=3.2.1">
+    <link rel="preload" as="image" href="hero-archive.webp">
+    <link rel="stylesheet" href="styles.css?v=3.3.0">
   </head>
   <body class="start-active">
 
@@ -78,6 +79,26 @@
     </header>
 
     <main id="top">
+      <section class="featured-hero" aria-labelledby="featured-title">
+        <img class="featured-hero-img" src="hero-archive.webp" alt="밝은 학원형 아카이브 공간에서 디지털 태블릿을 들고 포트폴리오 자료를 정리하는 크리에이티브 플래너">
+        <div class="featured-hero-shade" aria-hidden="true"></div>
+        <div class="featured-hero-copy">
+          <span class="system-chip">SCHALE ARCHIVE / FILE 01</span>
+          <h1 id="featured-title">Digital Media Portfolio</h1>
+          <p>게임, MCN, AI 콘텐츠를 하나의 미션 파일처럼 정리한 크리에이티브 기획 포트폴리오입니다.</p>
+          <div class="featured-tags" aria-label="핵심 역량">
+            <span>Campaign Planning</span>
+            <span>AI Workflow</span>
+            <span>Game Thumbnail</span>
+          </div>
+        </div>
+        <div class="featured-side-panel" aria-label="포트폴리오 요약">
+          <span>STATUS</span>
+          <strong>READY</strong>
+          <small>Updated v3.3.0</small>
+        </div>
+      </section>
+
       <!-- Schale archive overview -->
       <section class="player-status-section" aria-label="프로필 및 포트폴리오 요약">
         <div class="status-panel-grid">
@@ -398,6 +419,6 @@
       </div>
     </div>
 
-    <script src="script.js?v=3.2.1"></script>
+    <script src="script.js?v=3.3.0"></script>
   </body>
 </html>
