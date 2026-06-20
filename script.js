@@ -1107,18 +1107,37 @@ window.addEventListener("resize", () => {
 });
 resizeCanvas();
 
-class Coin {
+class CrystalParticle {
   constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.vx = (Math.random() - 0.5) * 8; // Horizontal velocity
-    this.vy = -Math.random() * 8 - 4;   // Upward velocity
-    this.gravity = 0.35;
-    this.radius = 7;
-    this.rotation = Math.random() * Math.PI;
-    this.rotationSpeed = Math.random() * 0.2 + 0.1;
-    this.bounce = 0.35;
+    this.vx = (Math.random() - 0.5) * 10; // Horizontal velocity
+    this.vy = -Math.random() * 8 - 4;    // Upward velocity
+    this.gravity = 0.3;
+    this.type = Math.random() > 0.45 ? "pyroxene" : "droplet"; // 청희석 보석 또는 아쿠아 물방울
+    
+    // Pyroxene 보석 크기
+    this.width = Math.random() * 5 + 4;
+    this.height = this.width * 1.5;
+    
+    // 물방울 크기
+    this.radius = Math.random() * 4 + 3;
+    
+    this.rotation = Math.random() * Math.PI * 2;
+    this.rotationSpeed = (Math.random() - 0.5) * 0.15;
+    this.bounce = 0.4;
     this.life = 100;
+    this.decay = Math.random() * 1.2 + 1.0;
+    
+    // 블루아카 청량한 색상셋 (아쿠아 블루, 스카이 블루, 세룰리안, 화이트 스타, 라이트 블루)
+    const colors = [
+      "rgba(51, 154, 240, 0.85)",  // #339af0
+      "rgba(34, 184, 207, 0.85)",  // #22b8cf
+      "rgba(116, 192, 252, 0.85)", // #74c0fc
+      "rgba(255, 255, 255, 0.95)", // White star
+      "rgba(165, 216, 255, 0.85)"  // Light blue
+    ];
+    this.color = colors[Math.floor(Math.random() * colors.length)];
   }
 
   update() {
@@ -1127,34 +1146,48 @@ class Coin {
     this.y += this.vy;
 
     // Bounce off bottom
-    if (this.y + this.radius > canvas.height) {
-      this.y = canvas.height - this.radius;
+    if (this.y > canvas.height) {
+      this.y = canvas.height;
       this.vy = -this.vy * this.bounce;
       this.vx *= 0.85; // Friction
     }
 
     this.rotation += this.rotationSpeed;
-    this.life -= 1.6;
+    this.life -= this.decay;
   }
 
   draw() {
     ctx.save();
     ctx.translate(this.x, this.y);
-    ctx.scale(Math.abs(Math.sin(this.rotation)), 1); // Simulate spin
-    ctx.beginPath();
-    ctx.arc(0, 0, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = "#d4b074"; // Mabinogi gold
-    ctx.strokeStyle = "#543b27"; // Dark wood brown
-    ctx.lineWidth = 1.5;
-    ctx.fill();
-    ctx.stroke();
+    ctx.rotate(this.rotation);
     
-    // Draw inner details (coin rim line)
-    ctx.beginPath();
-    ctx.arc(0, 0, this.radius * 0.5, 0, Math.PI * 2);
-    ctx.strokeStyle = "#967151"; // Leather brown
-    ctx.lineWidth = 0.8;
-    ctx.stroke();
+    ctx.shadowBlur = 6;
+    ctx.shadowColor = this.color;
+
+    if (this.type === "pyroxene") {
+      // 마름모꼴 청희석 보석 그리기
+      ctx.beginPath();
+      ctx.moveTo(0, -this.height);
+      ctx.lineTo(this.width, 0);
+      ctx.lineTo(0, this.height);
+      ctx.lineTo(-this.width, 0);
+      ctx.closePath();
+      ctx.fillStyle = this.color;
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.9)";
+      ctx.lineWidth = 1;
+      ctx.fill();
+      ctx.stroke();
+    } else {
+      // 반투명 아쿠아 물방울 그리기
+      ctx.beginPath();
+      ctx.arc(0, 0, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = this.color;
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.6)";
+      ctx.lineWidth = 0.8;
+      ctx.fill();
+      ctx.stroke();
+    }
+    
     ctx.restore();
   }
 }
@@ -1163,11 +1196,11 @@ let isAnimating = false;
 
 function spawnCoins(x, y, count = 8) {
   for (let i = 0; i < count; i++) {
-    coins.push(new Coin(x, y));
+    coins.push(new CrystalParticle(x, y));
   }
   playSound("coin");
   
-  // Increment credits in HUD! (hudCredits는 상단에서 캐싱된 변수 사용)
+  // Increment credits in HUD!
   totalCredits += count;
   if (hudCredits) {
     hudCredits.textContent = String(totalCredits).padStart(2, '0');
