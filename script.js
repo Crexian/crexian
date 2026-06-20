@@ -335,13 +335,15 @@ function handleScroll() {
 handleScroll();
 window.addEventListener("scroll", handleScroll, { passive: true });
 
-// 스크롤 등장 애니메이션 — 관찰 대상 전체 확장
+// 스크롤 등장 애니메이션 — 관찰 대상 전체 확장 및 3D 입체 순차 노출
 const observerOptions = {
-  threshold: 0.01,
-  rootMargin: "0px 0px -10px 0px"
+  threshold: 0.05,
+  rootMargin: "0px 0px -40px 0px"
 };
 
 const ANIM_SELECTORS = [
+  ".featured-hero",
+  ".status-panel-card",
   ".preview-card",
   ".proof-card",
   ".track-panel",
@@ -364,18 +366,52 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-document.querySelectorAll(ANIM_SELECTORS).forEach((el, index) => {
+// 그룹별 순차 등장 제어
+const parentGroupMap = new Map();
+
+document.querySelectorAll(ANIM_SELECTORS).forEach((el) => {
   el.classList.add("view-hidden");
-  // 같은 부모 안의 요소들은 순차적으로 등장
-  const siblings = el.parentElement
-    ? Array.from(el.parentElement.children).filter(c => c.classList.contains(el.classList[0]))
-    : [];
-  const siblingIndex = siblings.indexOf(el);
-  if (siblingIndex > 0) {
-    el.style.transitionDelay = `${siblingIndex * 80}ms`;
+  
+  const parent = el.parentElement || document.body;
+  if (!parentGroupMap.has(parent)) {
+    parentGroupMap.set(parent, []);
   }
+  parentGroupMap.get(parent).push(el);
+  
   observer.observe(el);
 });
+
+// 동일 부모 내의 카드들이 스크롤 진입 시 엇박자(90ms 간격)로 솟아오르게 함
+parentGroupMap.forEach((elements) => {
+  elements.forEach((el, index) => {
+    if (index > 0) {
+      el.style.transitionDelay = `${index * 90}ms`;
+    }
+  });
+});
+
+// --- Dynamic Scroll Velocity & 3D Tilt Effect ---
+let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+let scrollVelocity = 0;
+let scrollVelocityTimeout = null;
+
+window.addEventListener("scroll", () => {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const delta = scrollTop - lastScrollTop;
+  lastScrollTop = scrollTop;
+
+  // 스크롤 속도 계산 후 Skew 각도 환산
+  scrollVelocity = delta * 0.12;
+  // 과도한 뒤틀림 방지 (-7deg ~ 7deg 한계)
+  scrollVelocity = Math.max(-7, Math.min(7, scrollVelocity));
+
+  document.documentElement.style.setProperty("--scroll-velocity", `${scrollVelocity}deg`);
+
+  if (scrollVelocityTimeout) clearTimeout(scrollVelocityTimeout);
+  scrollVelocityTimeout = setTimeout(() => {
+    document.documentElement.style.setProperty("--scroll-velocity", "0deg");
+  }, 80);
+}, { passive: true });
 
 const modal = document.querySelector("[data-modal]");
 const modalTitle = document.querySelector("[data-modal-title]");
@@ -1075,11 +1111,15 @@ if (insertCoinBtn && startScreen) {
     const rect = insertCoinBtn.getBoundingClientRect();
     spawnCoins(rect.left + rect.width / 2, rect.top + rect.height / 2, 16);
     
-    // Animate start screen slide out after a short explosion delay
+    // 200ms: 시작 화면 3D 줌인 및 구름 돌입 애니메이션 가동
     setTimeout(() => {
       startScreen.classList.add("is-started");
-      document.body.classList.remove("start-active");
     }, 200);
+    
+    // 750ms: 구름 장막이 시야를 완전히 덮었을 때 메인 로비 강하/돌입 시작
+    setTimeout(() => {
+      document.body.classList.remove("start-active");
+    }, 750);
   });
 }
 
