@@ -1014,8 +1014,6 @@ function clearModalInteractions() {
   }
 }
 
-let scrollPosition = 0;
-
 function openModal(card) {
   const slotId = card.dataset.slotId;
   modalTitle.textContent = card.dataset.title;
@@ -1028,12 +1026,12 @@ function openModal(card) {
     modalBody.innerHTML = `<small data-modal-copy>${card.dataset.proofCopy || "상세 설명이 존재하지 않습니다."}</small>`;
   }
 
-  // 모바일 배경 스크롤 방지를 위한 스크롤 락
-  scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+  // 레이아웃 밀림 방지 및 뒷배경 스크롤 락
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
   document.body.style.overflow = "hidden";
-  document.body.style.position = "fixed";
-  document.body.style.top = `-${scrollPosition}px`;
-  document.body.style.width = "100%";
+  if (scrollbarWidth > 0) {
+    document.body.style.paddingRight = `${scrollbarWidth}px`;
+  }
 
   modal.classList.add("is-open");
   modal.setAttribute("aria-hidden", "false");
@@ -1046,12 +1044,9 @@ function openModal(card) {
 function closeModal() {
   clearModalInteractions();
   
-  // 스크롤 락 해제 및 원래 스크롤 위치 복원
+  // 스크롤 락 해제 (padding 및 overflow 원복)
   document.body.style.removeProperty("overflow");
-  document.body.style.removeProperty("position");
-  document.body.style.removeProperty("top");
-  document.body.style.removeProperty("width");
-  window.scrollTo(0, scrollPosition);
+  document.body.style.removeProperty("padding-right");
 
   modal.classList.remove("is-open");
   modal.setAttribute("aria-hidden", "true");
@@ -1237,6 +1232,12 @@ const keyVisuals = [
     kicker: "CAMPAIGN FILE",
     status: "PLANNING",
     alt: "밝은 학원형 전략실에서 캠페인 보드와 태블릿을 확인하는 여성 미디어 플래너"
+  },
+  {
+    src: "hero-archive-strategy.webp",
+    kicker: "STRATEGY BOARD",
+    status: "ANALYZING",
+    alt: "밝은 학원형 아카이브 공간에서 태블릿을 들고 전략 보드를 검토하는 남성 크리에이티브 플래너"
   },
   {
     src: "hero-archive-ai.webp",
