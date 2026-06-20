@@ -1470,7 +1470,12 @@ h3 {
   z-index: 21;
 }
 
-/* --- Retro Arcade Start Screen (첫페이지) --- .start-screen {
+/* --- Retro Arcade Start Screen (첫페이지) --- */
+body.start-active {
+  overflow: hidden;
+}
+
+.start-screen {
   position: fixed;
   inset: 0;
   z-index: 1000;
