@@ -4771,6 +4771,154 @@ main {
   background: linear-gradient(180deg, rgba(56, 174, 251, 0.04), transparent 72%) !important;
 }
 
+/* --- 샬레 감성의 상단 헤더 UI 데코레이션 --- */
+.site-header {
+  border-bottom: 1px solid rgba(56, 174, 251, 0.28) !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  box-shadow: 0 4px 30px rgba(24, 116, 186, 0.04) !important;
+  position: fixed !important;
+  z-index: 999 !important;
+}
+
+[data-theme="dark"] .site-header {
+  background: rgba(11, 22, 38, 0.75) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* 샬레 스타일 시스템 대시보드 HUD 고도화 */
+.arcade-hud {
+  background: rgba(236, 248, 255, 0.75) !important;
+  border: 1px solid rgba(76, 183, 255, 0.32) !important;
+  border-radius: 6px !important;
+  padding: 4px 16px !important;
+  display: flex !important;
+  gap: 16px !important;
+  box-shadow: inset 1px 1px 0px rgba(255,255,255,0.6) !important;
+}
+
+[data-theme="dark"] .arcade-hud {
+  background: rgba(16, 33, 58, 0.8) !important;
+  border-color: rgba(56, 174, 251, 0.2) !important;
+  box-shadow: none !important;
+}
+
+.hud-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.hud-label {
+  font-family: 'Rajdhani', sans-serif !important;
+  font-size: 0.65rem !important;
+  font-weight: 800 !important;
+  color: var(--muted) !important;
+  background: rgba(56, 174, 251, 0.12) !important;
+  padding: 1px 5px !important;
+  border-radius: 3px !important;
+  letter-spacing: 0.05em !important;
+}
+
+.hud-value {
+  font-family: 'Rajdhani', sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  color: var(--blue) !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* --- 아카이브 보드 카드를 "파일 폴더(Folder)" 스타일로 리디자인 --- */
+.inventory-slot {
+  position: relative !important;
+  margin-top: 24px !important; /* 폴더 탭을 위한 상단 마진 확보 */
+  border-top-left-radius: 0px !important; /* 폴더 탭과의 밀착을 위해 왼쪽 상단 반경 제거 */
+  border-top: 3px solid rgba(56, 174, 251, 0.55) !important;
+  transition: all 0.25s cubic-bezier(0.1, 0.8, 0.2, 1) !important;
+  overflow: visible !important; /* 가상 요소 탭이 밖으로 나와서 보일 수 있도록 설정 */
+}
+
+/* 폴더 탭 (Folder Tab) 귀퉁이 가상 요소 생성 */
+.inventory-slot::before {
+  position: absolute !important;
+  top: -21px !important;
+  left: -1px !important;
+  width: 128px !important;
+  height: 20px !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  border: 1px solid rgba(76, 183, 255, 0.22) !important;
+  border-bottom: none !important;
+  border-radius: 6px 12px 0 0 !important;
+  font-family: 'Rajdhani', sans-serif !important;
+  font-size: 0.62rem !important;
+  font-weight: 700;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  letter-spacing: 0.05em !important;
+  backdrop-filter: blur(18px) !important;
+  z-index: 10 !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 -2px 10px rgba(24, 116, 186, 0.02) !important;
+}
+
+[data-theme="dark"] .inventory-slot::before {
+  background: rgba(16, 33, 58, 0.7) !important;
+}
+
+/* 각 슬롯 데이터별 맞춤 폴더 탭 타이틀 */
+.inventory-slot[data-slot-id="campaign"]::before {
+  content: "DOC // CAMPAIGN" !important;
+  color: var(--blue) !important;
+}
+
+.inventory-slot.accent::before {
+  content: "LAB // VISUAL AI" !important;
+  color: rgba(250, 100, 140, 0.95) !important;
+  border-color: rgba(255, 143, 179, 0.3) !important;
+}
+
+.inventory-slot.cool::before {
+  content: "SYS // TOOL STATS" !important;
+  color: rgba(20, 201, 151, 0.95) !important;
+  border-color: rgba(121, 226, 212, 0.3) !important;
+}
+
+.inventory-slot.gaming::before {
+  content: "IMG // THUMBNAILS" !important;
+  color: rgba(45, 180, 255, 0.95) !important;
+  border-color: rgba(124, 207, 255, 0.35) !important;
+}
+
+/* 폴더 호버 시 인터랙션 고도화 */
+.inventory-slot:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 24px 50px rgba(24, 116, 186, 0.12) !important;
+}
+
+.inventory-slot:hover::before {
+  background: var(--blue) !important;
+  color: #fff !important;
+  border-color: var(--blue) !important;
+}
+
+.inventory-slot.accent:hover::before {
+  background: rgba(255, 92, 142, 0.9) !important;
+  color: #fff !important;
+  border-color: rgba(255, 92, 142, 0.9) !important;
+}
+
+.inventory-slot.cool:hover::before {
+  background: rgba(20, 201, 151, 0.9) !important;
+  color: #fff !important;
+  border-color: rgba(20, 201, 151, 0.9) !important;
+}
+
+.inventory-slot.gaming:hover::before {
+  background: rgba(45, 180, 255, 0.9) !important;
+  color: #fff !important;
+  border-color: rgba(45, 180, 255, 0.9) !important;
+}
+
 .scroll-progress {
   background: linear-gradient(90deg, var(--blue), var(--cyan), var(--pink)) !important;
 }
