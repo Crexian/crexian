@@ -4250,6 +4250,11 @@ main {
   background: linear-gradient(180deg, rgba(56, 174, 251, 0.04), transparent 72%) !important;
 }
 
+.ai-workflow-desc {
+  border-top: 1px solid rgba(76, 183, 255, 0.18) !important;
+  background: linear-gradient(180deg, rgba(56, 174, 251, 0.04), transparent 72%) !important;
+}
+
 .scroll-progress {
   background: linear-gradient(90deg, var(--blue), var(--cyan), var(--pink)) !important;
 }
