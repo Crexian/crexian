@@ -3400,14 +3400,18 @@ a:focus-visible {
   .modal-card {
     width: 100% !important;
     max-width: 100% !important;
+    height: 92vh !important;
     max-height: 92vh !important;
     border-radius: 20px 20px 0 0 !important;
     padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
     overflow: hidden !important;
   }
   .modal-body {
     padding: 18px !important;
     flex-grow: 1 !important;
+    flex-shrink: 1 !important;
     min-height: 0 !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
