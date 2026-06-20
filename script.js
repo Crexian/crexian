@@ -1036,6 +1036,8 @@ function clearModalInteractions() {
   }
 }
 
+let scrollPosition = 0;
+
 function openModal(card) {
   const slotId = card.dataset.slotId;
   modalTitle.textContent = card.dataset.title;
@@ -1048,6 +1050,13 @@ function openModal(card) {
     modalBody.innerHTML = `<small data-modal-copy>${card.dataset.proofCopy || "상세 설명이 존재하지 않습니다."}</small>`;
   }
 
+  // 모바일 배경 스크롤 방지를 위한 스크롤 락
+  scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+  document.body.style.overflow = "hidden";
+  document.body.style.position = "fixed";
+  document.body.style.top = `-${scrollPosition}px`;
+  document.body.style.width = "100%";
+
   modal.classList.add("is-open");
   modal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
@@ -1058,6 +1067,14 @@ function openModal(card) {
 
 function closeModal() {
   clearModalInteractions();
+  
+  // 스크롤 락 해제 및 원래 스크롤 위치 복원
+  document.body.style.removeProperty("overflow");
+  document.body.style.removeProperty("position");
+  document.body.style.removeProperty("top");
+  document.body.style.removeProperty("width");
+  window.scrollTo(0, scrollPosition);
+
   modal.classList.remove("is-open");
   modal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("modal-open");
