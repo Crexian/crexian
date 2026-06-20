@@ -1482,14 +1482,12 @@ body.start-active {
 /* 메인 로비 강하(Descend) 효과 */
 body.start-active .site-header {
   opacity: 0 !important;
-  filter: blur(15px) !important;
   transform: translateY(-40px) !important;
   pointer-events: none;
 }
 body.start-active main#top {
   opacity: 0 !important;
-  filter: blur(15px) !important;
-  transform: scale(1.08) translateY(25px) !important;
+  transform: scale(1.05) translateY(25px) !important;
   pointer-events: none;
 }
 
@@ -1498,21 +1496,18 @@ body.start-active main#top {
               background 250ms ease, 
               border-color 250ms ease,
               opacity 1200ms cubic-bezier(0.16, 1, 0.3, 1),
-              filter 1200ms cubic-bezier(0.16, 1, 0.3, 1),
               transform 1200ms cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 main#top {
   transition: opacity 1400ms cubic-bezier(0.16, 1, 0.3, 1),
-              filter 1400ms cubic-bezier(0.16, 1, 0.3, 1),
               transform 1400ms cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
 }
 
 body:not(.start-active) .site-header,
 body:not(.start-active) main#top {
   opacity: 1 !important;
-  filter: blur(0) !important;
   transform: scale(1) translateY(0) !important;
   pointer-events: auto;
 }
@@ -1528,7 +1523,6 @@ body:not(.start-active) main#top {
   align-items: center;
   justify-content: center;
   transition: opacity 600ms ease;
-  mix-blend-mode: screen;
 }
 
 .start-screen:not(.is-started) .cloud-gate {
@@ -1540,8 +1534,14 @@ body:not(.start-active) main#top {
   width: 70vmax;
   height: 70vmax;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(212, 240, 255, 0.7) 40%, rgba(165, 223, 255, 0) 70%);
-  filter: blur(40px);
+  /* 블러 필터 없이도 아주 몽환적인 연무 질감을 표현할 수 있도록 알파 채널 계단식 처리 */
+  background: radial-gradient(circle, 
+    rgba(255, 255, 255, 0.62) 0%, 
+    rgba(242, 250, 255, 0.42) 28%, 
+    rgba(215, 240, 255, 0.16) 50%, 
+    rgba(255, 255, 255, 0) 70%
+  );
+  filter: blur(8px);
   opacity: 0;
   transform: scale(0.6) rotate(0deg);
   transition: transform 1600ms cubic-bezier(0.25, 1, 0.5, 1), 
@@ -1559,7 +1559,12 @@ body:not(.start-active) main#top {
   bottom: 10%;
   right: 10%;
   transition-delay: 150ms;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.98) 0%, rgba(188, 230, 255, 0.75) 45%, rgba(143, 215, 255, 0) 70%);
+  background: radial-gradient(circle, 
+    rgba(255, 255, 255, 0.68) 0%, 
+    rgba(230, 245, 255, 0.46) 32%, 
+    rgba(202, 234, 255, 0.18) 52%, 
+    rgba(255, 255, 255, 0) 70%
+  );
 }
 
 .cloud-3 {
@@ -1583,15 +1588,13 @@ body:not(.start-active) main#top {
   justify-content: center;
   padding: 24px;
   transition: transform 1400ms cubic-bezier(0.25, 1, 0.5, 1), 
-              opacity 1400ms cubic-bezier(0.25, 1, 0.5, 1), 
-              filter 1400ms cubic-bezier(0.25, 1, 0.5, 1);
+              opacity 1400ms cubic-bezier(0.25, 1, 0.5, 1);
   overflow: hidden;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
 }
 
 .start-screen.is-started {
-  transform: scale(2.5);
-  filter: blur(35px);
+  transform: scale(2);
   opacity: 0;
   pointer-events: none;
 }
