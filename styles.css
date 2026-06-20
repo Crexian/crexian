@@ -160,16 +160,17 @@ h1, h2, h3, h4, h5, h6, .brand, .tab-button, .button, .card-label, .panel-kicker
   gap: 24px;
   padding: 18px clamp(18px, 4vw, 56px);
   transition: padding 350ms cubic-bezier(0.1, 0.8, 0.2, 1), background 250ms ease, border-color 250ms ease;
-  background: #4a3525;
-  border-bottom: 3.5px solid var(--gold);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-  color: #faf6ee;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 4px 20px rgba(51, 154, 240, 0.06);
+  color: var(--text);
 }
 .site-header.is-scrolled {
   padding: 10px clamp(18px, 4vw, 56px);
   border-bottom: 1px solid var(--line);
-  background: color-mix(in srgb, var(--bg) 75%, transparent);
-  backdrop-filter: var(--glass-blur);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
 }
 .brand, .site-nav, .hero-actions, .tab-controls, .brief-header {
   display: flex;
@@ -2802,22 +2803,27 @@ body {
 
 /* 탭 네비게이션 단추 */
 .campaign-tab {
-  border: 1.5px solid var(--gold);
+  border: 1px solid var(--line);
   font-weight: 700;
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
 }
 
 .campaign-tab.active {
-  background: var(--gold);
-  color: var(--bg);
-  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.15);
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
+  box-shadow: 0 4px 12px var(--blue-glow);
 }
 
-/* 아케이드 헤드업 디스플레이 -> 마비노기 깔끔한 정보 바 형태로 개편 */
+/* 아케이드 헤드업 디스플레이 -> 블루아카풍 클린 HUD */
 .arcade-hud {
-  background: var(--surface);
-  border: 2px solid var(--gold);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 15px rgba(51, 154, 240, 0.05);
+  border-radius: 8px;
   padding: 4px 14px;
 }
 
@@ -2826,72 +2832,71 @@ body {
 }
 
 .hud-value {
-  color: var(--gold);
+  color: var(--blue);
   text-shadow: none;
 }
 
 /* 플레이어 상태창 (HP/MP/Stamina) 3단 게이지 바 */
 .status-bar {
   height: 12px;
-  background: rgba(54, 42, 33, 0.08);
+  background: rgba(51, 154, 240, 0.08);
   border: 1px solid var(--line);
-  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
-  border-radius: 2px;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
 }
 
 .hp-bar .bar-fill {
-  background: #d9453b;
+  background: #ff8787;
 }
 
 .mp-bar .bar-fill {
-  background: #2f7cf6;
+  background: #4dabf7;
 }
 
 .stamina-bar .bar-fill {
-  background: #eab308;
+  background: #ffd43b;
 }
 
 /* 캐릭터 정보창 타이틀바 */
 .status-panel-card .panel-header {
-  background: var(--surface-2);
-  color: var(--text);
-  border-bottom: 2.5px solid var(--gold);
-  font-weight: 700;
+  background: rgba(235, 245, 255, 0.85);
+  color: var(--blue);
+  border-bottom: 1px solid var(--line);
+  font-weight: 800;
 }
 
 /* 동글 동글한 캐릭터 프레임 */
 .avatar-area {
-  background: var(--surface-2);
-  border: 2px solid var(--gold);
+  background: radial-gradient(circle, var(--blue-glow) 0%, var(--surface-2) 100%);
+  border: 2px solid var(--blue);
   border-radius: 50%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px var(--blue-glow);
 }
 
-/* 버튼: 마비노기 특유의 우든 골드/브라운 톤앤매너 */
+/* 버튼: 블루아카풍 청량한 아쿠아 블루 톤앤매너 */
 .button.primary, .insert-coin-btn {
-  background: #967151;
-  /* 마비노기 스타일 브라운 가죽 톤 */
+  background: var(--blue);
   color: #fff;
-  border: 2px solid #543b27;
-  border-radius: 2px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.12);
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--blue-glow);
+  text-shadow: none;
   font-weight: 750;
   transition: all 0.2s ease;
 }
 
 .button.primary:hover, .insert-coin-btn:hover {
-  background: #b58d68;
+  background: #228be6;
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.18);
+  box-shadow: 0 8px 20px var(--blue-glow);
 }
 
 .button.secondary {
   background: var(--surface);
   color: var(--text);
-  border: 2px solid var(--gold);
-  box-shadow: 0 3px 6px rgba(0,0,0,0.04);
-  border-radius: 2px;
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+  border-radius: 8px;
   font-weight: 750;
 }
 
@@ -2900,10 +2905,10 @@ body {
   transform: translateY(-2px);
 }
 
-/* 모달 양피지 감성으로 업그레이드 */
+/* 모달 블루아카 감성으로 업그레이드 */
 .modal {
-  background: rgba(54, 42, 33, 0.35);
-  backdrop-filter: blur(8px);
+  background: rgba(11, 17, 30, 0.2);
+  backdrop-filter: blur(16px);
 }
 
 .modal-card {
@@ -2911,8 +2916,8 @@ body {
 }
 
 .modal-card [data-modal-title] {
-  border-bottom: 2.5px solid var(--gold);
-  color: var(--text);
+  border-bottom: 1px solid var(--line);
+  color: var(--blue);
   padding-bottom: 8px;
 }
 
@@ -2923,32 +2928,32 @@ body {
 
 .map-link-btn:hover {
   background: var(--surface-2);
-  border-color: var(--gold);
-  border-radius: 2px;
+  border-color: var(--line);
+  border-radius: 6px;
 }
 
 .map-link-btn.highlight {
-  color: var(--pink);
-  background: rgba(184, 65, 48, 0.08);
-  border: 1px solid rgba(184, 65, 48, 0.2);
-  border-radius: 2px;
+  color: var(--blue);
+  background: rgba(51, 154, 240, 0.08);
+  border: 1px solid rgba(51, 154, 240, 0.2);
+  border-radius: 6px;
 }
 
 .map-link-btn.highlight:hover {
-  background: rgba(184, 65, 48, 0.15);
+  background: rgba(51, 154, 240, 0.15);
 }
 
-/* 스크롤바 골드 감성 */
+/* 스크롤바 블루아카 감성 */
 ::-webkit-scrollbar-thumb {
-  background: var(--gold);
-  border-radius: 0px;
+  background: var(--blue);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #967151;
+  background: #228be6;
 }
 
-/* 인벤토리 슬롯 레이아웃 및 마비노기 감성 스타일링 강화 */
+/* 인벤토리 슬롯 레이아웃 및 블루아카 감성 스타일링 강화 */
 .slot-inner {
   display: flex;
   flex-direction: column;
@@ -2960,7 +2965,7 @@ body {
 .slot-inner strong {
   display: block;
   width: 100%;
-  font-family: 'Cinzel', 'Noto Serif KR', serif;
+  font-family: 'Cinzel', 'Noto Sans KR', sans-serif;
   font-weight: 700;
   font-size: 1.25rem;
   line-height: 1.25;
@@ -2976,191 +2981,183 @@ body {
   color: var(--muted);
 }
 
-/* 인벤토리 SLOT 배지 디자인 - 마비노기풍 가죽/골드 느낌 강화 */
+/* 인벤토리 SLOT 배지 디자인 - 블루아카풍 가죽/골드 느낌 탈피 */
 .inventory-slot .slot-index {
   display: inline-block;
-  background: #543b27;
-  /* 마비노기 브라운 가죽 */
-  color: #d4b074;
-  /* 선명한 골드 텍스트 */
-  border: 1px solid #967151;
-  /* 테두리 */
-  border-radius: 3px;
-  font-family: 'Cinzel', 'Noto Serif KR', serif;
+  background: var(--blue-glow);
+  color: var(--blue);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-family: 'Cinzel', 'Noto Sans KR', sans-serif;
   font-weight: 700;
   padding: 2px 8px;
   margin-bottom: 8px;
-  box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.1), 0 2px 4px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 4px rgba(51, 154, 240, 0.08);
   letter-spacing: 0.05em;
 }
 
-/* 인벤토리 슬롯 내부 테두리 (.pixel-corners) 마비노기풍으로 변경 */
+/* 인벤토리 슬롯 내부 테두리 (.pixel-corners) 블루아카풍으로 변경 */
 .pixel-corners {
-  border: 1px solid rgba(179, 142, 75, 0.35);
+  border: 1px solid var(--line);
   inset: 6px;
-  border-radius: 2px;
+  border-radius: 8px;
 }
 
-/* 호버 시 아케이드용 select-flash 애니메이션 비활성화 및 은은한 골드 강조 */
+/* 호버 시 select-flash 애니메이션 비활성화 및 은은한 블루 강조 */
 .inventory-slot:hover .pixel-corners {
-  border-color: rgba(179, 142, 75, 0.75);
-  background: rgba(179, 142, 75, 0.05);
+  border-color: var(--blue);
+  background: var(--blue-glow);
   animation: none;
 }
 
 /* ==========================================================================
-   MABINOGI RPG STYLE POLISHING (마비노기 RPG 감성 비주얼 시스템 개편)
+   BLUE ARCHIVE STYLE POLISHING (블루 아카이브 감성 비주얼 시스템 개편)
    ========================================================================== */
 
-/* 1. 상단 사이트 헤더 다크 우드 및 골드 스타일 */
+/* 1. 상단 사이트 헤더 블루 아카이브 클린 앤 글래스모피즘 스타일 */
 .site-header {
-  background: #4a3525;
-  /* 마비노기 다크 우드 브라운 */
-  border-bottom: 3.5px solid var(--gold);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-  color: #faf6ee;
+  background: rgba(255, 255, 255, 0.65);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 4px 15px rgba(51, 154, 240, 0.05);
+  color: var(--text);
 }
 
 .site-header.is-scrolled {
-  background: #4a3525;
-  border-bottom: 3.5px solid var(--gold);
+  background: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid var(--line);
   padding: 10px clamp(18px, 4vw, 56px);
 }
 
 .brand-text {
-  color: #d4b074;
-  /* 골드 */
-  font-family: 'Cinzel', 'Noto Serif KR', serif;
-  font-weight: 700;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  color: var(--blue);
+  font-family: 'Cinzel', 'Noto Sans KR', sans-serif;
+  font-weight: 800;
+  text-shadow: none;
 }
 
 .brand-mark {
-  background: #d4b074;
-  /* 골드 */
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-  border: 1px solid #967151;
+  background: var(--blue);
+  box-shadow: 0 2px 6px var(--blue-glow);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .site-nav a {
-  color: #e6c89c;
-  /* 부드러운 양피지 골드 */
-  font-family: 'Cinzel', 'Noto Serif KR', serif;
+  color: var(--muted);
+  font-family: 'Cinzel', 'Noto Sans KR', sans-serif;
   font-weight: 700;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  text-shadow: none;
   transition: all 0.2s ease;
 }
 
 .site-nav a:hover {
-  color: #faf6ee;
-  text-shadow: 0 0 8px rgba(212, 176, 116, 0.6);
+  color: var(--blue);
+  text-shadow: none;
 }
 
 .site-nav a::after {
-  background: #d4b074;
+  background: var(--blue);
 }
 
-/* 2. 대기/시작 화면 (Start Screen) - JRPG 클래식 판타지 감성으로 리모델링 */
+/* 2. 대기/시작 화면 (Start Screen) - 블루아카 청량한 모던 SF 학원물 테마 */
 .start-screen {
-  background-color: #1a130e;
-  /* 캠프파이어 다크 브라운 */
-  background-image: radial-gradient(rgba(212, 176, 116, 0.07) 1.5px, transparent 1.5px),
-    linear-gradient(180deg, #2c1e15 0%, #150c07 100%);
-  /* 마비노기 로그인화면 느낌의 캠프파이어 그라디언트 */
-  background-size: 28px 28px, 100% 100%;
-  background-position: center center;
+  background-color: #e7f5ff;
+  background-image: 
+    linear-gradient(rgba(51, 154, 240, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(51, 154, 240, 0.05) 1px, transparent 1px),
+    linear-gradient(135deg, #74c0fc 0%, #e7f5ff 50%, #ffffff 100%);
+  background-size: 32px 32px, 32px 32px, 100% 100%;
 }
 
 .start-title {
-  color: #f7d070;
-  /* 선명한 리치 골드 */
-  font-family: 'Cinzel', 'Noto Serif KR', serif;
-  font-weight: 900;
-  text-shadow: 2px 2px 0px #362a21, 
-    4px 4px 15px rgba(54, 42, 33, 0.9);
-  animation: title-float 6s infinite alternate ease-in-out;
+  color: var(--text);
+  font-family: 'Cinzel', serif;
+  font-weight: 950;
+  text-shadow: 
+    0 0 10px rgba(51, 154, 240, 0.25),
+    0 0 20px rgba(51, 154, 240, 0.1),
+    2px 2px 0px rgba(255, 255, 255, 0.8);
+  animation: title-float 4s infinite alternate ease-in-out;
 }
 
 .start-subtitle {
-  color: #faf6ee;
-  font-family: 'Noto Serif KR', serif;
+  color: var(--muted);
+  font-family: 'Noto Sans KR', sans-serif;
   font-size: 1.15rem;
-  font-weight: 400;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  font-weight: 600;
+  text-shadow: none;
   letter-spacing: 0.02em;
 }
 
 .system-ready {
-  color: #e6c89c;
-  font-family: 'Cinzel', 'Noto Serif KR', serif;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(212, 176, 116, 0.3);
+  color: var(--blue);
+  font-family: 'Inter', sans-serif;
+  text-shadow: 0 0 8px rgba(51, 154, 240, 0.4);
+  border: 1px solid rgba(51, 154, 240, 0.3);
   padding: 4px 14px;
-  background: rgba(74, 53, 37, 0.75);
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 3px;
-  animation: none;
+  animation: start-pulse 1.5s infinite alternate ease-in-out;
 }
 
 .insert-coin-btn {
-  background: #543b27;
-  /* 가죽 갈색 */
-  color: #faf6ee;
-  border: 2.5px solid #d4b074;
-  /* 골드 보더 */
-  border-radius: 4px;
-  font-family: 'Cinzel', 'Noto Serif KR', serif;
-  font-size: 1.15rem;
-  padding: 12px 48px;
-  box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.15),
-    0 4px 15px rgba(0, 0, 0, 0.45);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  transition: all 0.2s ease;
+  background: var(--blue);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 14px;
+  min-height: 60px;
+  padding: 0 48px;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 850;
+  box-shadow: 
+    0 8px 24px rgba(51, 154, 240, 0.35),
+    inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  text-shadow: none;
+  transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
 }
 
 .insert-coin-btn:hover {
-  background: #75553b;
-  border-color: #ffcc66;
+  background: #228be6;
+  border-color: rgba(255, 255, 255, 0.8);
   transform: translateY(-2px);
-  box-shadow: 0 0 15px rgba(212, 176, 116, 0.4),
-    0 6px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 
+    0 12px 30px rgba(51, 154, 240, 0.45),
+    inset 0 2px 4px rgba(255, 255, 255, 0.2);
 }
 
 .start-hint {
-  color: rgba(250, 246, 238, 0.6);
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  color: var(--muted);
+  text-shadow: none;
   font-family: 'Noto Sans KR', sans-serif;
 }
 
 /* 3. 영웅 보드 액티브 카드 하이라이트 기능 복구 */
 .preview-card.active-card {
-  border-color: #ffcc66;
+  border-color: var(--blue);
   transform: translateY(-6px);
-  box-shadow: 0 0 20px rgba(212, 176, 116, 0.65), 
-    0 8px 24px rgba(54, 42, 33, 0.22);
+  box-shadow: 0 8px 30px var(--blue-glow);
   background: var(--surface-2);
 }
 
-/* 4. 캐릭터 정보창 및 퀘스트창 헤더 마비노기 타이틀바로 리뉴얼 */
+/* 4. 캐릭터 정보창 및 퀘스트창 헤더 블루아카 청량 디자인으로 리뉴얼 */
 .status-panel-card .panel-header,
 .jrpg-quest-container .panel-header {
-  background: #4a3525;
-  /* 우드 브라운 */
-  color: #faf6ee;
-  border-bottom: 2px solid var(--gold);
+  background: rgba(235, 245, 255, 0.85);
+  color: var(--blue);
+  border-bottom: 1px solid var(--line);
   padding: 10px 18px;
-  font-family: 'Cinzel', 'Noto Serif KR', serif;
-  font-weight: 700;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-  border-radius: 2px 2px 0 0;
+  font-family: 'Cinzel', 'Noto Sans KR', sans-serif;
+  font-weight: 800;
+  text-shadow: none;
+  border-radius: 12px 12px 0 0;
 }
 
 .status-panel-card .panel-header .panel-tag,
 .jrpg-quest-container .panel-header .panel-tag {
-  color: #d4b074;
-  /* 골드 */
+  color: var(--blue);
   font-size: 0.85rem;
   letter-spacing: 0.08em;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .jrpg-quest-container {
@@ -3175,22 +3172,22 @@ body {
 /* 5. 퀘스트 로그 리스트 정제 및 선택기 화살표 개선 */
 .quest-item:hover,
 .quest-item.active-stage {
-  border-color: var(--gold);
-  background: rgba(179, 142, 75, 0.12);
+  border-color: var(--blue);
+  background: var(--blue-glow);
 }
 
 [data-theme="dark"] .quest-item:hover,
 [data-theme="dark"] .quest-item.active-stage {
-  background: rgba(212, 176, 116, 0.18);
+  background: rgba(77, 171, 247, 0.15);
 }
 
 .quest-pointer {
-  color: var(--gold);
+  color: var(--blue);
   font-size: 1.1rem;
   font-weight: bold;
 }
 
-/* 6. 모달 창 타이틀바 및 닫기 버튼 마비노기 윈도우 스타일 리포지셔닝 */
+/* 6. 모달 창 타이틀바 및 닫기 버튼 블루아카 클린 스타일 */
 .modal-card {
   padding: 0;
   overflow: hidden;
@@ -3199,14 +3196,14 @@ body {
 
 .modal-card [data-modal-title] {
   display: block;
-  background: #4a3525;
-  color: #d4b074;
-  border-bottom: 2px solid var(--gold);
+  background: rgba(235, 245, 255, 0.85);
+  color: var(--blue);
+  border-bottom: 1px solid var(--line);
   padding: 14px 24px;
-  font-family: 'Cinzel', 'Noto Serif KR', serif;
-  font-weight: 700;
+  font-family: 'Cinzel', 'Noto Sans KR', sans-serif;
+  font-weight: 800;
   font-size: 1.25rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  text-shadow: none;
   margin: 0;
   width: 100%;
 }
@@ -3224,62 +3221,60 @@ body {
   width: 28px;
   height: 28px;
   padding: 0;
-  background: #543b27;
-  /* 우드 브라운 */
-  color: #d4b074;
-  /* 골드 */
-  border: 1.5px solid #d4b074;
-  border-radius: 2px;
-  font-family: 'Cinzel', serif;
+  background: var(--surface-2);
+  color: var(--blue);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  font-family: 'Inter', sans-serif;
   font-size: 13px;
   font-weight: 700;
   display: grid;
   place-items: center;
-  box-shadow: inset 1px 1px 0px rgba(255,255,255,0.1), 0 2px 4px rgba(0,0,0,0.15);
+  box-shadow: none;
   cursor: pointer;
   text-shadow: none;
 }
 
 .modal-card .modal-close:hover {
-  background: #75553b;
-  border-color: #ffcc66;
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
   transform: scale(1.05);
 }
 
-/* 7. 스탯 분배 및 보드 컴포넌트 마비노기풍 비주얼화 */
+/* 7. 스탯 분배 및 보드 컴포넌트 블루아카 비주얼화 */
 .rpg-stat-row {
-  border: 1px solid rgba(179, 142, 75, 0.4);
+  border: 1px solid var(--line);
   background: var(--surface-2);
-  box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.35), 0 2px 6px rgba(54, 42, 33, 0.05);
+  box-shadow: none;
   padding: 10px 16px;
   margin-bottom: 4px;
 }
 
 .rpg-plus-btn {
-  background: #967151;
-  /* 가죽 브라운 */
-  color: #faf6ee;
-  border: 1.5px solid #543b27;
-  border-radius: 2px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-  font-family: 'Cinzel', 'Noto Serif KR', serif;
+  background: var(--blue);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  box-shadow: none;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
   font-weight: 700;
 }
 
 .rpg-plus-btn:hover:not(:disabled) {
-  background: #b58d68;
-  border-color: #543b27;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  background: #228be6;
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 3px 6px rgba(51, 154, 240, 0.2);
   transform: translateY(-1px);
 }
 
 .rpg-points-val {
   background: var(--surface-2);
-  color: var(--pink);
-  border: 1.5px solid var(--gold);
+  color: var(--blue);
+  border: 1px solid var(--line);
   border-radius: 3px;
-  box-shadow: inset 1px 1px 2px rgba(54, 42, 33, 0.08);
-  font-family: 'Cinzel', 'Noto Serif KR', serif;
+  box-shadow: none;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
   font-weight: 700;
   font-size: 1.15rem;
   padding: 2px 10px;
@@ -3288,9 +3283,9 @@ body {
 .rpg-reset-btn {
   background: var(--surface);
   color: var(--text);
-  border: 1.5px solid var(--gold);
-  border-radius: 2px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  box-shadow: none;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 700;
   transition: all 0.2s ease;
@@ -3299,10 +3294,10 @@ body {
 .rpg-reset-btn:hover {
   background: var(--surface-2);
   transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 8px rgba(51, 154, 240, 0.1);
 }
 
-/* 8. 양피지 종이 질감(Parchment Grain) 디테일 부여 */
+/* 8. 블루아카풍 클린 격자 및 텍스처 부여 */
 .preview-card, 
 .stat-card, 
 .proof-card, 
@@ -3317,37 +3312,33 @@ body {
 .sim-res-box, 
 .timeline-item,
 .jrpg-quest-container {
-  background: radial-gradient(rgba(54, 42, 33, 0.015) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%),
+  background: radial-gradient(rgba(51, 154, 240, 0.005) 1px, transparent 1px),
     var(--surface);
-  background-size: 8px 8px, 100% 100%;
+  background-size: 8px 8px;
 }
 
 .avatar-area {
-  background: #543b27;
-  /* 가죽 갈색 */
-  color: #d4b074;
-  /* 황금 문양 */
+  background: radial-gradient(circle, var(--blue-glow) 0%, var(--surface-2) 100%);
+  color: var(--blue);
   font-size: 2.3rem;
   display: grid;
   place-items: center;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-  box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.4), 0 2px 5px rgba(0, 0, 0, 0.08);
+  text-shadow: none;
+  box-shadow: 0 4px 12px var(--blue-glow);
 }
 
-/* 9. 서브컬처 게임 연대기 (Footer Card) 가독성 개선 및 양피지화 */
+/* 9. 서브컬처 게임 연대기 (Footer Card) 가독성 개선 */
 .footer-card {
   color: var(--text);
 }
 
 .footer-card::before {
-  border: 1px solid rgba(179, 142, 75, 0.25);
-  /* 내경 골드 실선 */
+  border: 1px solid var(--line);
   inset: 12px;
 }
 
 .footer-kicker {
-  color: var(--pink);
+  color: var(--blue);
   text-shadow: none;
 }
 
@@ -3363,23 +3354,22 @@ body {
 .history-item,
 .monitor-caption {
   background: var(--surface-2);
-  /* 크림 골드 */
-  border: 1px solid rgba(179, 142, 75, 0.4);
-  box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.35), 0 3px 8px rgba(54, 42, 33, 0.04);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
   border-radius: 4px;
 }
 
 .history-item:hover {
-  border-color: var(--gold);
-  box-shadow: 0 4px 12px rgba(179, 142, 75, 0.2);
+  border-color: var(--blue);
+  box-shadow: 0 4px 12px var(--blue-glow);
   transform: translateY(-2px);
 }
 
 .history-icon {
   background: var(--surface);
-  border: 1px solid rgba(179, 142, 75, 0.35);
+  border: 1px solid var(--line);
   border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  box-shadow: none;
 }
 
 .history-meta strong,
