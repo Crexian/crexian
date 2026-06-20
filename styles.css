@@ -2091,34 +2091,35 @@ body.start-active {
 }
 
 .history-item {
-  background: rgba(30, 38, 56, 0.5);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
   padding: 20px 24px;
   display: flex;
   gap: 18px;
   align-items: flex-start;
-  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
-  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+  transition: all 0.25s cubic-bezier(0.1, 0.8, 0.2, 1);
+  box-shadow: var(--shadow);
 }
 
 .history-item:hover {
   transform: translateY(-3px);
-  border-color: var(--pink);
-  box-shadow: 6px 6px 0px var(--pink);
+  border-color: var(--blue);
+  box-shadow: 0 8px 24px var(--blue-glow);
 }
 
 .history-icon {
-  font-size: 2rem;
-  background: rgba(0, 0, 0, 0.3);
+  font-size: 1.8rem;
+  background: rgba(56, 174, 251, 0.08);
   width: 52px;
   height: 52px;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--line);
   flex-shrink: 0;
+  color: var(--blue);
 }
 
 .history-meta {
@@ -2128,16 +2129,15 @@ body.start-active {
 }
 
 .history-meta strong {
-  font-size: 1.15rem;
-  font-weight: 900;
-  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text);
 }
 
 .history-meta span {
-  font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.9rem;
+  color: var(--muted);
   line-height: 1.5;
-  font-weight: 500;
 }
 
 .steam-monitor-panel {
@@ -2148,16 +2148,17 @@ body.start-active {
 }
 
 .monitor-frame {
-  background: #232731;
-  border: 3.5px double var(--gold);
-  border-radius: 20px;
+  background: #0b111e;
+  border: 1px solid var(--line);
+  border-radius: 16px;
   padding: 12px;
-  box-shadow: 0 4px 15px rgba(54, 42, 33, 0.07), inset 1.5px 1.5px 0px rgba(255, 255, 255, 0.3);
+  box-shadow: var(--shadow);
   position: relative;
   overflow: hidden;
-  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+  transition: all 0.25s cubic-bezier(0.1, 0.8, 0.2, 1);
 }
 
+/* 샬레 터미널 모니터의 푸른 주사선 필터 느낌 가미 */
 .monitor-frame::before {
   content: "";
   position: absolute;
@@ -2165,35 +2166,53 @@ body.start-active {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.15) 100%);
+  background: 
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.12) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.015), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.015));
+  background-size: 100% 4px, 6px 100%;
   pointer-events: none;
   z-index: 2;
 }
 
+/* 모니터 코너에 배치되는 크로스헤어 데코 */
+.monitor-frame::after {
+  content: "+";
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(56, 174, 251, 0.35);
+  pointer-events: none;
+  z-index: 3;
+}
+
 .monitor-screen {
-  border: 2px solid var(--text);
-  border-radius: 10px;
+  border: 1px solid rgba(56, 174, 251, 0.22);
+  border-radius: 8px;
   overflow: hidden;
   background: #000;
   aspect-ratio: 2.2 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .steam-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.85;
-  transition: opacity 300ms ease, transform 300ms ease;
-  filter: contrast(1.05) brightness(0.95);
+  opacity: 0.88;
+  transition: all 0.3s ease;
+  filter: contrast(1.02) brightness(0.98);
 }
 
 .monitor-frame:hover {
   transform: translateY(-3px);
-  border-color: var(--pink);
-  box-shadow: 8px 8px 0px var(--pink);
+  border-color: var(--blue);
+  box-shadow: 0 8px 30px var(--blue-glow);
 }
 
 .monitor-frame:hover .steam-img {
@@ -2203,35 +2222,34 @@ body.start-active {
 
 .monitor-caption {
   text-align: left;
-  background: rgba(30, 38, 56, 0.5);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
   padding: 18px 24px;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow);
 }
 
 .monitor-caption span {
-  font-family: monospace;
+  font-family: 'Rajdhani', sans-serif;
   font-size: 0.72rem;
-  color: var(--cyan);
+  color: var(--blue);
   font-weight: 800;
   letter-spacing: 0.1em;
 }
 
 .monitor-caption strong {
   font-size: 1.05rem;
-  font-weight: 900;
-  color: #fff;
+  font-weight: 800;
+  color: var(--text);
 }
 
 .monitor-caption small {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  color: var(--muted);
   line-height: 1.5;
-  font-weight: 600;
 }
 
 .footer-copyright {
