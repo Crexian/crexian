@@ -3931,6 +3931,19 @@ h1, h2, h3, h4, h5, h6,
   pointer-events: none !important;
 }
 
+.start-content::after {
+  content: "SYSTEM READY / ACCESS LEVEL 01" !important;
+  position: absolute !important;
+  left: clamp(22px, 4vw, 44px) !important;
+  bottom: 16px !important;
+  z-index: 3 !important;
+  color: rgba(22, 138, 211, 0.72) !important;
+  font-size: 0.64rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.12em !important;
+  pointer-events: none !important;
+}
+
 .start-header,
 .start-action-area {
   position: relative !important;
@@ -4024,13 +4037,26 @@ h1, h2, h3, h4, h5, h6,
 
 .system-ready {
   color: #168ad3 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 34px !important;
+  padding: 0 14px !important;
+  border: 1px solid rgba(56, 174, 251, 0.28) !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.68) !important;
+  box-shadow: 0 10px 24px rgba(56, 174, 251, 0.1) !important;
 }
 
 .start-title {
   color: #13233a !important;
-  font-size: clamp(2.6rem, 6.8vw, 6.4rem) !important;
-  font-weight: 900 !important;
-  line-height: 0.92 !important;
+  font-size: clamp(3rem, 7vw, 6.8rem) !important;
+  font-weight: 950 !important;
+  line-height: 0.88 !important;
+  max-width: 7ch !important;
+  margin-top: 24px !important;
+  margin-bottom: 20px !important;
+  text-transform: uppercase !important;
+  text-shadow: 0 10px 30px rgba(56, 174, 251, 0.18) !important;
 }
 
 .start-subtitle, .start-hint {
@@ -4040,6 +4066,35 @@ h1, h2, h3, h4, h5, h6,
   margin-right: auto !important;
   word-break: keep-all !important;
   overflow-wrap: break-word !important;
+}
+
+.start-subtitle {
+  margin-bottom: 20px !important;
+  color: #31455f !important;
+  font-size: clamp(1rem, 1.25vw, 1.14rem) !important;
+  line-height: 1.78 !important;
+  font-weight: 780 !important;
+}
+
+.start-dossier {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  margin-top: 18px !important;
+}
+
+.start-dossier span {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 30px !important;
+  padding: 0 10px !important;
+  border: 1px solid rgba(76, 183, 255, 0.24) !important;
+  border-radius: 999px !important;
+  background: rgba(236, 248, 255, 0.7) !important;
+  color: #168ad3 !important;
+  font-size: 0.72rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.06em !important;
 }
 
 main {
@@ -4653,6 +4708,10 @@ main {
     inset: 8px !important;
   }
 
+  .start-content::after {
+    display: none !important;
+  }
+
   .start-visual-bg {
     opacity: 0.22 !important;
     object-position: 62% center !important;
@@ -4731,9 +4790,20 @@ main {
   }
 
   .start-subtitle {
-    max-width: 240px !important;
+    max-width: 290px !important;
     font-size: 0.95rem !important;
     line-height: 1.75 !important;
+  }
+
+  .start-title {
+    max-width: 7ch !important;
+  }
+
+  .start-dossier {
+    justify-content: center !important;
+    max-width: 280px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
   .start-hint {
