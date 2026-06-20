@@ -1224,3 +1224,71 @@ mapLinks.forEach((btn) => {
   });
 });
 
+// --- Key Visual Card Deck ---
+const keyVisuals = [
+  {
+    src: "hero-archive.webp",
+    kicker: "PORTFOLIO LINK",
+    status: "STANDBY",
+    alt: "밝은 학원형 아카이브 공간에서 디지털 태블릿을 들고 포트폴리오 자료를 정리하는 여성 크리에이티브 플래너"
+  },
+  {
+    src: "hero-archive-campaign.webp",
+    kicker: "CAMPAIGN FILE",
+    status: "PLANNING",
+    alt: "밝은 학원형 전략실에서 캠페인 보드와 태블릿을 확인하는 여성 미디어 플래너"
+  },
+  {
+    src: "hero-archive-ai.webp",
+    kicker: "AI VISUAL LAB",
+    status: "RENDERING",
+    alt: "밝은 학원형 크리에이티브 랩에서 AI 비주얼 워크플로우를 검토하는 여성 플래너"
+  }
+];
+
+let keyVisualIndex = 0;
+const keyVisualCards = Array.from(document.querySelectorAll("[data-keyvisual-cycle]"));
+const keyVisualImages = Array.from(document.querySelectorAll("[data-keyvisual-image]"));
+const keyVisualKickers = Array.from(document.querySelectorAll("[data-keyvisual-kicker]"));
+const keyVisualStatuses = Array.from(document.querySelectorAll("[data-keyvisual-status]"));
+const keyVisualCounts = Array.from(document.querySelectorAll("[data-keyvisual-count]"));
+
+function renderKeyVisual() {
+  const visual = keyVisuals[keyVisualIndex];
+  const countText = `${String(keyVisualIndex + 1).padStart(2, "0")} / ${String(keyVisuals.length).padStart(2, "0")}`;
+
+  keyVisualImages.forEach((img) => {
+    img.src = visual.src;
+    if (!img.hasAttribute("aria-hidden")) {
+      img.alt = visual.alt;
+    }
+  });
+
+  keyVisualKickers.forEach((el) => { el.textContent = visual.kicker; });
+  keyVisualStatuses.forEach((el) => { el.textContent = visual.status; });
+  keyVisualCounts.forEach((el) => { el.textContent = countText; });
+}
+
+function cycleKeyVisual() {
+  keyVisualIndex = (keyVisualIndex + 1) % keyVisuals.length;
+  keyVisualCards.forEach((card) => {
+    card.classList.remove("is-switching");
+    // Force reflow so the swap animation restarts on rapid clicks.
+    void card.offsetWidth;
+    card.classList.add("is-switching");
+  });
+  renderKeyVisual();
+  playSound("open");
+}
+
+keyVisualCards.forEach((card) => {
+  card.addEventListener("click", cycleKeyVisual);
+  card.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      cycleKeyVisual();
+    }
+  });
+});
+
+renderKeyVisual();
