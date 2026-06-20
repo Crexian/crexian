@@ -26,9 +26,45 @@ themeToggle.addEventListener("click", () => {
 // Scroll event listener is consolidated below using requestAnimationFrame for performance.
 
 const focusData = {
-  reel: { score: "92", mode: "영상 실험실" },
-  campaign: { score: "88", mode: "캠페인 기획" },
-  pipeline: { score: "95", mode: "AI 비주얼" },
+  campaign: {
+    score: "88",
+    mode: "캠페인 기획",
+    label: "캠페인 기획",
+    title: "마케팅 캠페인 제안서",
+    desc: "구글 클라우드의 차세대 자율형 AI 에이전트 코딩 플랫폼인 'Antigravity'를 국내 IT/개발자 시장에 성공적으로 브랜딩하기 위해 기획된 실무 제안서입니다. 단순 일회성 노출 광고에서 벗어나 채널 특유의 서브컬처 팬덤과 방송 밈(Meme)을 기술의 특장점과 절묘하게 결합하는 마케팅 전략을 담고 있습니다. 과거 방송 중 발생한 AI 에러를 유쾌하게 소화했던 크리에이터 '똘똘똘이'와의 파트너십을 통해 높은 몰입도와 화제성을 보장합니다.",
+    bullets: [
+      "<strong>콘셉트 설정:</strong> AI가 스스로 빌드와 디버깅을 실행하는 과정을 '방관형 코딩 예능' 포맷으로 의인화하여 생중계(믛죈26) 진행",
+      "<strong>리워드 프로모션:</strong> 구글 클라우드 신규 Active 가입 유도를 위해 인챈트 MCN 자체 선투자로 특별 제작된 기념 전용 테크 굿즈(티셔츠 & 스티커 팩) 추첨 지급",
+      "<strong>위기 대응 계획:</strong> 라이브 특성상 불가피한 런타임 에러나 무한 루프 등의 돌발 상황을 시청자의 '훈수'와 '소통 개입'으로 유도하는 놀이 문화로 승화",
+      "<strong>채널 매칭 타겟:</strong> 전직 개발자 출신 스트리머의 팬덤층인 2030 IT/개발 매니아를 정밀 타겟팅하여 단순 클릭을 넘어 실제 가입 전환율(CTR) 극대화"
+    ]
+  },
+  thumbnails: {
+    score: "91",
+    mode: "썸네일 디자인",
+    label: "썸네일 디자인",
+    title: "게임 썸네일 디자인",
+    desc: "직접 기획하고 디자인한 e스포츠 및 게임 전문 유튜브 채널의 고가독성 썸네일 컬렉션입니다. 썸네일은 콘텐츠의 첫인상이자 클릭률(CTR)을 결정짓는 핵심 기획 에셋입니다. 인게임 뷰와 핵심 정보를 조화롭게 배치하는 레이아웃 구조와 모바일 화면에서도 뭉개지지 않고 선명하게 읽히는 타이포그래피 설계를 최우선으로 제작되었습니다.",
+    bullets: [
+      "<strong>레이아웃 최적화:</strong> e스포츠 대회의 브랜딩 톤앤매너에 맞춘 4분할 화면 구성 및 선수의 스탯 지표 리포트 카드 디자인 도입",
+      "<strong>시각적 계층 구조:</strong> 정보의 명확한 전달을 위한 타이포그래피 두께감 조절과 배틀그라운드 공식 엠블럼을 활용한 신뢰감 연출",
+      "<strong>실제 포트폴리오:</strong> 프로게임단 DRX 주최 클랜 대항전 및 PMGC 스크림 하이라이트 중계용 썸네일 등 현업 수준의 완성도 검증",
+      "<strong>제작 워크플로우:</strong> 포토샵 및 일러스트레이터를 활용한 벡터 그래픽 보정과 하이라이트 훈장/메달 3D 오브제 리터칭 작업 진행"
+    ]
+  },
+  pipeline: {
+    score: "95",
+    mode: "AI 비주얼",
+    label: "AI 이미지 실험",
+    title: "AI 비주얼 실험실",
+    desc: "생성형 AI 도구인 'Stable Diffusion (SDXL)'과 'ComfyUI' 노드 연동을 통해, 2D 애니메이션 캐릭터 및 복잡한 배경 일러스트의 비주얼 스타일 일관성(Consistency)을 정밀 제어한 기술 탐구 기록입니다. AI 이미지 생성 시 가장 해결하기 어려운 '일관된 화풍과 데생 형태 유지' 문제를 극복하기 위해 다중 ControlNet과 IP-Adapter 노드 파이프라인을 커스텀 설계했습니다.",
+    bullets: [
+      "<strong>일관성 제어 파이프라인:</strong> Pose 및 Depth ControlNet을 조합하여 동일 캐릭터의 정면/측면/배면 3D 모델링용 캐릭터 turn-around 시안을 정확하게 추출",
+      "<strong>감정 및 표정 시트:</strong> 캐릭터의 고유한 성격을 잃지 않으면서 슬픔, 기쁨, 당황 등 12가지 다른 감정의 페이셜 익스프레션을 단일 시트로 생성하는 노드 빌드",
+      "<strong>배경 및 오브제 합성:</strong> 수채화풍의 하늘, 뭉게구름, 그리고 비행 정비 격납고와 버스 등 복잡한 소품들을 캐릭터와 동일한 광원 및 채도로 블렌딩 렌더링",
+      "<strong>프로덕션 적용 가능성:</strong> 게임 제작 초기 단계의 컨셉 기획, 피규어 모델링 가이드 가안 및 서브컬처 일러스트 에셋 제작 속도를 비약적으로 향상"
+    ]
+  }
 };
 
 const focusCards = Array.from(document.querySelectorAll("[data-focus-card]"));
@@ -40,7 +76,22 @@ focusCards.forEach((card) => {
     const focus = focusData[card.dataset.focusCard];
     heroScore.textContent = focus.score;
     heroMode.textContent = focus.mode;
+    
+    // Update active state on right cards
     focusCards.forEach((item) => item.classList.toggle("active-card", item === card));
+    
+    // Update detailed panel on the left
+    const detailLabel = document.querySelector("[data-hero-detail-label]");
+    const detailTitle = document.querySelector("[data-hero-detail-title]");
+    const detailDesc = document.querySelector("[data-hero-detail-desc]");
+    const detailBullets = document.querySelector("[data-hero-detail-bullets]");
+    
+    if (detailLabel) detailLabel.textContent = focus.label;
+    if (detailTitle) detailTitle.textContent = focus.title;
+    if (detailDesc) detailDesc.textContent = focus.desc;
+    if (detailBullets) {
+      detailBullets.innerHTML = focus.bullets.map(b => `<li>${b}</li>`).join("");
+    }
   });
 });
 
@@ -97,27 +148,31 @@ function playSound(type) {
     };
 
     if (type === "hover") {
-      playTone(987.77, "sine", now, 0.08, 0.015, 0.0001);
+      playTone(1318.51, "sine", now, 0.15, 0.005, 0.0001); // E6, 아주 부드러운 차임벨
     } else if (type === "click") {
-      playTone(523.25, "triangle", now, 0.12, 0.03, 0.0001);
+      playTone(440.00, "triangle", now, 0.25, 0.01, 0.0001); // A4 harp pluck
+      playTone(659.25, "sine", now, 0.2, 0.006, 0.0001); // E5 soft ring
     } else if (type === "open") {
-      const notes = [523.25, 659.25, 783.99, 1046.50];
+      const notes = [261.63, 329.63, 392.00, 493.88]; // C4, E4, G4, B4 (C 메이저 7도 아르페지오)
       notes.forEach((freq, idx) => {
-        playTone(freq, "sine", now + idx * 0.05, 0.25, 0.02, 0.0001);
+        playTone(freq, "triangle", now + idx * 0.06, 0.45, 0.01, 0.0001);
       });
     } else if (type === "close") {
-      const notes = [1046.50, 783.99, 659.25, 523.25];
+      const notes = [493.88, 392.00, 329.63, 261.63]; // B4, G4, E4, C4
       notes.forEach((freq, idx) => {
-        playTone(freq, "sine", now + idx * 0.05, 0.2, 0.02, 0.0001);
+        playTone(freq, "triangle", now + idx * 0.05, 0.35, 0.008, 0.0001);
       });
     } else if (type === "powerup") {
-      const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98];
+      const notes = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25, 783.99, 880.00, 1046.50]; // 화려한 펜타토닉 스케일
       notes.forEach((freq, idx) => {
-        playTone(freq, "triangle", now + idx * 0.04, 0.35, 0.025, 0.0001);
+        const timeOffset = idx * 0.04;
+        const typeStr = idx % 2 === 0 ? "triangle" : "sine";
+        playTone(freq, typeStr, now + timeOffset, 0.5, 0.008, 0.0001);
       });
     } else if (type === "coin") {
-      playTone(1046.50, "sine", now, 0.4, 0.03, 0.0001);
-      playTone(1318.51, "sine", now + 0.04, 0.35, 0.02, 0.0001);
+      playTone(987.77, "sine", now, 0.3, 0.008, 0.0001); // B5
+      playTone(1318.51, "sine", now + 0.03, 0.35, 0.006, 0.0001); // E6
+      playTone(1567.98, "sine", now + 0.06, 0.4, 0.004, 0.0001); // G6
     }
   } catch (e) {
     console.warn("Web Audio API blocked or not supported: ", e);
@@ -166,18 +221,10 @@ tiltCards.forEach((card) => {
       const shadowX = -angleY * 1.5;
       const shadowY = angleX * 1.5;
 
-      let shadowColor = "var(--text)";
-      if (card.dataset.slotId === "reel") shadowColor = "var(--blue)";
-      else if (card.dataset.slotId === "campaign") shadowColor = "var(--cyan)";
-      else if (card.dataset.slotId === "ai") shadowColor = "var(--pink)";
-      else if (card.dataset.slotId === "tools") shadowColor = "var(--lime)";
-      else if (card.dataset.slotId === "thumbnails") shadowColor = "var(--gold)";
-      else if (card.classList.contains("accent")) shadowColor = "var(--pink)";
-      else if (card.dataset.focusCard === "reel") shadowColor = "var(--blue)";
-      else if (card.dataset.focusCard === "campaign") shadowColor = "var(--cyan)";
-      else if (card.dataset.focusCard === "pipeline") shadowColor = "var(--pink)";
-
-      card.style.boxShadow = `${8 + shadowX}px ${8 + shadowY}px 0px ${shadowColor}`;
+      // 마비노기 판타지 RPG 테마에 맞춰 그림자를 부드러운 골드 브라운 그림자로 동적 투영
+      const offsetFactor = 0.8;
+      const blurFactor = 15;
+      card.style.boxShadow = `${shadowX * offsetFactor}px ${8 + shadowY * offsetFactor}px ${blurFactor}px rgba(54, 42, 33, 0.15), 0 0 12px var(--gold-glow), inset 1.5px 1.5px 0px rgba(255, 255, 255, 0.35)`;
     });
   });
 
@@ -327,37 +374,6 @@ const modalClose = document.querySelector("[data-modal-close]");
 const proofCards = Array.from(document.querySelectorAll("[data-slot-id]"));
 
 const slotTemplates = {
-  reel: `
-    <div class="mock-player">
-      <div class="player-screen">
-        <div class="player-overlay">
-          <button type="button" class="play-trigger" data-player-btn aria-label="재생">
-            <svg class="play-icon" viewBox="0 0 24 24" width="32" height="32"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
-            <svg class="pause-icon" viewBox="0 0 24 24" width="32" height="32" style="display:none;"><path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-          </button>
-          <span class="player-status-text">재생 버튼을 누르면 영상 편집 실험 재생 시뮬레이션이 실행됩니다.</span>
-        </div>
-        <div class="player-visualizer">
-          <div class="vis-bar"></div>
-          <div class="vis-bar"></div>
-          <div class="vis-bar"></div>
-          <div class="vis-bar"></div>
-          <div class="vis-bar"></div>
-          <div class="vis-bar"></div>
-          <div class="vis-bar"></div>
-        </div>
-      </div>
-      <div class="player-controls">
-        <span class="player-time" data-player-time>00:00 / 00:45</span>
-        <div class="player-progress-track">
-          <div class="player-progress-bar" data-player-progress style="width: 0%"></div>
-        </div>
-      </div>
-    </div>
-    <div class="reel-description">
-      <p><strong>주요 구성</strong>: 인게임 연출 및 컷편집, AI 일러스트 기반 모션 그래픽, 주요 패치노트 요약 썸네일 기획 등 개인적인 실험과 취미로 제작한 영상들의 요약본입니다.</p>
-    </div>
-  `,
   campaign: `
     <div class="modal-campaign-detail">
       <div class="campaign-header">
@@ -742,54 +758,6 @@ const slotTemplates = {
 let playerInterval = null;
 
 function setupModalInteractions(slotId) {
-  if (slotId === "reel") {
-    const playBtn = document.querySelector("[data-player-btn]");
-    const playIcon = document.querySelector(".play-icon");
-    const pauseIcon = document.querySelector(".pause-icon");
-    const statusText = document.querySelector(".player-status-text");
-    const progressBar = document.querySelector("[data-player-progress]");
-    const timeDisplay = document.querySelector("[data-player-time]");
-    const visualizer = document.querySelector(".player-visualizer");
-    
-    let isPlaying = false;
-    let currentSeconds = 0;
-    const totalSeconds = 45;
-    
-    playBtn.addEventListener("click", () => {
-      isPlaying = !isPlaying;
-      if (isPlaying) {
-        playIcon.style.display = "none";
-        pauseIcon.style.display = "block";
-        statusText.textContent = "가상 쇼릴을 재생 중입니다...";
-        visualizer.classList.add("is-playing");
-        
-        playerInterval = setInterval(() => {
-          currentSeconds += 1;
-          if (currentSeconds > totalSeconds) {
-            currentSeconds = 0;
-            isPlaying = false;
-            clearInterval(playerInterval);
-            playIcon.style.display = "block";
-            pauseIcon.style.display = "none";
-            statusText.textContent = "쇼릴 재생이 완료되었습니다.";
-            visualizer.classList.remove("is-playing");
-          }
-          const pct = (currentSeconds / totalSeconds) * 100;
-          progressBar.style.width = `${pct}%`;
-          const min = String(Math.floor(currentSeconds / 60)).padStart(2, '0');
-          const sec = String(currentSeconds % 60).padStart(2, '0');
-          timeDisplay.textContent = `${min}:${sec} / 00:45`;
-        }, 1000);
-      } else {
-        clearInterval(playerInterval);
-        playIcon.style.display = "block";
-        pauseIcon.style.display = "none";
-        statusText.textContent = "쇼릴 재생이 일시 정지되었습니다.";
-        visualizer.classList.remove("is-playing");
-      }
-    });
-  }
-  
   if (slotId === "thumbnails") {
     const mainImg = document.querySelector("[data-thumb-main]");
     const titleEl = document.querySelector("[data-thumb-title]");
@@ -1170,8 +1138,8 @@ class Coin {
     ctx.scale(Math.abs(Math.sin(this.rotation)), 1); // Simulate spin
     ctx.beginPath();
     ctx.arc(0, 0, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = "#ffd11a"; // Sunny Gold
-    ctx.strokeStyle = "#000000";
+    ctx.fillStyle = "#d4b074"; // Mabinogi gold
+    ctx.strokeStyle = "#543b27"; // Dark wood brown
     ctx.lineWidth = 1.5;
     ctx.fill();
     ctx.stroke();
@@ -1179,7 +1147,7 @@ class Coin {
     // Draw inner details (coin rim line)
     ctx.beginPath();
     ctx.arc(0, 0, this.radius * 0.5, 0, Math.PI * 2);
-    ctx.strokeStyle = "#000000";
+    ctx.strokeStyle = "#967151"; // Leather brown
     ctx.lineWidth = 0.8;
     ctx.stroke();
     ctx.restore();

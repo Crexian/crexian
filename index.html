@@ -14,34 +14,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@400;500;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=2.0.3">
+    <link rel="stylesheet" href="styles.css?v=3.0.1">
   </head>
   <body class="start-active">
-    <!-- CRT screen scanline & curve vignette simulation -->
-    <div class="screen-vignette" aria-hidden="true"></div>
-    <div class="screen-scanlines" aria-hidden="true"></div>
+
 
     <!-- Mabinogi Style Fantasy Start Screen (첫페이지) -->
     <div class="start-screen" data-start-screen>
       <div class="start-content">
         <div class="start-header">
-          <span class="system-ready" style="font-family: 'Cinzel', serif !important;">SYSTEM ACTIVE v1.0.5</span>
-          <h1 class="start-title" style="font-family: 'Cinzel', serif !important;">DIGITAL MEDIA EXPLORER</h1>
+          <span class="system-ready">에린의 모험가 길드</span>
+          <h1 class="start-title">DIGITAL MEDIA EXPLORER</h1>
           <p class="start-subtitle">디지털 미디어 & 크리에이티브 탐구 포트폴리오</p>
         </div>
         <div class="start-action-area">
           <button type="button" class="insert-coin-btn" data-insert-coin>
-            <span class="blink-text">INSERT COIN & START GAME</span>
+            <span class="blink-text">여행을 시작하다</span>
           </button>
-          <p class="start-hint">버튼을 누르면 경쾌한 사운드와 함께 포트폴리오가 시작됩니다.</p>
+          <p class="start-hint">버튼을 누르면 모험이 시작됩니다.</p>
         </div>
       </div>
     </div>
 
-    <div class="blob-wrapper" data-blob-1><div class="glow-blob blob-1" aria-hidden="true"></div></div>
-    <div class="blob-wrapper" data-blob-2><div class="glow-blob blob-2" aria-hidden="true"></div></div>
-    <div class="blob-wrapper" data-blob-3><div class="glow-blob blob-3" aria-hidden="true"></div></div>
-    
     <header class="site-header" data-header>
       <a class="brand" href="#top" aria-label="Portfolio home">
         <span class="brand-mark"></span>
@@ -51,15 +45,15 @@
       <!-- Mabinogi Style heads-up display dashboard -->
       <div class="arcade-hud" aria-label="Game Stats Dashboard">
         <div class="hud-item score-box">
-          <span class="hud-label">1UP</span>
+          <span class="hud-label">EXP</span>
           <span class="hud-value" data-hud-score>000000</span>
         </div>
         <div class="hud-item stage-box">
-          <span class="hud-label">STAGE</span>
+          <span class="hud-label">CHAPTER</span>
           <span class="hud-value" data-hud-stage>01</span>
         </div>
         <div class="hud-item credits-box">
-          <span class="hud-label">COINS</span>
+          <span class="hud-label">GOLD</span>
           <span class="hud-value" data-hud-credits>00</span>
         </div>
       </div>
@@ -128,25 +122,21 @@
             </div>
             <div class="inventory-map-body">
               <nav class="map-links" aria-label="Inventory slots quick links">
-                <button type="button" class="map-link-btn" data-go-slot="reel">
-                  <span class="btn-bullet" aria-hidden="true">▶</span>
-                  <span class="btn-text">SLOT 01: 사이드 프로젝트 쇼릴</span>
-                </button>
                 <button type="button" class="map-link-btn highlight" data-go-slot="campaign">
                   <span class="btn-bullet" aria-hidden="true">▶</span>
-                  <span class="btn-text">SLOT 02: 마케팅 캠페인 제안서</span>
+                  <span class="btn-text">SLOT 01: 마케팅 캠페인 제안서</span>
                 </button>
                 <button type="button" class="map-link-btn" data-go-slot="ai">
                   <span class="btn-bullet" aria-hidden="true">▶</span>
-                  <span class="btn-text">SLOT 03: AI 비주얼 실험실</span>
+                  <span class="btn-text">SLOT 02: AI 비주얼 실험실</span>
                 </button>
                 <button type="button" class="map-link-btn" data-go-slot="tools">
                   <span class="btn-bullet" aria-hidden="true">▶</span>
-                  <span class="btn-text">SLOT 04: 보유 툴 숙련도 (Stats)</span>
+                  <span class="btn-text">SLOT 03: 보유 툴 숙련도 (Stats)</span>
                 </button>
                 <button type="button" class="map-link-btn" data-go-slot="thumbnails">
                   <span class="btn-bullet" aria-hidden="true">▶</span>
-                  <span class="btn-text">SLOT 05: 게임 썸네일 디자인</span>
+                  <span class="btn-text">SLOT 04: 게임 썸네일 디자인</span>
                 </button>
               </nav>
             </div>
@@ -166,27 +156,46 @@
         </div>
 
         <div class="hero-board" aria-label="Portfolio preview board">
-          <button class="preview-card large active-card" type="button" data-focus-card="reel">
-            <span class="card-label">사이드 프로젝트</span>
-            <strong>사이드 프로젝트 쇼릴</strong>
-            <small>영상 편집 & 비주얼 그래픽 실험</small>
-          </button>
-          <button class="preview-card" type="button" data-focus-card="campaign">
+          <!-- Left: Detailed Monitor Panel (div, read-only) -->
+          <div class="preview-card large active-card" data-hero-detail-panel>
+            <span class="card-label" data-hero-detail-label>캠페인 기획</span>
+            <strong data-hero-detail-title>마케팅 캠페인 제안서</strong>
+            <p class="hero-detail-desc" data-hero-detail-desc>
+              구글 클라우드의 차세대 자율형 AI 에이전트 코딩 플랫폼인 'Antigravity'를 국내 IT/개발자 시장에 성공적으로 브랜딩하기 위해 기획된 실무 제안서입니다. 단순 일회성 노출 광고에서 벗어나 채널 특유의 서브컬처 팬덤과 방송 밈(Meme)을 기술의 특장점과 절묘하게 결합하는 마케팅 전략을 담고 있습니다. 과거 방송 중 발생한 AI 에러를 유쾌하게 소화했던 크리에이터 '똘똘똘이'와의 파트너십을 통해 높은 몰입도와 화제성을 보장합니다.
+            </p>
+            <div class="celtic-divider" aria-hidden="true"><span>⚜️</span></div>
+            <ul class="hero-detail-bullets" data-hero-detail-bullets>
+              <li><strong>콘셉트 설정:</strong> AI가 스스로 빌드와 디버깅을 실행하는 과정을 '방관형 코딩 예능' 포맷으로 의인화하여 생중계(믛죈26) 진행</li>
+              <li><strong>리워드 프로모션:</strong> 구글 클라우드 신규 Active 가입 유도를 위해 인챈트 MCN 자체 선투자로 특별 제작된 기념 전용 테크 굿즈(티셔츠 & 스티커 팩) 추첨 지급</li>
+              <li><strong>위기 대응 계획:</strong> 라이브 특성상 불가피한 런타임 에러나 무한 루프 등의 돌발 상황을 시청자의 '훈수'와 '소통 개입'으로 유도하는 놀이 문화로 승화</li>
+              <li><strong>채널 매칭 타겟:</strong> 전직 개발자 출신 스트리머의 팬덤층인 2030 IT/개발 매니아를 정밀 타겟팅하여 단순 클릭을 넘어 실제 가입 전환율(CTR) 극대화</li>
+            </ul>
+          </div>
+
+          <!-- Right: Selection Buttons -->
+          <button class="preview-card active-card" type="button" data-focus-card="campaign">
             <span class="card-label">캠페인 기획</span>
             <strong>마케팅 캠페인 제안서</strong>
             <small>Antigravity x 똘똘똘이 기획안</small>
           </button>
-          <button class="preview-card accent" type="button" data-focus-card="pipeline">
+          <button class="preview-card" type="button" data-focus-card="thumbnails">
+            <span class="card-label">썸네일 디자인</span>
+            <strong>게임 썸네일 디자인</strong>
+            <small>e스포츠 및 유튜브 썸네일 컬렉션</small>
+          </button>
+          <button class="preview-card" type="button" data-focus-card="pipeline">
             <span class="card-label">AI 이미지 실험</span>
             <strong>AI 비주얼 실험실</strong>
             <small>프롬프트 설계 및 4K 이미지 생성</small>
           </button>
+
+          <!-- Bottom: Stat Indicators -->
           <div class="stat-card">
-            <b data-hero-score>92</b>
+            <b data-hero-score>88</b>
             <span>성장 잠재력 스코어</span>
           </div>
           <div class="stat-card">
-            <b data-hero-mode>영상 실험실</b>
+            <b data-hero-mode>캠페인 기획</b>
             <span>현재 탐구 테마</span>
           </div>
         </div>
@@ -197,20 +206,12 @@
         <div class="section-heading compact">
           <p class="eyebrow">탐구 기록 보드</p>
           <h2 id="proof-title">카드를 클릭하면 취미와 사이드 프로젝트로 탐구한 세부 기록을 확인할 수 있습니다.</h2>
-          <p>개인 쇼릴, 채널 분석 보고서, AI 활용 콘텐츠, 그리고 직무 보유 기술 스택을 인터랙티브하게 체험하는 보드입니다.</p>
+          <p>마케팅 제안서, AI 활용 콘텐츠, 그리고 직무 보유 기술 스택을 인터랙티브하게 체험하는 보드입니다.</p>
         </div>
 
         <div class="proof-grid inventory-grid">
-          <button class="proof-card inventory-slot" type="button" data-slot-id="reel" data-title="사이드 프로젝트 쇼릴" data-proof-copy="영상 편집 및 비주얼 그래픽 실험 요약본입니다.">
-            <span class="slot-index">SLOT 01</span>
-            <div class="slot-inner">
-              <strong>사이드 프로젝트 쇼릴</strong>
-              <small>영상 편집 및 비주얼 그래픽 실험</small>
-            </div>
-            <div class="pixel-corners" aria-hidden="true"></div>
-          </button>
           <button class="proof-card inventory-slot" type="button" data-slot-id="campaign" data-title="마케팅 캠페인 제안서" data-proof-copy="구글 클라우드 Antigravity x 똘똘똘이 가상 마케팅 캠페인 제안서입니다.">
-            <span class="slot-index">SLOT 02</span>
+            <span class="slot-index">SLOT 01</span>
             <div class="slot-inner">
               <strong>마케팅 캠페인 제안서</strong>
               <small>Antigravity x 똘똘똘이 기획안</small>
@@ -218,7 +219,7 @@
             <div class="pixel-corners" aria-hidden="true"></div>
           </button>
           <button class="proof-card inventory-slot accent" type="button" data-slot-id="ai" data-title="AI 비주얼 실험실" data-proof-copy="프롬프트 설계 및 생성형 AI 비주얼 리소스 제작 프로세스 설명입니다.">
-            <span class="slot-index">SLOT 03</span>
+            <span class="slot-index">SLOT 02</span>
             <div class="slot-inner">
               <strong>AI 비주얼 실험실</strong>
               <small>프롬프트 설계 및 4K 이미지화</small>
@@ -226,7 +227,7 @@
             <div class="pixel-corners" aria-hidden="true"></div>
           </button>
           <button class="proof-card inventory-slot cool" type="button" data-slot-id="tools" data-title="보유 툴 숙련도 (Tools)" data-proof-copy="영상, AI, 협업 툴의 활용 수준 요약 대시보드입니다.">
-            <span class="slot-index">SLOT 04</span>
+            <span class="slot-index">SLOT 03</span>
             <div class="slot-inner">
               <strong>보유 툴 숙련도 (Tools)</strong>
               <small>영상, AI, 협업 툴의 활용 수준</small>
@@ -234,7 +235,7 @@
             <div class="pixel-corners" aria-hidden="true"></div>
           </button>
           <button class="proof-card inventory-slot gaming" type="button" data-slot-id="thumbnails" data-title="게임 썸네일 디자인 컬렉션" data-proof-copy="직접 기획 및 디자인한 게임/e스포츠 유튜브 썸네일 컬렉션입니다.">
-            <span class="slot-index">SLOT 05</span>
+            <span class="slot-index">SLOT 04</span>
             <div class="slot-inner">
               <strong>게임 썸네일 디자인</strong>
               <small>e스포츠 및 유튜브 썸네일 컬렉션</small>
@@ -278,7 +279,7 @@
                 <p class="quest-desc">생성형 AI 툴과 편집 소프트웨어를 결합한 리소스 제작 실험</p>
               </div>
             </div>
-            <div class="quest-item active-quest" role="listitem" data-quest="4">
+            <div class="quest-item active-stage" role="listitem" data-quest="4">
               <span class="quest-pointer" aria-hidden="true">▶</span>
               <span class="quest-status status-active">[ ACTIVE ]</span>
               <div class="quest-content">
@@ -323,9 +324,8 @@
     <!-- Retro Player Record Footer (하단 게임 및 서브컬쳐 경력) -->
     <footer class="site-footer" aria-labelledby="footer-title">
       <div class="footer-card">
-        <div class="crt-overlay"></div>
         <div class="footer-header">
-          <span class="footer-kicker">PLAYER RECORD & CREDITS</span>
+          <span class="footer-kicker">PLAYER RECORD & ACHIEVEMENTS</span>
           <h2 id="footer-title" class="footer-title">PLAYER SUMMARY: 서브컬쳐 & 게임 연대기</h2>
           <p class="footer-subtitle">어린 시절부터 축적된 게임 플레이 메커니즘 이해와 서브컬처 팬덤 감각은 현재 기획자로서의 강력한 무기입니다.</p>
         </div>
@@ -358,7 +358,7 @@
               <div class="history-icon">🏆</div>
               <div class="history-meta">
                 <strong>주요 달성 업적 (Achievements)</strong>
-                <span>인디게임 숏폼 제작 실험 완료 | ComfyUI 노드 파이프라인 구축 | 유튜브 썸네일 디자인 컬렉션 보유</span>
+                <span>가상 마케팅 캠페인 기획 제안 | ComfyUI 노드 파이프라인 구축 | 유튜브 썸네일 디자인 컬렉션 보유</span>
               </div>
             </div>
           </div>
@@ -395,6 +395,6 @@
       </div>
     </div>
 
-    <script src="script.js?v=2.0.3"></script>
+    <script src="script.js?v=3.0.1"></script>
   </body>
 </html>
