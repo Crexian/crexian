@@ -148,31 +148,41 @@ function playSound(type) {
     };
 
     if (type === "hover") {
-      playTone(1318.51, "sine", now, 0.15, 0.005, 0.0001); // E6, 아주 부드러운 차임벨
+      playTone(1567.98, "sine", now, 0.08, 0.004, 0.0001); // G6, 아주 가볍고 투명한 마우스 호버 비프음
     } else if (type === "click") {
-      playTone(440.00, "triangle", now, 0.25, 0.01, 0.0001); // A4 harp pluck
-      playTone(659.25, "sine", now, 0.2, 0.006, 0.0001); // E5 soft ring
+      // 블루 아카이브 시그니처 똑- 물방울 소리 (Bubble sweep)
+      const osc = ctx.createOscillator();
+      const gainNode = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(800, now);
+      osc.frequency.exponentialRampToValueAtTime(1650, now + 0.05);
+      gainNode.gain.setValueAtTime(0.015, now);
+      gainNode.gain.exponentialRampToValueAtTime(0.0001, now + 0.07);
+      osc.connect(gainNode);
+      gainNode.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.08);
     } else if (type === "open") {
-      const notes = [261.63, 329.63, 392.00, 493.88]; // C4, E4, G4, B4 (C 메이저 7도 아르페지오)
+      // 맑고 경쾌한 청색 톤 아르페지오 (A5, C6, E6, A6)
+      const notes = [880.00, 1046.50, 1318.51, 1760.00];
       notes.forEach((freq, idx) => {
-        playTone(freq, "triangle", now + idx * 0.06, 0.45, 0.01, 0.0001);
+        playTone(freq, "sine", now + idx * 0.04, 0.3, 0.006, 0.0001);
       });
     } else if (type === "close") {
-      const notes = [493.88, 392.00, 329.63, 261.63]; // B4, G4, E4, C4
+      // 맑고 가벼운 하강 아르페지오
+      const notes = [1760.00, 1318.51, 1046.50, 880.00];
       notes.forEach((freq, idx) => {
-        playTone(freq, "triangle", now + idx * 0.05, 0.35, 0.008, 0.0001);
+        playTone(freq, "sine", now + idx * 0.03, 0.25, 0.005, 0.0001);
       });
     } else if (type === "powerup") {
-      const notes = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25, 783.99, 880.00, 1046.50]; // 화려한 펜타토닉 스케일
+      // 퓨처리스틱 레벨업 벨
+      const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98, 2093.00];
       notes.forEach((freq, idx) => {
-        const timeOffset = idx * 0.04;
-        const typeStr = idx % 2 === 0 ? "triangle" : "sine";
-        playTone(freq, typeStr, now + timeOffset, 0.5, 0.008, 0.0001);
+        playTone(freq, "sine", now + idx * 0.035, 0.4, 0.005, 0.0001);
       });
     } else if (type === "coin") {
-      playTone(987.77, "sine", now, 0.3, 0.008, 0.0001); // B5
-      playTone(1318.51, "sine", now + 0.03, 0.35, 0.006, 0.0001); // E6
-      playTone(1567.98, "sine", now + 0.06, 0.4, 0.004, 0.0001); // G6
+      playTone(1046.50, "sine", now, 0.2, 0.005, 0.0001); // C6
+      playTone(1567.98, "sine", now + 0.04, 0.25, 0.004, 0.0001); // G6
     }
   } catch (e) {
     console.warn("Web Audio API blocked or not supported: ", e);
