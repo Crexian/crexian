@@ -3695,3 +3695,614 @@ a:focus-visible {
   }
 }
 
+/* ==========================================================================
+   Blue Archive Direction Pass v3.2.0
+   ========================================================================== */
+:root {
+  --bg: #f6fbff;
+  --bg-gradient:
+    linear-gradient(132deg, rgba(56, 174, 251, 0.1) 0 18%, transparent 18% 62%, rgba(255, 143, 179, 0.08) 62% 76%, transparent 76%),
+    linear-gradient(180deg, #fafdff 0%, #edf8ff 48%, #f8fcff 100%);
+  --surface: rgba(255, 255, 255, 0.78);
+  --surface-2: rgba(236, 248, 255, 0.82);
+  --text: #162338;
+  --muted: #61718b;
+  --line: rgba(76, 183, 255, 0.22);
+  --blue: #38aefb;
+  --blue-glow: rgba(56, 174, 251, 0.25);
+  --cyan: #65d7ff;
+  --cyan-glow: rgba(101, 215, 255, 0.22);
+  --lime: #79e2d4;
+  --pink: #ff8fb3;
+  --pink-glow: rgba(255, 143, 179, 0.18);
+  --gold: #38aefb;
+  --gold-glow: rgba(56, 174, 251, 0.18);
+  --shadow: 0 18px 44px rgba(24, 116, 186, 0.1);
+  --glass-blur: blur(18px);
+}
+
+[data-theme="dark"] {
+  --bg: #0c1526;
+  --bg-gradient:
+    linear-gradient(132deg, rgba(56, 174, 251, 0.16) 0 18%, transparent 18% 62%, rgba(255, 143, 179, 0.1) 62% 76%, transparent 76%),
+    linear-gradient(180deg, #0c1526 0%, #10213a 52%, #0c1526 100%);
+  --surface: rgba(16, 33, 58, 0.72);
+  --surface-2: rgba(22, 48, 83, 0.84);
+  --text: #f4fbff;
+  --muted: #a4b7cc;
+  --line: rgba(124, 207, 255, 0.22);
+  --blue: #7ccfff;
+  --blue-glow: rgba(124, 207, 255, 0.24);
+  --cyan: #8ee8ff;
+  --pink: #ffabc8;
+  --shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+}
+
+body {
+  background-color: var(--bg) !important;
+  background-image:
+    linear-gradient(rgba(56, 174, 251, 0.075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 174, 251, 0.075) 1px, transparent 1px),
+    var(--bg-gradient) !important;
+  background-size: 28px 28px, 28px 28px, 100% 100% !important;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.brand, .tab-button, .button, .card-label, .panel-kicker,
+.stat-card b, .footer-title, .start-title {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif !important;
+  letter-spacing: 0 !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--blue), var(--cyan)) !important;
+  border-radius: 999px !important;
+}
+
+.site-header {
+  grid-template-columns: auto minmax(260px, 1fr) auto auto !important;
+  gap: clamp(12px, 2vw, 24px) !important;
+  padding: 14px clamp(18px, 4vw, 54px) !important;
+  background: rgba(255, 255, 255, 0.78) !important;
+  border-bottom: 1px solid rgba(76, 183, 255, 0.18) !important;
+  box-shadow: 0 10px 28px rgba(56, 174, 251, 0.08) !important;
+}
+
+[data-theme="dark"] .site-header {
+  background: rgba(12, 21, 38, 0.78) !important;
+}
+
+.site-header.is-scrolled {
+  padding: 8px clamp(18px, 4vw, 54px) !important;
+}
+
+.brand {
+  color: #127ec7 !important;
+  font-weight: 900 !important;
+}
+
+[data-theme="dark"] .brand {
+  color: var(--blue) !important;
+}
+
+.brand-mark {
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle at 34% 30%, #ffffff 0 18%, var(--cyan) 19% 44%, var(--blue) 45% 100%) !important;
+  box-shadow: 0 0 0 5px rgba(56, 174, 251, 0.12), 0 8px 22px rgba(56, 174, 251, 0.32) !important;
+}
+
+.arcade-hud {
+  justify-self: center !important;
+  width: min(460px, 100%) !important;
+  border: 1px solid rgba(76, 183, 255, 0.22) !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.62) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(18px) !important;
+}
+
+[data-theme="dark"] .arcade-hud {
+  background: rgba(16, 33, 58, 0.62) !important;
+}
+
+.hud-item {
+  border-right: 1px solid rgba(76, 183, 255, 0.16) !important;
+}
+
+.hud-label {
+  color: var(--pink) !important;
+  font-size: 0.68rem !important;
+  letter-spacing: 0.08em !important;
+}
+
+.hud-value {
+  color: #127ec7 !important;
+  font-size: clamp(1.05rem, 1.6vw, 1.45rem) !important;
+  text-shadow: none !important;
+}
+
+[data-theme="dark"] .hud-value {
+  color: var(--cyan) !important;
+}
+
+.site-nav a {
+  border-radius: 999px !important;
+  padding: 8px 12px !important;
+}
+
+.site-nav a:hover {
+  color: #0b78bc !important;
+  background: rgba(56, 174, 251, 0.1) !important;
+}
+
+.site-nav a::after {
+  display: none !important;
+}
+
+.mode-button, .button, .tab-button, .insert-coin-btn {
+  border: 1px solid rgba(41, 147, 218, 0.28) !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.74) !important;
+  color: var(--text) !important;
+  box-shadow: 0 10px 26px rgba(56, 174, 251, 0.11) !important;
+}
+
+[data-theme="dark"] .mode-button,
+[data-theme="dark"] .button,
+[data-theme="dark"] .tab-button,
+[data-theme="dark"] .insert-coin-btn {
+  background: rgba(16, 33, 58, 0.72) !important;
+}
+
+.button.primary, .insert-coin-btn {
+  background: linear-gradient(135deg, #38aefb, #7ccfff) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+.button.secondary {
+  background: rgba(255, 255, 255, 0.58) !important;
+}
+
+.mode-button:hover, .button:hover, .tab-button:hover, .insert-coin-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 16px 34px rgba(56, 174, 251, 0.18) !important;
+}
+
+.start-screen {
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.9) 0 42%, transparent 42%),
+    linear-gradient(150deg, transparent 0 58%, rgba(56, 174, 251, 0.16) 58% 72%, transparent 72%),
+    linear-gradient(32deg, transparent 0 68%, rgba(255, 143, 179, 0.12) 68% 78%, transparent 78%),
+    #f4fbff !important;
+}
+
+.start-content {
+  border: 1px solid rgba(76, 183, 255, 0.2) !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.58) !important;
+  box-shadow: var(--shadow) !important;
+  backdrop-filter: blur(18px) !important;
+  padding: clamp(28px, 5vw, 54px) !important;
+}
+
+.system-ready {
+  color: #168ad3 !important;
+}
+
+.start-title {
+  color: #13233a !important;
+  font-size: clamp(2.7rem, 8vw, 7rem) !important;
+  font-weight: 900 !important;
+}
+
+.start-subtitle, .start-hint {
+  color: var(--muted) !important;
+  max-width: 640px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  word-break: keep-all !important;
+  overflow-wrap: break-word !important;
+}
+
+main {
+  padding-top: 86px !important;
+}
+
+.player-status-section {
+  padding-top: clamp(34px, 6vw, 78px) !important;
+}
+
+.player-status-section,
+.hero,
+.proof-section,
+.workflow,
+.contact-section,
+.site-footer {
+  position: relative !important;
+}
+
+.status-panel-grid {
+  max-width: 1120px !important;
+  gap: 18px !important;
+}
+
+.status-panel-card,
+.preview-card,
+.stat-card,
+.proof-card,
+.jrpg-quest-container,
+.contact-card,
+.footer-card,
+.modal-card,
+.history-item,
+.steam-monitor-panel,
+.campaign-overview-card,
+.meta-badge,
+.overview-item,
+.tools-cat,
+.ai-prompt-box,
+.sim-panel,
+.thumbnail-main-wrapper,
+.ai-main-wrapper {
+  border: 1px solid rgba(76, 183, 255, 0.22) !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  box-shadow: 0 18px 42px rgba(24, 116, 186, 0.08) !important;
+  backdrop-filter: blur(18px) !important;
+}
+
+[data-theme="dark"] .status-panel-card,
+[data-theme="dark"] .preview-card,
+[data-theme="dark"] .stat-card,
+[data-theme="dark"] .proof-card,
+[data-theme="dark"] .jrpg-quest-container,
+[data-theme="dark"] .contact-card,
+[data-theme="dark"] .footer-card,
+[data-theme="dark"] .modal-card,
+[data-theme="dark"] .history-item,
+[data-theme="dark"] .steam-monitor-panel,
+[data-theme="dark"] .campaign-overview-card,
+[data-theme="dark"] .meta-badge,
+[data-theme="dark"] .overview-item,
+[data-theme="dark"] .tools-cat,
+[data-theme="dark"] .ai-prompt-box,
+[data-theme="dark"] .sim-panel,
+[data-theme="dark"] .thumbnail-main-wrapper,
+[data-theme="dark"] .ai-main-wrapper {
+  background: rgba(16, 33, 58, 0.7) !important;
+}
+
+.status-panel-card::before,
+.preview-card::before,
+.proof-card::before,
+.footer-card::before,
+.jrpg-quest-container::before {
+  display: none !important;
+}
+
+.status-panel-card .panel-header,
+.jrpg-quest-container .panel-header,
+.footer-header {
+  border-bottom: 1px solid rgba(76, 183, 255, 0.16) !important;
+  background: linear-gradient(90deg, rgba(56, 174, 251, 0.12), rgba(255, 255, 255, 0)) !important;
+}
+
+.panel-tag,
+.card-label,
+.eyebrow,
+.footer-kicker,
+.slot-index,
+.quest-status,
+.system-ready {
+  color: #168ad3 !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.08em !important;
+}
+
+.avatar-area {
+  border: 1px solid rgba(56, 174, 251, 0.42) !important;
+  border-radius: 50% !important;
+  background:
+    radial-gradient(circle at 50% 50%, #ffffff 0 28%, transparent 29%),
+    conic-gradient(from 90deg, #38aefb, #7ccfff, #ff8fb3, #38aefb) !important;
+  color: #168ad3 !important;
+  box-shadow: 0 0 0 8px rgba(56, 174, 251, 0.1) !important;
+}
+
+.status-bar {
+  border-radius: 999px !important;
+  border: 1px solid rgba(76, 183, 255, 0.18) !important;
+  background: rgba(220, 242, 255, 0.8) !important;
+}
+
+.status-bar .bar-fill {
+  border-radius: inherit !important;
+}
+
+.hp-bar .bar-fill {
+  background: linear-gradient(90deg, #ff8fb3, #ffb7cf) !important;
+}
+
+.mp-bar .bar-fill,
+.stamina-bar .bar-fill {
+  background: linear-gradient(90deg, #38aefb, #7ccfff) !important;
+}
+
+.map-link-btn {
+  border: 1px solid transparent !important;
+  border-radius: 8px !important;
+  background: transparent !important;
+  color: var(--text) !important;
+}
+
+.map-link-btn.highlight,
+.map-link-btn:hover {
+  border-color: rgba(56, 174, 251, 0.24) !important;
+  background: rgba(56, 174, 251, 0.09) !important;
+}
+
+.btn-bullet,
+.quest-pointer {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50% !important;
+  background: rgba(56, 174, 251, 0.12) !important;
+  color: #168ad3 !important;
+  font-size: 0.76rem !important;
+  font-weight: 900 !important;
+}
+
+.hero {
+  min-height: auto !important;
+  padding-top: clamp(28px, 6vw, 76px) !important;
+  align-items: start !important;
+}
+
+#hero-title {
+  color: #13233a !important;
+  font-weight: 900 !important;
+  line-height: 1.08 !important;
+}
+
+[data-theme="dark"] #hero-title,
+[data-theme="dark"] .start-title {
+  color: #f4fbff !important;
+}
+
+.hero-copy > p {
+  color: var(--muted) !important;
+}
+
+.hero-board {
+  gap: 14px !important;
+}
+
+.preview-card.large {
+  border-left: 4px solid var(--blue) !important;
+}
+
+.preview-card.active-card,
+.proof-card:hover,
+.preview-card:hover,
+.quest-item:hover,
+.quest-item.active-stage {
+  border-color: rgba(56, 174, 251, 0.46) !important;
+  background: rgba(236, 248, 255, 0.86) !important;
+  box-shadow: 0 20px 46px rgba(56, 174, 251, 0.14) !important;
+}
+
+[data-theme="dark"] .preview-card.active-card,
+[data-theme="dark"] .proof-card:hover,
+[data-theme="dark"] .preview-card:hover,
+[data-theme="dark"] .quest-item:hover,
+[data-theme="dark"] .quest-item.active-stage {
+  background: rgba(20, 50, 86, 0.84) !important;
+}
+
+.celtic-divider {
+  height: auto !important;
+  margin: 22px 0 !important;
+  color: #168ad3 !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.1em !important;
+}
+
+.celtic-divider::before,
+.celtic-divider::after {
+  background: linear-gradient(90deg, transparent, rgba(56, 174, 251, 0.45), transparent) !important;
+}
+
+.hero-detail-bullets li::before {
+  color: var(--blue) !important;
+}
+
+.proof-grid.inventory-grid {
+  gap: 16px !important;
+}
+
+.inventory-slot {
+  min-height: 190px !important;
+  border-top: 4px solid rgba(56, 174, 251, 0.55) !important;
+}
+
+.inventory-slot.accent {
+  border-top-color: rgba(255, 143, 179, 0.65) !important;
+}
+
+.inventory-slot.cool {
+  border-top-color: rgba(121, 226, 212, 0.74) !important;
+}
+
+.inventory-slot.gaming {
+  border-top-color: rgba(124, 207, 255, 0.8) !important;
+}
+
+.pixel-corners {
+  display: none !important;
+}
+
+.jrpg-quest-log {
+  gap: 12px !important;
+}
+
+.quest-item {
+  border: 1px solid rgba(76, 183, 255, 0.18) !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  box-shadow: none !important;
+}
+
+.quest-status {
+  border: 1px solid rgba(56, 174, 251, 0.26) !important;
+  border-radius: 999px !important;
+  background: rgba(56, 174, 251, 0.09) !important;
+  color: #168ad3 !important;
+}
+
+.status-active {
+  background: rgba(255, 143, 179, 0.12) !important;
+  border-color: rgba(255, 143, 179, 0.32) !important;
+  color: #d85083 !important;
+}
+
+.contact-section {
+  background: linear-gradient(180deg, transparent, rgba(236, 248, 255, 0.66)) !important;
+}
+
+.contact-card-arrow {
+  min-width: 46px !important;
+  border-radius: 999px !important;
+  color: #168ad3 !important;
+  font-size: 0.72rem !important;
+}
+
+.footer-card {
+  overflow: hidden !important;
+}
+
+.footer-card::after {
+  content: "" !important;
+  position: absolute !important;
+  right: -90px !important;
+  top: -90px !important;
+  width: 260px !important;
+  height: 260px !important;
+  border: 1px solid rgba(56, 174, 251, 0.18) !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  pointer-events: none !important;
+}
+
+.monitor-frame {
+  border: 1px solid rgba(76, 183, 255, 0.26) !important;
+  border-radius: 8px !important;
+  background: rgba(236, 248, 255, 0.75) !important;
+}
+
+.modal {
+  background: rgba(229, 244, 255, 0.76) !important;
+  backdrop-filter: blur(14px) !important;
+}
+
+[data-theme="dark"] .modal {
+  background: rgba(7, 13, 24, 0.78) !important;
+}
+
+.modal-close {
+  border-radius: 50% !important;
+}
+
+.campaign-tab,
+.thumb-nav-item,
+.ai-nav-item {
+  border-radius: 8px !important;
+  border: 1px solid rgba(76, 183, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.62) !important;
+}
+
+.campaign-tab.active,
+.thumb-nav-item.active,
+.ai-nav-item.active {
+  border-color: rgba(56, 174, 251, 0.48) !important;
+  background: rgba(56, 174, 251, 0.12) !important;
+}
+
+.blink-text,
+.insert-coin-btn {
+  font-family: 'Inter', 'Noto Sans KR', sans-serif !important;
+  letter-spacing: 0 !important;
+}
+
+.border-top-dashed,
+.rpg-footer,
+.footer-copyright {
+  border-top: 1px solid rgba(76, 183, 255, 0.18) !important;
+}
+
+.pane-section.border-top-dashed {
+  background: linear-gradient(180deg, rgba(56, 174, 251, 0.04), transparent 72%) !important;
+}
+
+.scroll-progress {
+  background: linear-gradient(90deg, var(--blue), var(--cyan), var(--pink)) !important;
+}
+
+.preview-card,
+.proof-card,
+.modal-card,
+.contact-card,
+.insert-coin-btn {
+  outline-color: rgba(56, 174, 251, 0.52) !important;
+}
+
+@media (max-width: 980px) {
+  .site-header {
+    grid-template-columns: auto auto !important;
+  }
+
+  main {
+    padding-top: 74px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    padding: 10px 14px !important;
+  }
+
+  .header-controls {
+    gap: 6px !important;
+  }
+
+  .mode-button {
+    min-height: 36px !important;
+    padding: 0 10px !important;
+  }
+
+  .status-panel-grid,
+  .hero-board,
+  .proof-grid.inventory-grid {
+    gap: 12px !important;
+  }
+
+  .start-content {
+    width: min(92vw, 520px) !important;
+  }
+
+  .start-subtitle {
+    max-width: 240px !important;
+    font-size: 0.95rem !important;
+    line-height: 1.75 !important;
+  }
+
+  .start-hint {
+    max-width: 280px !important;
+  }
+}
