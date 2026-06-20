@@ -3878,9 +3878,42 @@ h1, h2, h3, h4, h5, h6,
     linear-gradient(150deg, transparent 0 58%, rgba(56, 174, 251, 0.16) 58% 72%, transparent 72%),
     linear-gradient(32deg, transparent 0 68%, rgba(255, 143, 179, 0.12) 68% 78%, transparent 78%),
     #f4fbff !important;
+  overflow: hidden !important;
+}
+
+.start-visual-bg {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: 66% center !important;
+  opacity: 0.18 !important;
+  filter: saturate(1.05) blur(1px) !important;
+  transform: scale(1.03) !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+.start-screen::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  background:
+    linear-gradient(90deg, rgba(250, 253, 255, 0.95) 0%, rgba(250, 253, 255, 0.8) 42%, rgba(250, 253, 255, 0.42) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(56, 174, 251, 0.12)) !important;
+  pointer-events: none !important;
 }
 
 .start-content {
+  position: relative !important;
+  z-index: 2 !important;
+  display: grid !important;
+  grid-template-columns: minmax(260px, 0.92fr) minmax(320px, 1.08fr) !important;
+  align-items: center !important;
+  gap: clamp(24px, 4vw, 48px) !important;
+  width: min(1100px, 92vw) !important;
   border: 1px solid rgba(76, 183, 255, 0.2) !important;
   border-radius: 8px !important;
   background: rgba(255, 255, 255, 0.58) !important;
@@ -3889,14 +3922,115 @@ h1, h2, h3, h4, h5, h6,
   padding: clamp(28px, 5vw, 54px) !important;
 }
 
+.start-content::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 14px !important;
+  border: 1px solid rgba(255, 255, 255, 0.58) !important;
+  border-radius: 8px !important;
+  pointer-events: none !important;
+}
+
+.start-header,
+.start-action-area {
+  position: relative !important;
+  z-index: 2 !important;
+  grid-column: 1 !important;
+}
+
+.start-visual-card {
+  position: relative !important;
+  z-index: 2 !important;
+  grid-column: 2 !important;
+  grid-row: 1 / span 2 !important;
+  align-self: stretch !important;
+  min-height: clamp(360px, 46vw, 520px) !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(76, 183, 255, 0.28) !important;
+  border-radius: 8px !important;
+  background: rgba(236, 248, 255, 0.68) !important;
+  box-shadow: 0 22px 54px rgba(24, 116, 186, 0.16) !important;
+}
+
+.start-visual-card::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 12px !important;
+  z-index: 2 !important;
+  border: 1px solid rgba(255, 255, 255, 0.54) !important;
+  border-radius: 6px !important;
+  pointer-events: none !important;
+}
+
+.start-visual-card::after {
+  content: "" !important;
+  position: absolute !important;
+  right: -64px !important;
+  top: -64px !important;
+  z-index: 3 !important;
+  width: 220px !important;
+  height: 220px !important;
+  border: 1px solid rgba(124, 207, 255, 0.36) !important;
+  border-radius: 50% !important;
+  pointer-events: none !important;
+}
+
+.start-visual-card img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: 62% center !important;
+}
+
+.start-scanline {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.58) 0%, rgba(255, 255, 255, 0.08) 44%, transparent 100%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.12) 0 1px, transparent 1px 8px) !important;
+  pointer-events: none !important;
+}
+
+.start-visual-status {
+  position: absolute !important;
+  left: 24px !important;
+  bottom: 24px !important;
+  z-index: 4 !important;
+  display: grid !important;
+  gap: 2px !important;
+  min-width: 160px !important;
+  padding: 14px 16px !important;
+  border: 1px solid rgba(76, 183, 255, 0.28) !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.68) !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+.start-visual-status span,
+.start-visual-status strong {
+  color: #168ad3 !important;
+  font-size: 0.72rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.08em !important;
+}
+
+.start-visual-status strong {
+  color: #13233a !important;
+  font-size: 1.2rem !important;
+}
+
 .system-ready {
   color: #168ad3 !important;
 }
 
 .start-title {
   color: #13233a !important;
-  font-size: clamp(2.7rem, 8vw, 7rem) !important;
+  font-size: clamp(2.6rem, 6.8vw, 6.4rem) !important;
   font-weight: 900 !important;
+  line-height: 0.92 !important;
 }
 
 .start-subtitle, .start-hint {
@@ -4465,6 +4599,28 @@ main {
     right: 24px !important;
     bottom: 24px !important;
   }
+
+  .start-content {
+    grid-template-columns: 1fr !important;
+    width: min(92vw, 620px) !important;
+    gap: 22px !important;
+  }
+
+  .start-header,
+  .start-action-area,
+  .start-visual-card {
+    grid-column: 1 !important;
+  }
+
+  .start-visual-card {
+    grid-row: auto !important;
+    min-height: 300px !important;
+    order: -1 !important;
+  }
+
+  .start-visual-card img {
+    object-position: center center !important;
+  }
 }
 
 @media (max-width: 640px) {
@@ -4489,6 +4645,38 @@ main {
 
   .start-content {
     width: min(92vw, 520px) !important;
+    padding: 20px !important;
+    gap: 18px !important;
+  }
+
+  .start-content::before {
+    inset: 8px !important;
+  }
+
+  .start-visual-bg {
+    opacity: 0.22 !important;
+    object-position: 62% center !important;
+  }
+
+  .start-screen::before {
+    background:
+      linear-gradient(180deg, rgba(250, 253, 255, 0.9) 0%, rgba(250, 253, 255, 0.74) 48%, rgba(250, 253, 255, 0.56) 100%),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.24), transparent) !important;
+  }
+
+  .start-visual-card {
+    min-height: 210px !important;
+  }
+
+  .start-visual-status {
+    left: 14px !important;
+    bottom: 14px !important;
+    min-width: 132px !important;
+    padding: 10px 12px !important;
+  }
+
+  .start-visual-status strong {
+    font-size: 1rem !important;
   }
 
   .featured-hero {
